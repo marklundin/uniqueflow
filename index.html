@@ -27,7 +27,7 @@
   <div id="main"></div>
   <script type="text/javascript">
 
-    var main = (/\bdev\b/.test( window.location.search )) ? 'main' : 'build/main.min'
+    var main = (/\bdev\b/.test( window.location.search )) ? './main' : './build/main.min'
     System.import( main )
 
     console.log( 'For those of you that way inclined, you can run this application as a second screen from any high powered Cast enabled device' )

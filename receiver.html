@@ -50,7 +50,7 @@ html, body {
   <div id="main"></div>
   <script type="text/javascript">
 
-    var main = (/\bdev\b/.test( window.location.search )) ? 'main-receiver' : 'build/main-receiver.min'
+    var main = (/\bdev\b/.test( window.location.search )) ? './main-receiver' : './build/main-receiver.min'
     System.import( main )
 
   </script>
