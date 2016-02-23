@@ -63,7 +63,9 @@
 			canvas.toBlob( function( blob ){ saveAs( blob, 'unique-flow.png' )})
 		}
 
-		document.querySelector('#capture').onclick = capture
+		var button = document.querySelector('#capture')
+		button.onclick = capture
+		button.addEventListener("touchstart", capture );
 
 	</script>
 </body>
