@@ -1,6 +1,6 @@
 {
   "name": "toyota-artwork",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "generative animation",
   "main": "./src/index.js",
   "registry": "jspm",
@@ -9,7 +9,9 @@
     "init": "npm update --save && jspm init --yes && jspm update && npm start",
     "install": "jspm install",
     "start": "browser-sync start --startPath \"dev.html\" --files \"src\" --server --no-notify",
+    "start-build": "browser-sync start --files \"build\" --server --no-notify",
     "start-tunnel": "browser-sync start --server --no-notify --tunnel",
+    "watch-build": "watch \"npm run build\" src",
     "build": "jspm bundle-sfx src/index.js build/index.js",
     "release": "jspm bundle-sfx src/index.js build/index.js -m",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,10 +24,13 @@
   },
   "devDependencies": {
     "browser-sync": "^2.11.1",
-    "jspm": "^0.16.26"
+    "jspm": "^0.16.26",
+    "watch": "^0.17.1"
   },
   "jspm": {
     "dependencies": {
+      "JordanDelcros/stats-js": "github:JordanDelcros/stats-js@master",
+      "Makio64/stats-js": "github:Makio64/stats-js@master",
       "THREE": "github:mrdoob/three.js@r73",
       "gsap": "npm:gsap@^1.18.2",
       "howler": "npm:howler@^1.1.29",

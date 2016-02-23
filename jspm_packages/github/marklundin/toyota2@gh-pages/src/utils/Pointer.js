@@ -102,6 +102,7 @@ export default class Pointer extends THREE.Vector2 {
     }, 2000);
   }
   _onPointerEvent(e) {
+    e.preventDefault();
     if (!!window.TouchEvent && e instanceof window.TouchEvent) {
       if(e.type === "touchend") {
         e = e.changedTouches[0];

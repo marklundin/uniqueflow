@@ -1,9 +1,10 @@
 import Signal from "min-signal";
 
-class Ticker extends Signal {
-  constructor() {
-    super();
+let callbacks = [];
+let scopes = [];
 
+class Ticker {
+  constructor() {
     this._updateBinded = this.update.bind(this);
 
     this._previousTimestamp = 0;
@@ -22,7 +23,20 @@ class Ticker extends Signal {
 
     this._previousTimestamp = timestamp;
 
-    this.dispatch(time, this.deltaTime );
+    for (let [i, callback] of callbacks.entries()) {
+      callback.call(scopes[i]);
+    }
+  }
+
+  add(callback, scope) {
+    callbacks.push(callback);
+    scopes.push(scope);
+  }
+
+  remove(callback) {
+    var index = callbacks.indexOf(callback);
+    callbacks.splice(index, 1);
+    scopes.splice(index, 1);
   }
 }
 

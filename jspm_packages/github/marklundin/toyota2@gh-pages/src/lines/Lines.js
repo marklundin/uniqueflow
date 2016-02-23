@@ -109,7 +109,7 @@ export default class Lines extends THREE.Object3D {
     }
   }
 
-  update() {
+  update(timeScale) {
     let mainLine = this.lines[0];
 
     let characterOffset = this._vector3Cached1.subVectors(this.character, this._previousCharacterPosition);
@@ -119,11 +119,11 @@ export default class Lines extends THREE.Object3D {
 
       this._vector3Cached3.copy(this.character);
       this._vector3Cached2.copy(this.offsets[i]);
-      this._cachedQuaternion.slerp(mainLine.tip.quaternion, .1);
+      this._cachedQuaternion.slerp(mainLine.tip.quaternion, .1 * timeScale);
       this._vector3Cached2.applyQuaternion(this._cachedQuaternion);
       this._vector3Cached3.add(this._vector3Cached2);
 
-      particle.lerp(this._vector3Cached3, .1);
+      particle.lerp(this._vector3Cached3, .1 * timeScale);
 
       line.update(particle);
     }

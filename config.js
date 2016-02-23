@@ -55,6 +55,8 @@ System.config({
       "util": "npm:util@0.10.3"
     },
     "github:marklundin/toyota2@gh-pages": {
+      "JordanDelcros/stats-js": "github:JordanDelcros/stats-js@master",
+      "Makio64/stats-js": "github:Makio64/stats-js@master",
       "THREE": "github:mrdoob/three.js@r73",
       "gsap": "npm:gsap@1.18.2",
       "howler": "npm:howler@1.1.29",

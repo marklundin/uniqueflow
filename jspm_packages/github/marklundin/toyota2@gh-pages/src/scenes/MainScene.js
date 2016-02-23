@@ -2,7 +2,7 @@ import THREE from "THREE";
 import "THREE.TrackballControls";
 
 import Lines from "../lines/Lines.js";
-import Stage from "../stage/Stage.js";
+import Background from "../background/Background.js";
 import Path from "../path/Path.js";
 import CameraControls from "../CameraControls.js";
 import Pointer from "../utils/Pointer.js";
@@ -36,14 +36,14 @@ export default class MainScene extends THREE.Scene {
         and the camera follows
     */
     this.character = new THREE.Vector3();
-
-    this.lines = new Lines(this.character)
-    this.add(this.lines);
-
-    this.stage = new Stage(this.character);
+    
+    this.background = new Background(this.character);
     if (!/\bnobackground\b/.test(window.location.search)) {
-      this.add(this.stage);
+      this.add(this.background);
     }
+
+    this.lines = new Lines(this.character);
+    this.add(this.lines);
 
     this.path = new Path()
 
@@ -79,15 +79,15 @@ export default class MainScene extends THREE.Scene {
     }
   }
 
-  update() {
+  update(timeScale = 1) {
     // Move the focus point along the path
-    this.path.update();
-    this.character.lerp(this.path.position, .1);
+    this.path.update(timeScale);
+    this.character.lerp(this.path.position, .1 * timeScale);
 
     // Update camera controls
-    this.controls.update();
+    this.controls.update(timeScale);
 
-    this.stage.update();
-    this.lines.update();
+    this.background.update(timeScale);
+    this.lines.update(timeScale);
   }
 }

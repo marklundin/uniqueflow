@@ -22,8 +22,8 @@ export default {
         main: 0x000000,
         assets: [0x202020],
         detail: {
-          color: 0x444444,
-          scale: [ 1, 1 ],
+          color: 0x313131,
+          scale: [ 10, 10 ],
           type: -1
         }
       },
@@ -46,7 +46,7 @@ export default {
         assets: [0x7b7d80, 0xbdb7b7],
         detail: {
           color: 0xffa770,
-          scale: [ 7, 0.2 ],
+          scale: [ 3, 0.05 ],
           type: 1
         }
       },
@@ -96,7 +96,7 @@ export default {
         assets: [ 0xd3c5c1, 0x6e695f],
         detail: {
           color: 0xfffada,
-          scale: [ 22, 55 ],
+          scale: [ 10, 15 ],
           type: 1
         }
       },
@@ -205,14 +205,14 @@ export default {
         assets: [ 0xff4ea8, 0x7500ff],
         detail: {
           color: 0xcb72df,
-          scale: [ 20, 80 ],
+          scale: [ 8, 10 ],
           type: 1
         }
       },
       lines: [
         {
-          tipColor: 0xf795bc,
-          color: 0x191532,
+          tipColor: 0xffffff,
+          color: 0xffd2f1,
           crossTip: false,
           style: "square",
           shading: true,
@@ -220,8 +220,8 @@ export default {
           radius: 1
         },
         {
-          tipColor: 0xf795bc,
-          color: 0x191532,
+          tipColor: 0xffffff,
+          color: 0xffd2f1,
           crossTip: false,
           style: "square",
           shading: false,
@@ -229,8 +229,8 @@ export default {
           radius: 1
         },
         {
-          tipColor: 0xf795bc,
-          color: 0x241f44,
+          tipColor: 0xffffff,
+          color: 0xffd2f1,
           crossTip: false,
           style: "square",
           shading: true,
@@ -238,8 +238,8 @@ export default {
           radius: 1
         },
         {
-          tipColor: 0xf795bc,
-          color: 0x241f44,
+          tipColor: 0xffffff,
+          color: 0xffd2f1,
           crossTip: false,
           style: "square",
           shading: true,
@@ -255,7 +255,7 @@ export default {
         assets: [ 0x410337, 0x000e79],
         detail: {
           color: 0x1f0033,
-          scale: [ 30, 13 ],
+          scale: [ 10, 6 ],
           type: 0
         }
       },
@@ -332,7 +332,7 @@ export default {
         assets: [ 0xfffbed, 0xf4f2ec],
         detail: {
           color: 0xa39e9d,
-          scale: [ 50, 10 ],
+          scale: [ 15, 10 ],
           type: 1
         }
       },
@@ -432,7 +432,7 @@ export default {
         assets: [ 0x000000, 0x000000],
         detail: {
           color: 0x000874,
-          scale: [ 20, 10 ],
+          scale: [ 10, 10 ],
           type: 1
         }
       },
@@ -491,7 +491,7 @@ export default {
         assets: [ 0xddd5c9, 0xe3ddcc],
         detail: {
           color: 0xede8e0,
-          scale: [ 26, 42 ],
+          scale: [ 20, 3 ],
           type: 1
         }
       },
@@ -559,7 +559,7 @@ export default {
         assets: [ 0x00062e, 0x006254],
         detail: {
           color: 0x004539,
-          scale: [ 28, 12 ],
+          scale: [ 20, 12 ],
           type: 1
         }
       },
@@ -627,7 +627,7 @@ export default {
         assets: [ 0x70c6a3, 0xf9b7b9],
         detail: {
           color: 0xece4e2,
-          scale: [ 80, 20 ],
+          scale: [ 15, 8 ],
           type: 1
         }
       },
@@ -695,7 +695,7 @@ export default {
         assets: [ 0x000d5e, 0x006865],
         detail: {
           color: 0x000d5e,
-          scale: [ 60, 14 ],
+          scale: [ 15, 7 ],
           type: 1
         }
       },

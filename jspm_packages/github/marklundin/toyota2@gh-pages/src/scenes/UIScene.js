@@ -91,7 +91,7 @@ export default class UIScene extends THREE.Scene {
     }
     this.raycaster.setFromCamera(this.pointer.normalizedCenteredFlippedY, this.camera);
     let intersects = this.raycaster.intersectObjects(this.planes);
-    if (intersects) {
+    if (intersects && intersects[0]) {
       let plane = intersects[0].object;
       App.changeSceneByName(plane.name);
 

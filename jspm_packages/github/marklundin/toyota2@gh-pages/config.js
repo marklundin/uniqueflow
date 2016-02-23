@@ -30,6 +30,8 @@ System.config({
   },
 
   map: {
+    "JordanDelcros/stats-js": "github:JordanDelcros/stats-js@master",
+    "Makio64/stats-js": "github:Makio64/stats-js@master",
     "THREE": "github:mrdoob/three.js@r73",
     "THREE.CopyShader": "github:mrdoob/three.js@r73/examples/js/shaders/CopyShader.js",
     "THREE.EffectComposer": "github:mrdoob/three.js@r73/examples/js/postprocessing/EffectComposer.js",

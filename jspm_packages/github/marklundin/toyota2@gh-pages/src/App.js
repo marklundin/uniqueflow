@@ -1,4 +1,5 @@
 import Signal from "min-signal";
+import Stats from "Makio64/stats-js";
 
 import SoundManager from "./utils/SoundManager.js";
 
@@ -34,6 +35,13 @@ class App {
     this._preventSceneChange = false;
 
     this.isSupported = isSupported;
+
+    if(/\bstats\b/.test(window.location.search)) {
+      this.stats = new Stats();
+      this.stats.domElement.style.position = "absolute";
+      this.stats.domElement.style.top = 0;
+      document.body.appendChild(this.stats.domElement);
+    }
 
     this.onStart = new Signal();
     this.onStop = new Signal();
@@ -82,7 +90,7 @@ class App {
         this.changeSceneByName("default", {
           transitionDuration: 10
         });
-      }, 15000);
+      }, 5000);
     }
 
     this._currentSceneName = name;

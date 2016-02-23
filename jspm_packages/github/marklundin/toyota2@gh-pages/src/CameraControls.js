@@ -38,13 +38,13 @@ export default class CameraControls {
     this.targetPositionDistance = Math.max(this.targetPositionDistance - 0.08, 0.08);
   }
 
-  update() {
+  update(timeScale) {
     // Update camera distance
     this.targetPositionDistance = Math.min(this.targetPositionDistance + 0.005, 0.5);
 
-    this.wagon.lerp(this.character, .015);
+    this.wagon.lerp(this.character, .015 * timeScale);
 
-    let delta = 1 / 60;
+    let delta = .016 * timeScale;
 
     let targetFocalDistance = this.targetPositionDistance * 0.5;
 

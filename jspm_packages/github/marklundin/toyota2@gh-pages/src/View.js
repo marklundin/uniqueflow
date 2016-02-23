@@ -3,31 +3,40 @@ import THREE from "THREE";
 import App from "./App.js";
 
 export default class View {
-  constructor(canvas, opts ) {
+  constructor(canvas, opts) {
     this.renderer = opts.renderer || new THREE.WebGLRenderer({
       canvas: canvas,
-      antialias: true,
-      alpha:true
+      antialias: true
     });
     this.renderer.setClearColor(0x000000);
     this.renderer.autoClear = false;
+    this.renderer.sortObjects = false;
+
+    if (App.stats) {
+      App.stats.addCustom("DrawCall", this.renderer.info.render, "calls");
+      App.stats.addCustom("Faces", this.renderer.info.render, "faces");
+      App.stats.addCustom("Points", this.renderer.info.render, "points");
+      App.stats.addCustom("Vertices", this.renderer.info.render, "vertices");
+      App.stats.addCustom("Geometries", this.renderer.info.memory, "geometries");
+      App.stats.addCustom("Textures", this.renderer.info.memory, "textures");
+    }
 
     App.onResize.add(this.resize, this);
     App.onSceneChange.add(this.onSceneChange, this);
   }
 
-  onSceneChange(name, { background , duration }) {
-
-    let color = new THREE.Color( background.main )
-    let transitionDuration = duration || 0.4
-    TweenMax.to( this.renderer.getClearColor(), transitionDuration * 0.5 , {
-        r: color.r,
-        g: color.g,
-        b: color.b,
-        ease: Power2.easeInOut,
-        onUpdate: c =>  this.renderer.setClearColor( c )
-      })
-
+  onSceneChange(name, {background, transitionDuration = .4}) {
+    let clearColor = this.renderer.getClearColor();
+    let nextClearColor = new THREE.Color(background.main);
+    TweenMax.to(clearColor, transitionDuration * .5, {
+      r: nextClearColor.r,
+      g: nextClearColor.g,
+      b: nextClearColor.b,
+      ease: Power2.easeInOut,
+      onUpdate: () => {
+        this.renderer.setClearColor(clearColor);
+      }
+    });
   }
 
   resize(width, height) {
@@ -39,7 +48,9 @@ export default class View {
 
   render(mainScene, uiScene) {
     this.renderer.clear();
+
     this.renderer.render(mainScene, mainScene.camera);
+
     this.renderer.render(uiScene, uiScene.camera);
   }
 }

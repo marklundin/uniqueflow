@@ -58,6 +58,8 @@
     "util": "npm:util@^0.10.3"
   },
   "github:marklundin/toyota2@gh-pages": {
+    "JordanDelcros/stats-js": "github:JordanDelcros/stats-js@master",
+    "Makio64/stats-js": "github:Makio64/stats-js@master",
     "THREE": "github:mrdoob/three.js@r73",
     "gsap": "npm:gsap@^1.18.2",
     "howler": "npm:howler@^1.1.29",
@@ -77,5 +79,7 @@
     "fs": "github:jspm/nodelibs-fs@^0.1.0",
     "path": "github:jspm/nodelibs-path@^0.1.0"
   },
-  "github:systemjs/plugin-json@0.1.0": {}
+  "github:systemjs/plugin-json@0.1.0": {},
+  "github:Makio64/stats-js@master": {},
+  "github:JordanDelcros/stats-js@master": {}
 }

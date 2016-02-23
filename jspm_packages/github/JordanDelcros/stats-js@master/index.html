@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<title>Stats.js</title>
+	<script type="text/javascript" src="stats.js"></script>
+	<script type="text/javascript">
+
+		document.addEventListener("DOMContentLoaded", function(){
+
+			var stats = new Stats(true);
+			document.body.appendChild(stats.domElement);
+
+			function update(){
+
+				window.requestAnimationFrame(update);
+
+				stats.begin();
+
+				for( var i = 0; i < 100000; i++ ){
+
+					var div = document.createElement("div");
+					// document.body.appendChild(div);
+
+				};
+
+				stats.end();
+
+			};
+
+			window.requestAnimationFrame(update);
+
+			function fakeServerRequest(){
+
+				stats.beginPing();
+
+				setTimeout(function(){
+
+					stats.endPing();
+					fakeServerRequest();
+
+				}, 65);
+
+			};
+
+			fakeServerRequest();
+
+		}, false);
+
+	</script>
+</head>
+<body></body>
+</html>

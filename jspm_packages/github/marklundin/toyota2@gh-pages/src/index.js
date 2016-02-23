@@ -26,7 +26,6 @@ export default class ToyotaCHRExperience {
     return DATA.assets;
   }
 
-
   constructor( canvas, baseURL = './', opts = {} ) {
 
     isMobile = !!new MobileDetect(window.navigator.userAgent).mobile();
@@ -35,18 +34,20 @@ export default class ToyotaCHRExperience {
     this.app = App
     this.canvas = canvas;
 
+    this._timeScale = 1;
+
     // Add sounds
     for (let soundUrl of DATA.assets.sounds) {
       SoundManager.add(baseURL + soundUrl);
     }
 
-    this.view = new View(this.canvas, opts );
+    this.view = new View(this.canvas, opts);
+
     this.mainScene = new MainScene(this.canvas);
+    this.uiScene = new UIScene(this.canvas);
 
     this.pointer = Pointer.get(this.canvas);
     this.pointer.disable();
-
-    this.uiScene = new UIScene(this.canvas);
 
     var width = this.canvas.offsetWidth;
     var height = this.canvas.offsetHeight;
@@ -80,9 +81,20 @@ export default class ToyotaCHRExperience {
   }
 
   _update() {
-    this.mainScene.update();
+    if(App.stats) {
+      App.stats.begin();
+    }
+
+    this._timeScale += (Ticker.deltaTime / 16 - this._timeScale) * .1;
+    this._timeScale = Math.min(this._timeScale, 5);
+
+    this.mainScene.update(this._timeScale);
     this.view.render(this.mainScene, this.uiScene);
     this.render.dispatch(this.canvas);
+
+    if(App.stats) {
+      App.stats.end();
+    }
   }
 
   // Public

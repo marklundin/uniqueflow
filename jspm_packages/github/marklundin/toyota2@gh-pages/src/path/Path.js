@@ -73,8 +73,8 @@ export default class Path {
       }
     }
   }
-  update() {
-    this.distance += SPEED;
+  update(timeScale = 1) {
+    this.distance += SPEED * timeScale;
 
     if(this.distance >= this.nextDistance) {
       this.currentEdgeID++;
