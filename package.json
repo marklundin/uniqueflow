@@ -4,7 +4,10 @@
   "description": "A generative artwork",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install": "jspm install",
+    "start": "browser-sync start --startPath \"index.html\" --files \"src\" --server --no-notify",
+    "build": "jspm bundle-sfx main.js build/main.min.js && jspm bundle-sfx main-receiver.js build/main-receiver.min.js",
+    "test": "echo \"Error: no test specified\" && exit 1"    
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,27 @@
   "bugs": {
     "url": "https://github.com/marklundin/toyota/issues"
   },
-  "homepage": "https://github.com/marklundin/toyota#readme"
+  "homepage": "https://github.com/marklundin/toyota#readme",
+  "dependencies": {
+    "gsap": "^1.18.2",
+    "howler": "^1.1.29"
+  },
+  "devDependencies": {
+    "jspm": "^0.16.29"
+  },
+  "jspm": {
+    "dependencies": {
+      "gsap": "npm:gsap@^1.18.2",
+      "howler": "npm:howler@^1.1.29",
+      "marklundin/toyota2": "github:marklundin/toyota2@gh-pages",
+      "min-signal": "npm:min-signal@^0.0.5",
+      "screenfull": "npm:screenfull@^3.0.0",
+      "toyota": "github:marklundin/toyota2@gh-pages"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
 }

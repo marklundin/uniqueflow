@@ -1,0 +1,43 @@
+{
+  "name": "toyota-artwork",
+  "version": "0.0.7",
+  "description": "generative animation",
+  "main": "./src/index.js",
+  "registry": "jspm",
+  "private": "true",
+  "scripts": {
+    "init": "npm update --save && jspm init --yes && jspm update && npm start",
+    "install": "jspm install",
+    "start": "browser-sync start --startPath \"dev.html\" --files \"src\" --server --no-notify",
+    "start-tunnel": "browser-sync start --server --no-notify --tunnel",
+    "build": "jspm bundle-sfx src/index.js build/index.js",
+    "release": "jspm bundle-sfx src/index.js build/index.js -m",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Damien Mortini",
+  "license": "MIT",
+  "peerDependencies": {
+    "gsap": "^1.18.2",
+    "howler": "^1.1.29"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "jspm": "^0.16.26"
+  },
+  "jspm": {
+    "dependencies": {
+      "THREE": "github:mrdoob/three.js@r73",
+      "gsap": "npm:gsap@^1.18.2",
+      "howler": "npm:howler@^1.1.29",
+      "min-signal": "npm:min-signal@^0.0.5",
+      "mobile-detect": "npm:mobile-detect@^1.3.1",
+      "screenfull": "npm:screenfull@^3.0.0",
+      "text": "github:systemjs/plugin-text@^0.0.4"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}

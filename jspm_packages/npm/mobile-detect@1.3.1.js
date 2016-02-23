@@ -1,0 +1,1 @@
+module.exports = require("npm:mobile-detect@1.3.1/mobile-detect.js");

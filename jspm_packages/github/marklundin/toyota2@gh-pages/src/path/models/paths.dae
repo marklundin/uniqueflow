@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.76.0 commit date:2015-10-11, commit time:06:55, hash:48f7dd6</authoring_tool>
+    </contributor>
+    <created>2016-02-03T14:55:47</created>
+    <modified>2016-02-03T14:55:47</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_geometries>
+    <geometry id="Sweep-mesh" name="Sweep">
+      <mesh>
+        <source id="Sweep-mesh-positions">
+          <float_array id="Sweep-mesh-positions-array" count="72">-69.99842 39.99088 99.99041 52.77597 25.93876 114.99 85.91908 61.26205 -45.67537 68.55229 51.64334 -45.69464 93.68073 70.30548 -13.96529 89.51871 55.73188 71.24 78.49851 38.92277 87.12567 57.75969 50.48366 101.4884 -39.49014 71.93907 84.93309 -110.7965 25.0683 75.25097 -93.55521 85.64329 12.2557 -93.61867 41.50058 -31.63266 -102.5586 61.74204 -65.39941 -76.02629 105.9961 -62.29125 -38.97506 111.3482 -4.704285 -77.83607 103.8945 -35.27344 -87.48549 48.25026 -44.71893 -67.942 40.3229 -28.64959 -41.38263 83.68865 42.09814 -75.505 44.09457 58.79249 -69.99842 39.99088 99.99041 52.77597 25.93876 114.99 139.1649 3.629571 95.74678 236.2368 2.602503 79.07171</float_array>
+          <technique_common>
+            <accessor source="#Sweep-mesh-positions-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sweep-mesh-normals">
+          <float_array id="Sweep-mesh-normals-array" count="0"/>
+          <technique_common>
+            <accessor source="#Sweep-mesh-normals-array" count="0" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Sweep-mesh-vertices">
+          <input semantic="POSITION" source="#Sweep-mesh-positions"/>
+        </vertices>
+        <lines count="22">
+          <input semantic="VERTEX" source="#Sweep-mesh-vertices" offset="0"/>
+          <p>7 6 8 7 18 17 12 11 6 5 21 20 9 8 13 12 20 19 3 2 17 16 5 4 1 0 16 15 11 10 23 22 22 21 19 18 15 14 10 9 4 2 14 13</p>
+        </lines>
+      </mesh>
+    </geometry>
+    <geometry id="Sweep_001-mesh" name="Sweep.001">
+      <mesh>
+        <source id="Sweep_001-mesh-positions">
+          <float_array id="Sweep_001-mesh-positions-array" count="9">-41.64 59.80821 102.3988 52.77597 25.93876 114.99 -69.99842 39.99088 99.99041</float_array>
+          <technique_common>
+            <accessor source="#Sweep_001-mesh-positions-array" count="3" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sweep_001-mesh-normals">
+          <float_array id="Sweep_001-mesh-normals-array" count="0"/>
+          <technique_common>
+            <accessor source="#Sweep_001-mesh-normals-array" count="0" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Sweep_001-mesh-vertices">
+          <input semantic="POSITION" source="#Sweep_001-mesh-positions"/>
+        </vertices>
+        <lines count="2">
+          <input semantic="VERTEX" source="#Sweep_001-mesh-vertices" offset="0"/>
+          <p>2 0 1 0</p>
+        </lines>
+      </mesh>
+    </geometry>
+    <geometry id="Sweep_002-mesh" name="Sweep.002">
+      <mesh>
+        <source id="Sweep_002-mesh-positions">
+          <float_array id="Sweep_002-mesh-positions-array" count="9">-41.64978 24.23227 96.81829 52.77597 25.93876 114.99 -69.99842 39.99088 99.99041</float_array>
+          <technique_common>
+            <accessor source="#Sweep_002-mesh-positions-array" count="3" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sweep_002-mesh-normals">
+          <float_array id="Sweep_002-mesh-normals-array" count="0"/>
+          <technique_common>
+            <accessor source="#Sweep_002-mesh-normals-array" count="0" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Sweep_002-mesh-vertices">
+          <input semantic="POSITION" source="#Sweep_002-mesh-positions"/>
+        </vertices>
+        <lines count="2">
+          <input semantic="VERTEX" source="#Sweep_002-mesh-vertices" offset="0"/>
+          <p>2 0 1 0</p>
+        </lines>
+      </mesh>
+    </geometry>
+    <geometry id="Sweep_003-mesh" name="Sweep.003">
+      <mesh>
+        <source id="Sweep_003-mesh-positions">
+          <float_array id="Sweep_003-mesh-positions-array" count="9">-41.65114 -0.01511496 100.4015 52.77597 25.93876 114.99 -69.99842 39.99088 99.99041</float_array>
+          <technique_common>
+            <accessor source="#Sweep_003-mesh-positions-array" count="3" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sweep_003-mesh-normals">
+          <float_array id="Sweep_003-mesh-normals-array" count="0"/>
+          <technique_common>
+            <accessor source="#Sweep_003-mesh-normals-array" count="0" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Sweep_003-mesh-vertices">
+          <input semantic="POSITION" source="#Sweep_003-mesh-positions"/>
+        </vertices>
+        <lines count="2">
+          <input semantic="VERTEX" source="#Sweep_003-mesh-vertices" offset="0"/>
+          <p>2 0 1 0</p>
+        </lines>
+      </mesh>
+    </geometry>
+    <geometry id="Sweep_004-mesh" name="Sweep.004">
+      <mesh>
+        <source id="Sweep_004-mesh-positions">
+          <float_array id="Sweep_004-mesh-positions-array" count="9">52.77597 25.93876 114.99 -41.63652 -19.06274 96.79839 -69.99842 39.99088 99.99041</float_array>
+          <technique_common>
+            <accessor source="#Sweep_004-mesh-positions-array" count="3" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sweep_004-mesh-normals">
+          <float_array id="Sweep_004-mesh-normals-array" count="0"/>
+          <technique_common>
+            <accessor source="#Sweep_004-mesh-normals-array" count="0" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Sweep_004-mesh-vertices">
+          <input semantic="POSITION" source="#Sweep_004-mesh-positions"/>
+        </vertices>
+        <lines count="2">
+          <input semantic="VERTEX" source="#Sweep_004-mesh-vertices" offset="0"/>
+          <p>2 1 1 0</p>
+        </lines>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="main" name="main" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 -1.62921e-7 -1 0 0 1 -1.62921e-7 0 0 0 0 1</matrix>
+        <instance_geometry url="#Sweep-mesh" name="main"/>
+      </node>
+      <node id="child1" name="child1" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 -1.62921e-7 -1 0 0 1 -1.62921e-7 0 0 0 0 1</matrix>
+        <instance_geometry url="#Sweep_001-mesh" name="child1"/>
+      </node>
+      <node id="child2" name="child2" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 -1.62921e-7 -1 0 0 1 -1.62921e-7 0 0 0 0 1</matrix>
+        <instance_geometry url="#Sweep_002-mesh" name="child2"/>
+      </node>
+      <node id="child4" name="child4" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 -1.62921e-7 -1 0 0 1 -1.62921e-7 0 0 0 0 1</matrix>
+        <instance_geometry url="#Sweep_003-mesh" name="child4"/>
+      </node>
+      <node id="child3" name="child3" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 -1.62921e-7 -1 0 0 1 -1.62921e-7 0 0 0 0 1</matrix>
+        <instance_geometry url="#Sweep_004-mesh" name="child3"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

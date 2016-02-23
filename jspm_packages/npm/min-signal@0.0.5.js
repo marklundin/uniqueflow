@@ -1,0 +1,1 @@
+module.exports = require("npm:min-signal@0.0.5/min-signal.js");

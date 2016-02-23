@@ -1,0 +1,1 @@
+module.exports = require("npm:screenfull@3.0.0/dist/screenfull.js");
