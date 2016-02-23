@@ -63,7 +63,7 @@ messageBus.onMessage = function(event) {
 	console.log( logMessage );
 	// display the message from the sender
 	// displayText(event.data);
-	// artwork.app.changeSceneByName(event.data);
+	artwork.app.changeSceneByName(event.data);
 
 	// inform all senders on the CastMessageBus of the incoming message event
 	// sender message listener will be invoked

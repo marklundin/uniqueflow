@@ -32,13 +32,14 @@ cast.then( connect => {
 
 		window.api = api
 
-		let send = message => api.send( 'hello' ).catch( e => console.log( e ))
-		window.send = send
+		let send = message => api.send( message ).catch( e => console.log( e ))
 
-		api.availability.add( m => console.log('availability changed:', m ))
-		api.session.add( session => console.log('session :', session.statusText ))
-		api.message.add( m => console.log('message :', m ))
-		// api.send('balls')
+		// api.availability.add( m => console.log('availability changed:', m ))
+		// api.session.add( session => console.log('session :', session.statusText ))
+		// api.message.add( m => console.log('message :', m ))
+
+		artwork.app.onSceneChange.add( send )
+		
 
 	}).catch( e => console.error( e ))
 })
