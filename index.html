@@ -24,20 +24,47 @@
 	    <meta name="share-text" content="My Unique Flow artwork in collaboration with @field_io">
 
 		<link href="assets/main.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.indigo-red.min.css">
+		<script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+		
+		<script src='canvas-to-blob.min.js'></script>
+		<script src='FileSaver.min.js'></script>
 		<script src='jspm_packages/system.js'></script>
 		<script src='config.js'></script>
 
 	</head>
 <body>
-  <div id="main"></div>
-  <script type="text/javascript">
+	<div id="main"></div>
+  	<button id='capture' class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+		<i class="material-icons">camera_alt</i>
+	</button>
+  	<script type="text/javascript">
 
-    var main = (/\bdev\b/.test( window.location.search )) ? './main' : './build/main.min'
-    System.import( main )
 
-    console.log( 'For those of you that way inclined, you can run this application as a second screen from any high powered Cast enabled device' )
 
-  </script>
+  		console.warn( 'For those of you that way inclined, you can run this application as a second screen from any high powered Cast enabled device' )
+
+
+
+  		// Start the app
+
+		var main = (/\bdev\b/.test( window.location.search )) ? './main' : './build/main.min'
+		System.import( main )
+
+		
+
+		// Screen grab
+
+		function capture(){
+			var canvas = document.querySelector('canvas')
+			canvas.toBlob( function( blob ){ saveAs( blob, 'unique-flow.png' )})
+		}
+
+		document.querySelector('#capture').onclick = capture
+
+	</script>
 </body>
 </html>

@@ -11,8 +11,14 @@ var canvas = document.createElement("canvas");
 document.querySelector("#main").appendChild(canvas);
 
 
+var renderer = new THREE.WebGLRenderer({
+  canvas: canvas,
+  antialias: true,
+  preserveDrawingBuffer: true
+})
+
  // Style it
-let artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/', { forceMobile:true })
+let artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/', { forceMobile:true, renderer:renderer })
 
 
 // Add a resize handler
