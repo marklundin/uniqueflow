@@ -24,10 +24,10 @@
 	    <meta name="share-text" content="My Unique Flow artwork in collaboration with @field_io">
 
 		<link href="assets/main.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.indigo-red.min.css">
 		<script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 
 		
 		<script src='canvas-to-blob.min.js'></script>
@@ -38,9 +38,6 @@
 	</head>
 <body>
 	<div id="main"></div>
-  	<button id='capture' class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-		<i class="material-icons">camera_alt</i>
-	</button>
   	<script type="text/javascript">
 
 
@@ -63,9 +60,9 @@
 			canvas.toBlob( function( blob ){ saveAs( blob, 'unique-flow.png' )})
 		}
 
-		var button = document.querySelector('#capture')
-		button.onclick = capture
-		button.addEventListener("touchstart", capture );
+		// var button = document.querySelector('#capture')
+		// button.onclick = capture
+		// button.addEventListener("touchstart", capture );
 
 	</script>
 </body>
