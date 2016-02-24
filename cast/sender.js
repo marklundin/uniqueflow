@@ -57,8 +57,14 @@ let initialize = cast => {
 		let stop  = _ => new Promise(( resolve, reject ) => session.stop( resolve, reject ))
 		let send = message => new Promise(( resolve, reject ) => session ? session.sendMessage( namespace, message, resolve, reject ) : reject( 'No Session' ))
 
+		let requestSession = _ => {
+
+			return new Promise(( resolve, reject ) => cast.requestSession( resolve, reject ))
+
+		}
+
 		connection = { 
-			send, leave, stop,
+			send, leave, stop, requestSession, 
 			session: new signal(),
 			availability: new signal(),
 			message: new signal()

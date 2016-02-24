@@ -25,3 +25,18 @@ canvas{
 	right:30px;
 	bottom:30px;
 }
+
+.cast-button{
+	position: absolute;
+    right: 25px;
+    bottom: 18px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background-image: url(ic_cast_white_24dp.png );
+    background-size: cover;
+    background-color: transparent;
+    opacity: 0.5;
+
+    display: none;
+}
