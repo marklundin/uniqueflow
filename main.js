@@ -34,14 +34,14 @@ cast.then( connect => {
 
 	connect( APP_ID, NS ).then( api => {
 
-		console.log( 'Connected' )
+		console.log( 'Google Cast Extension Available' )
 
 		window.api = api
 
 		let send = message => api.send( message ).catch( e => console.log( e ))
 
 		// api.availability.add( m => console.log('availability changed:', m ))
-		// api.session.add( session => console.log('session :', session.statusText ))
+		api.session.add( session => console.log('session :', session ))
 		// api.message.add( m => console.log('message :', m ))
 
 		artwork.app.onSceneChange.add( send )

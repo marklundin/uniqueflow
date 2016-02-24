@@ -11,16 +11,16 @@ var canvas = document.createElement("canvas");
 document.querySelector("#main").appendChild(canvas);
 
 
- // Style it
-let artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/')
+ 
+let artwork
 
 
 // Add a resize handler
-window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
+
 
 
 // Start
-artwork.start()
+
 
 
 let hardwareSupportsApplication = Artwork.isSupported
@@ -32,6 +32,15 @@ console.log('Starting Receiver Manager');
 // handler for the 'ready' event
 castReceiverManager.onReady = function(event) {
 	console.log('Received Ready event: ' + JSON.stringify(event.data));
+
+	if( Artwork.isSupported ){
+
+		new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/')
+		window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
+		artwork.start()
+
+	}
+
 	castReceiverManager.setApplicationState( Artwork.isSupported ? APP_READY : APP_UNSUPPORTED );
 }
 
@@ -79,4 +88,4 @@ castReceiverManager.start({statusText: "Application is starting"});
 
 
 // utility function to display the text message in the input field
-let displayText = text => document.getElementById( "message" ).innerHTML = text
+//let displayText = text => document.getElementById( "message" ).innerHTML = text

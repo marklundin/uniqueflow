@@ -47,10 +47,22 @@
 
 
 
-  		// Start the app
+  		// Script inserter
 
-		var main = (/\bdev\b/.test( window.location.search )) ? './main' : './build/main.min'
-		System.import( main )
+  		var addScript = function(src, fallback) {
+			var script = document.createElement("script");
+			script.src = src;
+			script.async = false;
+			script.onload = fallback;
+			var firstScript = document.getElementsByTagName("script")[0];
+			firstScript.parentNode.insertBefore(script, firstScript);
+		}
+
+
+		// Start the app
+
+		var dev = new RegExp(/\bdev\b/).test( window.location.search );
+		( dev ? System.import( './main' ) : addScript( './build/main.min.js' ))
 
 		
 
@@ -61,9 +73,6 @@
 			canvas.toBlob( function( blob ){ saveAs( blob, 'unique-flow.png' )})
 		}
 
-		// var button = document.querySelector('#capture')
-		// button.onclick = capture
-		// button.addEventListener("touchstart", capture );
 
 	</script>
 </body>
