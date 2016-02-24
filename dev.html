@@ -47,32 +47,19 @@
 
 
 
-  		// Script inserter
-
-  		var addScript = function(src, fallback) {
-			var script = document.createElement("script");
-			script.src = src;
-			script.async = false;
-			script.onload = fallback;
-			var firstScript = document.getElementsByTagName("script")[0];
-			firstScript.parentNode.insertBefore(script, firstScript);
-		}
-
-
-		// Start the app
-
-		var dev = new RegExp(/\bdev\b/).test( window.location.search );
-		( dev ? System.import( './main' ) : addScript( './build/main.min.js' ))
-
-
-
-		var filePath = './jspm_packages/github/marklundin/toyota2@gh-pages/'
+  		var filePath = './jspm_packages/github/marklundin/toyota2@gh-pages/'
 		var canvas = document.createElement("canvas");
 		document.querySelector("#main").appendChild(canvas);
 
-		artwork = new InstallationArtwork( canvas, filePath )
 
-		
+
+		// Start the app
+		let artwork
+
+		System.import( './main' ).then( function(){
+			artwork = new InstallationArtwork( canvas, filePath )
+		})
+
 
 		// Screen grab
 
