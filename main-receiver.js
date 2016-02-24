@@ -3,7 +3,7 @@ import howl from "howler";
 import { TweenMax } from "gsap";
 import Artwork from 'toyota'
 import castReceiverManager from './cast/receiver'
-import { NS } from './app-config'
+import { NS, APP_READY, APP_UNSUPPORTED } from './app-config'
 
 
 
@@ -23,6 +23,8 @@ window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canva
 artwork.start()
 
 
+let hardwareSupportsApplication = Artwork.isSupported
+
 
 
 console.log('Starting Receiver Manager');
@@ -30,7 +32,7 @@ console.log('Starting Receiver Manager');
 // handler for the 'ready' event
 castReceiverManager.onReady = function(event) {
 	console.log('Received Ready event: ' + JSON.stringify(event.data));
-	castReceiverManager.setApplicationState("Application status is ready...");
+	castReceiverManager.setApplicationState( Artwork.isSupported ? APP_READY : APP_UNSUPPORTED );
 }
 
 // handler for 'senderconnected' event
