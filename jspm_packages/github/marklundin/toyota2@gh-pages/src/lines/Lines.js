@@ -27,6 +27,7 @@ export default class Lines extends THREE.Object3D {
       this.particles.push(particle);
       let line = new Line();
       line.radius = 0;
+      line.mesh.frustumCulled = false;
       this.lines.push(line);
       this.add(line);
       this.offsets.push(new THREE.Vector3());

@@ -9351,7 +9351,7 @@ _removeDefine();
 (function() {
 var _removeDefine = $__System.get("@@amd-helpers").createDefine();
 define("d8", [], function() {
-  return "#define PHONG\n\nuniform vec3 color;\nuniform vec3 tipColor;\n\nuniform vec3 diffuse;\nuniform vec3 emissive;\nuniform float emissiveIntensity;\nuniform vec3 specular;\nuniform float shininess;\nuniform float opacity;\n\nvarying float vLengthRatio;\n\n// THREE.ShaderChunk[ \"common\" ],\n// THREE.ShaderChunk[ \"color_pars_fragment\" ],\n// THREE.ShaderChunk[ \"uv_pars_fragment\" ],\n// THREE.ShaderChunk[ \"uv2_pars_fragment\" ],\n// THREE.ShaderChunk[ \"map_pars_fragment\" ],\n// THREE.ShaderChunk[ \"alphamap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"aomap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"lightmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"emissivemap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"envmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"fog_pars_fragment\" ],\n// THREE.ShaderChunk[ \"lights_phong_pars_fragment\" ],\n// THREE.ShaderChunk[ \"shadowmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"bumpmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"normalmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"specularmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"logdepthbuf_pars_fragment\" ],\n\nvoid main() {\n\n\tvec3 color = mix(color, tipColor, smoothstep(.9, 1., vLengthRatio));\n\n\tvec3 outgoingLight = vec3( 0.0 );\n\tvec4 diffuseColor = vec4( color, opacity );\n\tvec3 totalAmbientLight = ambientLightColor;\n\tvec3 totalEmissiveLight = color;\n\tvec3 shadowMask = vec3( 1.0 );\n\n\ttotalEmissiveLight *= emissiveIntensity;\n\tdiffuseColor.rgb *= (1. - emissiveIntensity);\n\n\t// THREE.ShaderChunk[ \"logdepthbuf_fragment\" ],\n\t// THREE.ShaderChunk[ \"map_fragment\" ],\n\t// THREE.ShaderChunk[ \"color_fragment\" ],\n\t// THREE.ShaderChunk[ \"alphamap_fragment\" ],\n\t// THREE.ShaderChunk[ \"alphatest_fragment\" ],\n\t// THREE.ShaderChunk[ \"specularmap_fragment\" ],\n\t// THREE.ShaderChunk[ \"normal_phong_fragment\" ],\n\t// THREE.ShaderChunk[ \"lightmap_fragment\" ],\n\t// THREE.ShaderChunk[ \"hemilight_fragment\" ],\n\t// THREE.ShaderChunk[ \"aomap_fragment\" ],\n\t// THREE.ShaderChunk[ \"emissivemap_fragment\" ],\n\n\t// THREE.ShaderChunk[ \"lights_phong_fragment\" ],\n\t// THREE.ShaderChunk[ \"shadowmap_fragment\" ],\n\n\ttotalDiffuseLight *= shadowMask;\n\ttotalSpecularLight *= shadowMask;\n\n\t#ifdef METAL\n\n\t\toutgoingLight += diffuseColor.rgb * ( totalDiffuseLight + totalAmbientLight ) * specular + totalSpecularLight + totalEmissiveLight;\n\n\t#else\n\n\t\toutgoingLight += diffuseColor.rgb * ( totalDiffuseLight + totalAmbientLight ) + totalSpecularLight + totalEmissiveLight;\n\n\t#endif\n\n\t// THREE.ShaderChunk[ \"envmap_fragment\" ],\n\n\t// THREE.ShaderChunk[ \"linear_to_gamma_fragment\" ],\n\n\t// THREE.ShaderChunk[ \"fog_fragment\" ],\n\n\t// outgoingLight = mix(outgoingLight, outgoingLight + (1. - (outgoingLight.r + outgoingLight.g + outgoingLight.b) / 3.), smoothstep(.95, 1., vLengthRatio));\n\n\toutgoingLight = mix(outgoingLight, vec3(1.), step(.9985, vLengthRatio));\n\n\tgl_FragColor = vec4( outgoingLight, diffuseColor.a * vLengthRatio );\n\n}\n";
+  return "#define PHONG\n\nuniform vec3 color;\nuniform vec3 tipColor;\n\nuniform vec3 diffuse;\nuniform vec3 emissive;\nuniform float emissiveIntensity;\nuniform vec3 specular;\nuniform float shininess;\nuniform float opacity;\n\nvarying float vLengthRatio;\n\n// THREE.ShaderChunk[ \"common\" ],\n// THREE.ShaderChunk[ \"color_pars_fragment\" ],\n// THREE.ShaderChunk[ \"uv_pars_fragment\" ],\n// THREE.ShaderChunk[ \"uv2_pars_fragment\" ],\n// THREE.ShaderChunk[ \"map_pars_fragment\" ],\n// THREE.ShaderChunk[ \"alphamap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"aomap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"lightmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"emissivemap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"envmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"fog_pars_fragment\" ],\n// THREE.ShaderChunk[ \"lights_phong_pars_fragment\" ],\n// THREE.ShaderChunk[ \"shadowmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"bumpmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"normalmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"specularmap_pars_fragment\" ],\n// THREE.ShaderChunk[ \"logdepthbuf_pars_fragment\" ],\n\nvoid main() {\n\n\tvec3 color = mix(color, tipColor, smoothstep(.9, 1., vLengthRatio));\n\n\tvec3 outgoingLight = vec3( 0.0 );\n\tvec4 diffuseColor = vec4( color, opacity );\n\tvec3 totalAmbientLight = ambientLightColor;\n\tvec3 totalEmissiveLight = color;\n\tvec3 shadowMask = vec3( 1.0 );\n\n\ttotalEmissiveLight *= emissiveIntensity;\n\tdiffuseColor.rgb *= (1. - emissiveIntensity);\n\n\t// THREE.ShaderChunk[ \"logdepthbuf_fragment\" ],\n\t// THREE.ShaderChunk[ \"map_fragment\" ],\n\t// THREE.ShaderChunk[ \"color_fragment\" ],\n\t// THREE.ShaderChunk[ \"alphamap_fragment\" ],\n\t// THREE.ShaderChunk[ \"alphatest_fragment\" ],\n\t// THREE.ShaderChunk[ \"specularmap_fragment\" ],\n\t// THREE.ShaderChunk[ \"normal_phong_fragment\" ],\n\t// THREE.ShaderChunk[ \"lightmap_fragment\" ],\n\t// THREE.ShaderChunk[ \"hemilight_fragment\" ],\n\t// THREE.ShaderChunk[ \"aomap_fragment\" ],\n\t// THREE.ShaderChunk[ \"emissivemap_fragment\" ],\n\n\t// THREE.ShaderChunk[ \"lights_phong_fragment\" ],\n\t// THREE.ShaderChunk[ \"shadowmap_fragment\" ],\n\n\ttotalDiffuseLight *= shadowMask;\n\ttotalSpecularLight *= shadowMask;\n\n\t#ifdef METAL\n\n\t\toutgoingLight += diffuseColor.rgb * ( totalDiffuseLight + totalAmbientLight ) * specular + totalSpecularLight + totalEmissiveLight;\n\n\t#else\n\n\t\toutgoingLight += diffuseColor.rgb * ( totalDiffuseLight + totalAmbientLight ) + totalSpecularLight + totalEmissiveLight;\n\n\t#endif\n\n\t// THREE.ShaderChunk[ \"envmap_fragment\" ],\n\n\t// THREE.ShaderChunk[ \"linear_to_gamma_fragment\" ],\n\n\t// THREE.ShaderChunk[ \"fog_fragment\" ],\n\n\t// outgoingLight = mix(outgoingLight, outgoingLight + (1. - (outgoingLight.r + outgoingLight.g + outgoingLight.b) / 3.), smoothstep(.95, 1., vLengthRatio));\n\n\toutgoingLight = mix(outgoingLight, vec3(1.), step(.9985, vLengthRatio));\n\n\tfloat depth = gl_FragCoord.z / gl_FragCoord.w;\n\tfloat fade = smoothstep(0.1, 10.0, depth);\n\n\tgl_FragColor = vec4( outgoingLight, diffuseColor.a * vLengthRatio * fade );\n\n}\n";
 });
 
 _removeDefine();
@@ -9592,7 +9592,6 @@ $__System.register("d9", ["da", "db", "d5", "d6", "dc", "d2", "d3", "d4", "d7", 
           });
 
           this.mesh = new THREE.Mesh(geometry, material);
-          this.mesh.frustumCulled = false;
           this.mesh.material.lights = true;
           this.mesh.material.transparent = true;
 
@@ -9840,6 +9839,7 @@ $__System.register("df", ["da", "db", "d5", "d6", "e1", "de", "d2", "d9", "dd", 
             this.particles.push(particle);
             var line = new Line();
             line.radius = 0;
+            line.mesh.frustumCulled = false;
             this.lines.push(line);
             this.add(line);
             this.offsets.push(new THREE.Vector3());
@@ -10001,359 +10001,65 @@ $__System.register("df", ["da", "db", "d5", "d6", "e1", "de", "d2", "d9", "dd", 
     }
   };
 });
-$__System.registerDynamic("e2", [], true, function($__require, exports, module) {
-  "use strict";
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  exports["default"] = Function.prototype.bind;
-  exports.__esModule = true;
-  global.define = __define;
-  return module.exports;
-});
-
-$__System.registerDynamic("e3", ["e4"], true, function($__require, exports, module) {
-  "use strict";
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var _Array$from = $__require('e4')["default"];
-  exports["default"] = function(arr) {
-    if (Array.isArray(arr)) {
-      for (var i = 0,
-          arr2 = Array(arr.length); i < arr.length; i++)
-        arr2[i] = arr[i];
-      return arr2;
-    } else {
-      return _Array$from(arr);
-    }
-  };
-  exports.__esModule = true;
-  global.define = __define;
-  return module.exports;
-});
-
-$__System.registerDynamic("e5", ["e6"], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var ITERATOR = $__require('e6')('iterator'),
-      SAFE_CLOSING = false;
-  try {
-    var riter = [7][ITERATOR]();
-    riter['return'] = function() {
-      SAFE_CLOSING = true;
-    };
-    Array.from(riter, function() {
-      throw 2;
-    });
-  } catch (e) {}
-  module.exports = function(exec, skipClosing) {
-    if (!skipClosing && !SAFE_CLOSING)
-      return false;
-    var safe = false;
-    try {
-      var arr = [7],
-          iter = arr[ITERATOR]();
-      iter.next = function() {
-        safe = true;
-      };
-      arr[ITERATOR] = function() {
-        return iter;
-      };
-      exec(arr);
-    } catch (e) {}
-    return safe;
-  };
-  global.define = __define;
-  return module.exports;
-});
-
-$__System.registerDynamic("e7", ["e8", "e9", "ea", "eb", "ec", "ed", "ee", "e5"], true, function($__require, exports, module) {
-  "use strict";
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var ctx = $__require('e8'),
-      $export = $__require('e9'),
-      toObject = $__require('ea'),
-      call = $__require('eb'),
-      isArrayIter = $__require('ec'),
-      toLength = $__require('ed'),
-      getIterFn = $__require('ee');
-  $export($export.S + $export.F * !$__require('e5')(function(iter) {
-    Array.from(iter);
-  }), 'Array', {from: function from(arrayLike) {
-      var O = toObject(arrayLike),
-          C = typeof this == 'function' ? this : Array,
-          $$ = arguments,
-          $$len = $$.length,
-          mapfn = $$len > 1 ? $$[1] : undefined,
-          mapping = mapfn !== undefined,
-          index = 0,
-          iterFn = getIterFn(O),
-          length,
-          result,
-          step,
-          iterator;
-      if (mapping)
-        mapfn = ctx(mapfn, $$len > 2 ? $$[2] : undefined, 2);
-      if (iterFn != undefined && !(C == Array && isArrayIter(iterFn))) {
-        for (iterator = iterFn.call(O), result = new C; !(step = iterator.next()).done; index++) {
-          result[index] = mapping ? call(iterator, mapfn, [step.value, index], true) : step.value;
-        }
-      } else {
-        length = toLength(O.length);
-        for (result = new C(length); length > index; index++) {
-          result[index] = mapping ? mapfn(O[index], index) : O[index];
-        }
-      }
-      result.length = index;
-      return result;
-    }});
-  global.define = __define;
-  return module.exports;
-});
-
-$__System.registerDynamic("ef", ["f0", "e7", "f1"], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  $__require('f0');
-  $__require('e7');
-  module.exports = $__require('f1').Array.from;
-  global.define = __define;
-  return module.exports;
-});
-
-$__System.registerDynamic("e4", ["ef"], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "default": $__require('ef'),
-    __esModule: true
-  };
-  global.define = __define;
-  return module.exports;
-});
-
-$__System.register("f2", ["e3", "e4", "d2", "f3"], function (_export) {
-  var _toConsumableArray, _Array$from, THREE, random, gradientFragmentShader, vertexShader, material;
+$__System.register("e2", ["da", "db", "d6", "d2"], function (_export) {
+  var _get, _inherits, _classCallCheck, THREE, VERTEX_SHADER, FRAGMENT_SHADER, BackgroundPlane;
 
   return {
-    setters: [function (_e3) {
-      _toConsumableArray = _e3["default"];
-    }, function (_e4) {
-      _Array$from = _e4["default"];
-    }, function (_d2) {
-      THREE = _d2["default"];
-    }, function (_f3) {
-      random = _f3.random;
-    }],
-    execute: function () {
-      "use strict";
-
-      gradientFragmentShader = "\n\n\tuniform vec2 direction;\n\tuniform vec3 color;\n\tuniform float mNear;\n\tuniform float mFar;\n\n\tvarying vec2 vUv;\n\n\tvoid main() {\n\n\t\tfloat strength = 9.0;\n    \tfloat x = (vUv.x + 4.0 ) * (vUv.y + 4.0 ) * (1.0 * 10.0);\n\t\tvec4 grain = vec4( mod((mod( x, 13.0 ) + 1.0) * ( mod(x, 123.0) + 1.0), 0.01)-0.005) * strength;\n\n\n\t\tfloat depth = gl_FragCoord.z / gl_FragCoord.w;\n\t\tfloat v = smoothstep( 0.1, 100.0, depth );\n\n\n\t\tgl_FragColor = vec4( color + grain.xyz, mix( 0.0, 1.0, sin( vUv.y * 3.14 ) * v * 0.9 ));\n\n\t\t// gl_FragColor = vec4( vec3( v ), 1.0 );\n\t}";
-      vertexShader = "\n\n\tprecision mediump float;\n\tprecision mediump int;\n\n\tvarying vec2 vUv;\n\t//varying vec4 vPosition;\n\n\tvoid main()\t{\n\n\t\tvUv = uv;\n\t\t//vPosition = modelViewMatrix * vec4( position, 1.0 );\n\t\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n\n\t}";
-      material = new THREE.ShaderMaterial({
-        uniforms: {
-          color: {
-            type: "c",
-            value: new THREE.Color(0x000000)
-          }
-        },
-        depthWrite: false,
-        // depthTest: false,
-        fragmentShader: gradientFragmentShader,
-        vertexShader: vertexShader,
-        side: THREE.DoubleSide,
-        transparent: true
-      });
-
-      _export("default", function (N, Geometry, positionRange, sizeRange, palette) {
-
-        var positions = _Array$from(new Array(N), function (v) {
-          return new THREE.Vector3(random.apply(undefined, _toConsumableArray(positionRange)), random.apply(undefined, _toConsumableArray(positionRange)), random.apply(undefined, _toConsumableArray(positionRange)));
-        }),
-            plane = undefined,
-            dimension = undefined,
-            scale = undefined;
-
-        return positions.map(function (p, i) {
-          dimension = random.apply(undefined, _toConsumableArray(sizeRange));
-          scale = random(1, 7);
-          // plane = new THREE.Mesh( new Geometry( dimension, dimension* scale, dimension ), new THREE.MeshNormalMaterial({
-          // 	side:THREE.DoubleSide,
-          // 	// depthWrite: false,
-          // 	// depthTest: false,
-          // 	transparent:true
-          // }) )
-          plane = new THREE.Mesh(new Geometry(dimension, dimension * scale, dimension), material.clone());
-          plane.material.uniforms.color.value.set(palette[i % 2]);
-          plane.receiveShadow = true;
-          plane.renderOrder = i;
-          plane.frustumCulled = false;
-          plane.position.copy(p);
-          plane.rotation.set(Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2);
-          return plane;
-        });
-      });
-    }
-  };
-});
-$__System.register("f4", ["f5", "d2"], function (_export) {
-  var _Object$create, THREE, BoxGeometry;
-
-  return {
-    setters: [function (_f5) {
-      _Object$create = _f5["default"];
+    setters: [function (_da) {
+      _get = _da["default"];
+    }, function (_db) {
+      _inherits = _db["default"];
+    }, function (_d6) {
+      _classCallCheck = _d6["default"];
     }, function (_d2) {
       THREE = _d2["default"];
     }],
     execute: function () {
-
-      /**
-       * @author mrdoob / http://mrdoob.com/
-       * based on http://papervision3d.googlecode.com/svn/trunk/as3/trunk/src/org/papervision3d/objects/primitives/Cube.as
-       */
-
       "use strict";
 
-      BoxGeometry = function BoxGeometry(width, height, depth, widthSegments, heightSegments, depthSegments) {
+      VERTEX_SHADER = "\n  varying vec2 vUv;\n\n  void main() {\n    vUv = uv;\n    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n  }\n";
+      FRAGMENT_SHADER = "\n\tuniform vec3 color;\n\tuniform float opacity;\n\n\tvarying vec2 vUv;\n\n\tvoid main() {\n\t\tfloat strength = 9.0;\n\n    float x = (vUv.x + 4.0) * (vUv.y + 4.0) * 10.0;\n\n\t\tvec4 grain = vec4(mod((mod(x, 13.0) + 1.0) * (mod(x, 123.0) + 1.0), 0.01) - 0.005) * strength;\n\n\t\tfloat depth = gl_FragCoord.z / gl_FragCoord.w;\n\t\tfloat fade = smoothstep(0.1, 50.0, depth);\n\n\t\tgl_FragColor = vec4(color + grain.xyz, vUv.x * fade * opacity);\n\t}";
 
-        THREE.Geometry.call(this);
+      BackgroundPlane = (function (_THREE$Object3D) {
+        _inherits(BackgroundPlane, _THREE$Object3D);
 
-        this.type = "BoxGeometry";
+        function BackgroundPlane() {
+          _classCallCheck(this, BackgroundPlane);
 
-        this.parameters = {
-          width: width,
-          height: height,
-          depth: depth,
-          widthSegments: widthSegments,
-          heightSegments: heightSegments,
-          depthSegments: depthSegments
-        };
+          _get(Object.getPrototypeOf(BackgroundPlane.prototype), "constructor", this).call(this);
 
-        this.widthSegments = widthSegments || 1;
-        this.heightSegments = heightSegments || 1;
-        this.depthSegments = depthSegments || 1;
+          this.mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.ShaderMaterial({
+            uniforms: {
+              color: {
+                type: "c",
+                value: new THREE.Color(0)
+              },
+              opacity: {
+                type: "f",
+                value: 1
+              }
+            },
+            vertexShader: VERTEX_SHADER,
+            fragmentShader: FRAGMENT_SHADER,
+            depthTest: false,
+            depthWrite: false,
+            side: THREE.DoubleSide,
+            transparent: true
+          }));
 
-        var scope = this;
+          this.mesh.frustumCulled = false;
 
-        var width_half = width / 2;
-        var height_half = height / 2;
-        var depth_half = depth / 2;
-
-        buildPlane("z", "y", -1, -1, depth, height, width_half, 0); // px
-        // buildPlane( "z", "y",   1, - 1, depth, height, - width_half, 1 ); // nx
-        // buildPlane( "x", "z",   1,   1, width, depth, height_half, 2 ); // py
-        // buildPlane( "x", "z",   1, - 1, width, depth, - height_half, 3 ); // ny
-        // buildPlane( "x", "y",   1, - 1, width, height, depth_half, 4 ); // pz
-        buildPlane("x", "y", -1, -1, width, height, -depth_half, 5); // nz
-
-        function buildPlane(u, v, udir, vdir, width, height, depth, materialIndex) {
-
-          var w,
-              ix,
-              iy,
-              gridX = scope.widthSegments,
-              gridY = scope.heightSegments,
-              width_half = width / 2,
-              height_half = height / 2,
-              offset = scope.vertices.length;
-
-          if (u === "x" && v === "y" || u === "y" && v === "x") {
-
-            w = "z";
-          } else if (u === "x" && v === "z" || u === "z" && v === "x") {
-
-            w = "y";
-            gridY = scope.depthSegments;
-          } else if (u === "z" && v === "y" || u === "y" && v === "z") {
-
-            w = "x";
-            gridX = scope.depthSegments;
-          }
-
-          var gridX1 = gridX + 1,
-              gridY1 = gridY + 1,
-              segment_width = width / gridX,
-              segment_height = height / gridY,
-              normal = new THREE.Vector3();
-
-          normal[w] = depth > 0 ? 1 : -1;
-
-          for (iy = 0; iy < gridY1; iy++) {
-
-            for (ix = 0; ix < gridX1; ix++) {
-
-              var vector = new THREE.Vector3();
-              vector[u] = (ix * segment_width - width_half) * udir;
-              vector[v] = (iy * segment_height - height_half) * vdir;
-              vector[w] = depth;
-
-              scope.vertices.push(vector);
-            }
-          }
-
-          for (iy = 0; iy < gridY; iy++) {
-
-            for (ix = 0; ix < gridX; ix++) {
-
-              var a = ix + gridX1 * iy;
-              var b = ix + gridX1 * (iy + 1);
-              var c = ix + 1 + gridX1 * (iy + 1);
-              var d = ix + 1 + gridX1 * iy;
-
-              var uva = new THREE.Vector2(ix / gridX, 1 - iy / gridY);
-              var uvb = new THREE.Vector2(ix / gridX, 1 - (iy + 1) / gridY);
-              var uvc = new THREE.Vector2((ix + 1) / gridX, 1 - (iy + 1) / gridY);
-              var uvd = new THREE.Vector2((ix + 1) / gridX, 1 - iy / gridY);
-
-              var face = new THREE.Face3(a + offset, b + offset, d + offset);
-              face.normal.copy(normal);
-              face.vertexNormals.push(normal.clone(), normal.clone(), normal.clone());
-              face.materialIndex = materialIndex;
-
-              scope.faces.push(face);
-              scope.faceVertexUvs[0].push([uva, uvb, uvd]);
-
-              face = new THREE.Face3(b + offset, c + offset, d + offset);
-              face.normal.copy(normal);
-              face.vertexNormals.push(normal.clone(), normal.clone(), normal.clone());
-              face.materialIndex = materialIndex;
-
-              scope.faces.push(face);
-              scope.faceVertexUvs[0].push([uvb.clone(), uvc, uvd.clone()]);
-            }
-          }
+          this.add(this.mesh);
         }
 
-        this.mergeVertices();
-      };
+        return BackgroundPlane;
+      })(THREE.Object3D);
 
-      BoxGeometry.prototype = _Object$create(THREE.Geometry.prototype);
-      BoxGeometry.prototype.constructor = BoxGeometry;
-
-      BoxGeometry.prototype.clone = function () {
-
-        var parameters = this.parameters;
-
-        return new BoxGeometry(parameters.width, parameters.height, parameters.depth, parameters.widthSegments, parameters.heightSegments, parameters.depthSegments);
-      };
-
-      _export("default", BoxGeometry);
+      _export("default", BackgroundPlane);
     }
   };
 });
-$__System.register("f3", [], function (_export) {
+$__System.register("e3", [], function (_export) {
     /*
         Some Math functions
     */
@@ -10451,8 +10157,8 @@ $__System.register("f3", [], function (_export) {
         }
     };
 });
-$__System.register("f6", ["da", "db", "d5", "d6", "e3", "e2", "e1", "e4", "de", "d2", "f2", "f4", "f7", "e0", "f8", "f3"], function (_export) {
-  var _get, _inherits, _createClass, _classCallCheck, _toConsumableArray, _bind, _slicedToArrayLoose, _Array$from, _getIterator, THREE, planes, Geometry, DATA, App, spring3, random, vertexShader, gradientFragmentShader, detailMaterial1, detailMaterial2, Background;
+$__System.register("e4", ["da", "db", "d5", "d6", "e1", "de", "d2", "e2", "e5", "e0", "e6", "e3"], function (_export) {
+  var _get, _inherits, _createClass, _classCallCheck, _slicedToArrayLoose, _getIterator, THREE, BackgroundPlane, DATA, App, spring3, random, BIG_PLANES_NUMBER, NORMAL_PLANES_NUMBER, SMALL_PLANES_NUMBER, Background;
 
   return {
     setters: [function (_da) {
@@ -10463,259 +10169,197 @@ $__System.register("f6", ["da", "db", "d5", "d6", "e3", "e2", "e1", "e4", "de", 
       _createClass = _d5["default"];
     }, function (_d6) {
       _classCallCheck = _d6["default"];
-    }, function (_e3) {
-      _toConsumableArray = _e3["default"];
-    }, function (_e2) {
-      _bind = _e2["default"];
     }, function (_e1) {
       _slicedToArrayLoose = _e1["default"];
-    }, function (_e4) {
-      _Array$from = _e4["default"];
     }, function (_de) {
       _getIterator = _de["default"];
     }, function (_d2) {
       THREE = _d2["default"];
-    }, function (_f2) {
-      planes = _f2["default"];
-    }, function (_f4) {
-      Geometry = _f4["default"];
-    }, function (_f7) {
-      DATA = _f7["default"];
+    }, function (_e2) {
+      BackgroundPlane = _e2["default"];
+    }, function (_e5) {
+      DATA = _e5["default"];
     }, function (_e0) {
       App = _e0["default"];
-    }, function (_f8) {
-      spring3 = _f8.spring3;
-    }, function (_f3) {
-      random = _f3.random;
+    }, function (_e6) {
+      spring3 = _e6.spring3;
+    }, function (_e3) {
+      random = _e3.random;
     }],
     execute: function () {
       "use strict";
 
-      vertexShader = "\nprecision mediump float;\nprecision mediump int;\n\nvarying vec2 vUv;\n\nvoid main()\t{\n\tvUv = uv;\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n}";
-      gradientFragmentShader = "\n\tuniform vec3 color;\n\n\tvarying vec2 vUv;\n\n\tvoid main() {\n\t\tfloat strength = 9.0;\n\n    float x = (vUv.x + 4.0) * (vUv.y + 4.0) * 10.0;\n\n\t\tvec4 grain = vec4(mod((mod(x, 13.0) + 1.0) * (mod(x, 123.0) + 1.0), 0.01) - 0.005) * strength;\n\n\t\tfloat depth = gl_FragCoord.z / gl_FragCoord.w;\n\t\tfloat fade = smoothstep(0.1, 50.0, depth);\n\n\t\tgl_FragColor = vec4(color + grain.xyz, vUv.x * fade);\n\t}";
-      detailMaterial1 = new THREE.ShaderMaterial({
-        uniforms: {
-          color: {
-            type: "c",
-            value: new THREE.Color(0)
-          },
-          opacity: {
-            type: "f",
-            value: 1
-          }
-        },
-        depthWrite: false,
-        // depthTest: false,
-        fragmentShader: gradientFragmentShader,
-        vertexShader: vertexShader,
-        side: THREE.DoubleSide,
-        transparent: true
-      });
-      detailMaterial2 = detailMaterial1.clone();
+      BIG_PLANES_NUMBER = 5;
+      NORMAL_PLANES_NUMBER = 30;
+      SMALL_PLANES_NUMBER = 100;
 
       Background = (function (_THREE$Object3D) {
         _inherits(Background, _THREE$Object3D);
 
         function Background(character) {
-          var _this = this;
-
           _classCallCheck(this, Background);
 
           _get(Object.getPrototypeOf(Background.prototype), "constructor", this).call(this);
 
-          var boundingArea = [0, 0],
-              planeSizeRange = [1050, 1350],
-              N = 3;
+          this.character = character;
 
-          this.shapes = planes(N, Geometry, boundingArea, planeSizeRange, DATA.scenes["default"].background.assets);
+          this.backgroundPlanes = [];
 
-          this.shapes[N - 1].scale.set(0.2, 0.2, 0.2);
-          // this.shapes[N-1].material.depthTest = false
-          // this.shapes[N-1].material.depthWrite = false
+          this._lastSceneChangeTimeStamp = Date.now();
 
-          this.add.apply(this, _toConsumableArray(this.shapes));
-
-          // DETAIL PLANES TYPE 1 - AXIS ALIGNED ROTATION, UNIFORMLY DISTRIBUTED
-
-          var detail = undefined,
-              size = [10, 10],
-              detailPlanes1 = _Array$from(Array(10), function (v) {
-
-            detail = new THREE.Mesh(new (_bind.apply(THREE.PlaneGeometry, [null].concat(_toConsumableArray(size))))(), detailMaterial1);
-            var hPI = Math.PI * 0.5;
-
-            detail.rotation.set(Math.round(random(1)) * hPI, Math.round(random(1)) * hPI, Math.round(random(1)) * hPI);
-
-            detail.position.set(random(-400, 400), random(-400, 400), random(-400, 400)); //.normalize4).setLength(4700 )
-            return detail;
-          });
-
-          var detailType1 = new THREE.Object3D();
-          detailType1.add.apply(detailType1, _toConsumableArray(detailPlanes1));
-          this.add(detailType1);
-
-          // DETAIL PLANES TYPE 2 - LARGER ABSTRACT, RANDOM ROTATION, EDGE DISTRIBUTED
-          size = [80, 80];
-          var detailPlanes2 = _Array$from(Array(20), function (v) {
-
-            detail = new THREE.Mesh(new (_bind.apply(THREE.PlaneGeometry, [null].concat(_toConsumableArray(size))))(), detailMaterial2);
-            var PI2 = Math.PI * 2.0;
-
-            detail.rotation.set(random(1) * PI2, random(1) * PI2, random(1) * PI2);
-
-            detail.position.set(random(-1, 1), random(-1, 1), random(-1, 1)).normalize().setLength(700);
-            return detail;
-          });
-
-          var detailType2 = new THREE.Object3D();
-          detailType2.add.apply(detailType2, _toConsumableArray(detailPlanes2));
-          this.add(detailType2);
-
-          this.detailsTypes = [detailType2, detailType1];
-
-          this.animationMap = this.shapes.map(function (s) {
-            return spring3(20);
-          });
-          this.rotationMap = this.shapes.map(function (s) {
-            return new THREE.Euler().copy(s.rotation);
-          });
-
-          for (var _iterator = this.children, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _getIterator(_iterator);;) {
-            var _ref;
-
-            if (_isArray) {
-              if (_i >= _iterator.length) break;
-              _ref = _iterator[_i++];
-            } else {
-              _i = _iterator.next();
-              if (_i.done) break;
-              _ref = _i.value;
+          for (var i = 0; i < BIG_PLANES_NUMBER + NORMAL_PLANES_NUMBER + SMALL_PLANES_NUMBER; i++) {
+            var backgroundPlane = new BackgroundPlane();
+            backgroundPlane._animationQuaternionStart = new THREE.Quaternion();
+            backgroundPlane._animationQuaternionEnd = new THREE.Quaternion();
+            backgroundPlane._animationProgress = 0;
+            backgroundPlane._type = i < BIG_PLANES_NUMBER ? "big" : i < BIG_PLANES_NUMBER + NORMAL_PLANES_NUMBER ? "normal" : "small";
+            var distance = undefined;
+            var scale = undefined;
+            switch (backgroundPlane._type) {
+              case "big":
+                scale = 10000;
+                break;
+              case "normal":
+                scale = 1000;
+                break;
+              case "small":
+                scale = 10;
+                break;
             }
-
-            var child = _ref;
-
-            child.frustumCulled = false;
+            backgroundPlane._scale = scale;
+            backgroundPlane.mesh.scale.set(scale, scale, 1);
+            if (backgroundPlane._type === "normal") {
+              backgroundPlane.rotation.set(Math.PI * .5 * Math.floor(Math.random() * 2), Math.PI * .5 * Math.floor(Math.random() * 2), Math.PI * .5 * Math.floor(Math.random() * 2));
+            } else {
+              backgroundPlane.rotation.set(Math.PI * 2 * Math.random(), Math.PI * 2 * Math.random(), Math.PI * 2 * Math.random());
+            }
+            backgroundPlane.position.set(Math.random() * 2000 - 1000, Math.random() * 2000 - 1000, Math.random() * 2000 - 1000);
+            this.add(backgroundPlane);
+            this.backgroundPlanes.push(backgroundPlane);
           }
 
-          App.onSceneChange.add(function (name, _ref5) {
-            var background = _ref5.background;
-            var _ref5$transitionDuration = _ref5.transitionDuration;
-            var transitionDuration = _ref5$transitionDuration === undefined ? .4 : _ref5$transitionDuration;
-
-            TweenMax.to(_this.position, transitionDuration * 3, {
-              x: character.x,
-              y: character.y,
-              z: character.z,
-              ease: Power0.easeInOut
-            });
-
-            var range = 0.6;
-            _this.shapes.forEach(function (plane, i) {
-              var color = new THREE.Color(background.assets[i % background.assets.length]);
-
-              TweenMax.to(plane.material.uniforms.color.value, transitionDuration * .5, {
-                r: color.r,
-                g: color.g,
-                b: color.b,
-                ease: Power2.easeInOut
-              });
-            });
-
-            var colorDetail = new THREE.Color(background.detail.color);
-
-            TweenMax.to(detailMaterial1.uniforms.color.value, transitionDuration * .5, {
-              r: colorDetail.r,
-              g: colorDetail.g,
-              b: colorDetail.b,
-              ease: Power2.easeInOut
-            });
-
-            TweenMax.to(detailMaterial2.uniforms.color.value, transitionDuration * .5, {
-              r: colorDetail.r,
-              g: colorDetail.g,
-              b: colorDetail.b,
-              ease: Power2.easeInOut
-            });
-
-            TweenMax.to(detailMaterial1.uniforms.opacity, transitionDuration * .5, {
-              value: background.detail.type === 1 ? 1 : 0,
-              ease: Power2.easeInOut
-            });
-
-            TweenMax.to(detailMaterial2.uniforms.opacity, transitionDuration * .5, {
-              value: background.detail.type === 0 ? 1 : 0,
-              ease: Power2.easeInOut
-            });
-
-            var obj3d = _this.detailsTypes[background.detail.type];
-            // if (obj3d) {
-            for (var _iterator2 = _this.detailsTypes, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _getIterator(_iterator2);;) {
-              var _ref2;
-
-              if (_isArray2) {
-                if (_i2 >= _iterator2.length) break;
-                _ref2 = _iterator2[_i2++];
-              } else {
-                _i2 = _iterator2.next();
-                if (_i2.done) break;
-                _ref2 = _i2.value;
-              }
-
-              var detailType = _ref2;
-
-              for (var _iterator3 = detailType.children, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _getIterator(_iterator3);;) {
-                var _ref3;
-
-                if (_isArray3) {
-                  if (_i3 >= _iterator3.length) break;
-                  _ref3 = _iterator3[_i3++];
-                } else {
-                  _i3 = _iterator3.next();
-                  if (_i3.done) break;
-                  _ref3 = _i3.value;
-                }
-
-                var child = _ref3;
-
-                TweenMax.to(child.scale, transitionDuration, {
-                  x: background.detail.scale[0],
-                  y: background.detail.scale[1],
-                  ease: Power2.easeInOut
-                });
-              }
-            }
-            // }
-
-            _this.rotationMap.forEach(function (rotation) {
-              return rotation.set(random(rotation.x - range, rotation.x + range), random(rotation.y - range, rotation.y + range), random(rotation.z - range, rotation.z + range));
-            });
-          });
+          App.onSceneChange.add(this.onSceneChange, this);
         }
 
         _createClass(Background, [{
-          key: "update",
-          value: function update(timeScale) {
-            for (var _iterator4 = this.animationMap.entries(), _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _getIterator(_iterator4);;) {
-              var _ref4;
+          key: "onSceneChange",
+          value: function onSceneChange(name, _ref2) {
+            var background = _ref2.background;
+            var transitionDuration = _ref2.transitionDuration;
 
-              if (_isArray4) {
-                if (_i4 >= _iterator4.length) break;
-                _ref4 = _iterator4[_i4++];
+            var euler = new THREE.Euler();
+            var color = new THREE.Color();
+            var vector3 = new THREE.Vector3();
+            var position = new THREE.Vector3();
+            var scale = new THREE.Vector3();
+
+            var easing = Power3.easeInOut;
+
+            var smallPlanesCounter = 0;
+
+            if (!transitionDuration) {
+              transitionDuration = (Date.now() - this._lastSceneChangeTimeStamp) / 1000;
+              transitionDuration = Math.max(Math.min(transitionDuration, 1.2), .5);
+              transitionDuration += (Math.random() * 2 - 1) * .2;
+            }
+
+            this._lastSceneChangeTimeStamp = Date.now();
+
+            for (var _iterator = this.backgroundPlanes.entries(), _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _getIterator(_iterator);;) {
+              var _ref;
+
+              if (_isArray) {
+                if (_i >= _iterator.length) break;
+                _ref = _iterator[_i++];
               } else {
-                _i4 = _iterator4.next();
-                if (_i4.done) break;
-                _ref4 = _i4.value;
+                _i = _iterator.next();
+                if (_i.done) break;
+                _ref = _i.value;
               }
 
-              var _ref42 = _slicedToArrayLoose(_ref4, 2);
+              var _ref3 = _slicedToArrayLoose(_ref, 2);
 
-              var i = _ref42[0];
-              var animation = _ref42[1];
+              var i = _ref3[0];
+              var backgroundPlane = _ref3[1];
 
-              var v = animation(this.shapes[i].rotation, this.rotationMap[i], 1 / 60 * timeScale);
-              this.shapes[i].rotation.x += v.x;
-              this.shapes[i].rotation.y += v.y;
-              this.shapes[i].rotation.z += v.z;
+              scale.set(backgroundPlane._scale, backgroundPlane._scale, 1);
+
+              var distance = undefined;
+              var opacity = 1;
+
+              switch (backgroundPlane._type) {
+                case "big":
+                  distance = 5000;
+                  color.set(background.assets[i % background.assets.length]);
+                  break;
+                case "normal":
+                  if (background.detail.numberRatio === 0) {
+                    color.set(background.detail.colors[i % background.detail.colors.length]);
+                  } else {
+                    color.set(background.assets[i % background.assets.length]);
+                  }
+                  distance = 1000;
+                  scale.x *= .2 + Math.random() * .8;
+                  scale.y *= Math.random();
+                  break;
+                case "small":
+                  opacity = smallPlanesCounter / (SMALL_PLANES_NUMBER - 1) < background.detail.numberRatio ? 1 : 0;
+                  opacity *= background.detail.opacities[i % background.detail.opacities.length];
+                  color.set(background.detail.colors[i % background.detail.colors.length]);
+                  distance = Math.random() * 2000;
+                  scale.x *= background.detail.scale[0];
+                  scale.y *= background.detail.scale[1];
+                  smallPlanesCounter++;
+                  break;
+              }
+
+              euler.set(Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2);
+
+              position.set(0, 0, 1);
+              position.applyEuler(euler);
+              position.multiplyScalar(distance);
+              position.add(this.character);
+
+              var delay = Math.random() * .4;
+              var duration = transitionDuration * (1 + (Math.random() * 2 - 1) * .5);
+
+              TweenMax.killTweensOf(backgroundPlane.position);
+              TweenMax.to(backgroundPlane.position, duration, {
+                x: position.x,
+                y: position.y,
+                z: position.z,
+                delay: delay,
+                ease: easing
+              });
+
+              TweenMax.killTweensOf(backgroundPlane.mesh.scale);
+              TweenMax.to(backgroundPlane.mesh.scale, duration, {
+                x: scale.x,
+                y: scale.y,
+                delay: delay,
+                ease: easing
+              });
+
+              TweenMax.killTweensOf(backgroundPlane.mesh.material.uniforms.color.value);
+              TweenMax.to(backgroundPlane.mesh.material.uniforms.color.value, duration, {
+                r: color.r,
+                g: color.g,
+                b: color.b,
+                delay: delay,
+                ease: Power3.easeOut
+              });
+
+              TweenMax.killTweensOf(backgroundPlane.mesh.material.uniforms.opacity);
+              TweenMax.to(backgroundPlane.mesh.material.uniforms.opacity, duration * .5, {
+                value: 0,
+                delay: delay,
+                ease: easing
+              });
+              TweenMax.to(backgroundPlane.mesh.material.uniforms.opacity, duration * .5, {
+                delay: delay + duration * .5,
+                value: opacity,
+                ease: easing
+              });
             }
           }
         }]);
@@ -10729,13 +10373,13 @@ $__System.register("f6", ["da", "db", "d5", "d6", "e3", "e2", "e1", "e4", "de", 
 });
 (function() {
 var _removeDefine = $__System.get("@@amd-helpers").createDefine();
-define("f9", [], function() {
+define("e7", [], function() {
   return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<COLLADA xmlns=\"http://www.collada.org/2008/03/COLLADASchema\" version=\"1.5.0\">\n\t<asset>\n\t\t<contributor>\n\t\t\t<authoring_tool>CINEMA4D 16.011 COLLADA Exporter</authoring_tool>\n\t\t</contributor>\n\t\t<created>2016-02-11T15:06:47Z</created>\n\t\t<modified>2016-02-11T15:06:47Z</modified>\n\t\t<unit meter=\"0.01\" name=\"centimeter\"/>\n\t\t<up_axis>Y_UP</up_axis>\n\t</asset>\n\t<library_effects>\n\t\t<effect id=\"ID2\">\n\t\t\t<profile_COMMON>\n\t\t\t\t<technique sid=\"COMMON\">\n\t\t\t\t\t<blinn>\n\t\t\t\t\t\t<specular>\n\t\t\t\t\t\t\t<color>0.2 0.2 0.2 1</color>\n\t\t\t\t\t\t</specular>\n\t\t\t\t\t\t<shininess>\n\t\t\t\t\t\t\t<float>0.5</float>\n\t\t\t\t\t\t</shininess>\n\t\t\t\t\t\t<reflective>\n\t\t\t\t\t\t\t<color>1 1 1 1</color>\n\t\t\t\t\t\t</reflective>\n\t\t\t\t\t\t<reflectivity>\n\t\t\t\t\t\t\t<float>0</float>\n\t\t\t\t\t\t</reflectivity>\n\t\t\t\t\t</blinn>\n\t\t\t\t</technique>\n\t\t\t</profile_COMMON>\n\t\t</effect>\n\t</library_effects>\n\t<library_materials>\n\t\t<material id=\"ID1\" name=\"Mat\">\n\t\t\t<instance_effect url=\"#ID2\"/>\n\t\t</material>\n\t</library_materials>\n\t<library_geometries>\n\t\t<geometry id=\"ID5\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID6\">\n\t\t\t\t\t<float_array id=\"ID7\" count=\"165\" digits=\"2490374\">-57.2003 1238.99 70.7211 -18.5994 1271.06 71.1583 -17.2009 1279.71 58.0241 -15.5548 1282.97 58.3701 0.840649 1292.86 67.2573 22.3833 1296.94 71.7315 59.1234 1295.99 71.7132 77.4214 1291.65 62.9636 89.7288 1281.65 58.157 90.6038 1279.41 58.8596 92.5148 1261.86 76.3188 93.0103 1237.29 74.712 88.2936 1245.1 83.8903 79.9599 1245.63 94.1149 74.1994 1242.6 97.5794 54.6789 1273.36 95.2697 6.12367 1263.77 95.7317 -1.13965 1241.2 97.7002 -9.05632 1247.77 91.8304 -18.5209 1232.32 79.6673 3.90784 1185.25 58.6414 86.3702 1176.75 46.9884 149.443 1179.81 25.9652 163.805 1364.05 208.545 396.914 1173.82 114.54 179.291 1370.19 25.9652 298.523 1248.77 -94.8204 145.367 1111.95 25.9652 169.172 995.736 -33.5095 142.599 923.156 94.5536 95.364 1064.38 -66.9129 99.8149 1045.59 25.9652 32.6161 1110.68 81.5731 58.9288 1030.56 -40.0249 11.8393 1006.94 74.5714 -48.0293 1063.2 -26.8464 -10.7508 1138.92 -156.775 -150.044 1148.3 120.135 -142.98 1022.19 -13.8455 -283.103 1138.25 91.9389 -167.922 1131.73 25.9652 -199.801 1167.02 -7.7258 -153.451 1257.6 55.4566 -104.457 1355.03 25.9652 -52.1545 1251.15 -18.336 22.699 1338.34 58.1114 96.4728 1379.54 25.9652 167.523 1417.68 -88.8227 899.235 1569.88 -233.953 226.467 1380.87 -243.114 149.02 1342.02 -107.934 186.208 1291.81 -64.2784 304.838 1341.62 -127.946 288.482 1440.87 145.672 72.315 1532.33 25.9659</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"55\" source=\"#ID7\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID8\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID6\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID8\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID10\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID11\">\n\t\t\t\t\t<float_array id=\"ID12\" count=\"123\" digits=\"2490374\">873.552 7.99416 540.561 898.029 -0.693561 520.501 841.479 -5.59414 500.44 849.735 18.298 480.379 939.722 4.44011 460.318 848.87 -20.1572 440.257 796.476 19.9751 420.197 961.167 20.7797 400.136 899.217 -31.8794 380.075 740.067 7.94844 360.014 938.009 42.156 339.953 979.861 -31.7551 319.893 713.66 -16.8189 299.832 863.166 58.5367 279.771 1060.33 203.727 436.286 743.738 -46.9997 239.65 752.148 59.8225 219.589 1060.03 18.2834 120.007 838.024 -71.0431 179.467 640.075 40.023 159.406 1076.39 58.4778 139.346 440.298 -77.1609 119.285 570.884 0.316289 99.2241 970.478 92.7325 79.1633 1128.15 160.45 235.679 581.98 -50.204 39.0417 802.101 107.084 18.9809 1233.53 204.845 175.496 689.355 -96.5656 -73.8629 614.309 91.8444 -41.2014 1249.72 46.7281 -61.2622 878.421 -206.431 95.2531 465.173 45.7003 -101.384 1152.82 106.274 -121.445 1104.26 -4.26458 260.31 410.226 -22.5437 -161.566 952.317 146.052 -181.627 1302.18 -70.5739 -201.688 483.584 -95.4071 -221.748 692.709 150.216 -241.809 1406.11 -80.975 -85.2946</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"41\" source=\"#ID12\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID13\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID11\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID13\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID15\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID16\">\n\t\t\t\t\t<float_array id=\"ID17\" count=\"123\" digits=\"2490374\">256.882 -108.653 1876.09 -30.1044 200.951 1666.49 -114.231 -127.979 1693.35 215.071 -94.7234 1720.22 74.3298 195.375 1747.08 -143.741 -30.4029 1773.95 135.453 -5.92407 2338.91 154.989 142.105 1827.68 -121.637 60.9873 1854.54 44.603 -276.66 2117.87 193.966 62.3637 1908.27 -61.6429 122.782 1935.14 -31.4538 -129.531 1962 187.457 274.108 2225.33 13.9011 143.191 2015.73 -74.6485 -67.4446 2042.6 145.063 214.656 2305.93 81.6354 123.971 2096.32 -79.1121 0.210487 2123.19 -288.408 -103.544 2150.05 124.241 78.0985 2176.92 -51.2782 53.3845 2203.78 28.3521 -95.3517 2230.65 134.866 24.2714 2257.51 -6.19361 79.8993 2284.38 -9.57687 -63.1536 2311.24 117.782 272.612 2574.57 38.4663 78.1775 2364.97 -21.6764 -22.7364 2391.84 85.4102 -42.7385 2418.7 68.5739 56.2409 2445.57 -11.0534 10.4312 2472.43 52.9688 -42.905 2499.3 77.8898 27.6144 2526.16 11.6385 26.5369 2553.03 32.7152 -27.2069 2579.89 69.263 5.73297 2606.76 33.0634 24.291 2633.62 29.7422 -7.70457 2660.48 52.4911 -1.14187 2687.35 42.6445 10.4924 2714.21</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"41\" source=\"#ID17\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID18\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID16\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID18\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID20\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID21\">\n\t\t\t\t\t<float_array id=\"ID22\" count=\"87\" digits=\"2490374\">44.5674 95.2227 60.6122 -5.04816 97.4526 60.6122 -25.1174 89.0905 60.6122 -57.4511 65.6764 60.6122 -68.0432 14.3884 60.6122 -29.5772 -50.279 60.6122 86.3782 -73.6931 60.6122 123.729 22.1931 60.6122 100.315 62.889 60.6122 65.1941 88.533 60.6122 68.535 104.029 13.2488 102.268 83.9603 -2.80413 146.309 -21.4031 -2.80413 124.01 -44.2597 -2.80413 34.2559 -47.6045 -2.80413 -15.3597 -17.5007 -2.80413 -49.3658 37.6896 -2.80413 -42.6761 88.9776 -2.80413 1.36468 122.426 -2.80413 49.8653 115.737 -2.80413 76.0667 -1.8781 32.512 31.4685 -18.045 32.512 8.6119 37.1454 32.512 55.44 39.9327 32.512 69.9345 10.9439 32.512 62.1298 -2.99306 32.512 38.1582 -5.22297 32.512 31.4685 9.27146 32.512 46.5204 36.5746 -56.0635</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"29\" source=\"#ID22\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID23\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID21\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID23\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID25\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID26\">\n\t\t\t\t\t<float_array id=\"ID27\" count=\"75\" digits=\"2490374\">131.375 -7.20732 -284.916 -62.0938 -10.5338 9.9476e-014 -127.514 -119.198 1.13687e-013 108.664 -161.333 7.10543e-015 171.867 -83.7158 4.9738e-014 -1.10882 0.554409 5.68434e-014 -66.5291 -46.016 -4.9738e-014 -86.4879 -93.6952 -42.7183 -90.9231 -134.721 -47.8513 -76.5085 -110.327 -42.7183 -14.4146 -85.9335 21.7154 92.032 -118.089 -6.39488e-014 127.514 -143.592 62.1291 130.841 -145.81 62.1291 113.1 -62.6483 1.77636e-015 15.5235 -43.7983 112.516 -3.32646 -130.286 9.59233e-014 16.6323 -131.395 -1.22569e-013 27.7205 -97.0216 -24.4747 33.2646 -65.9747 -24.4747 -13.3058 -49.3424 -24.4747 -73.182 -229.965 -31.0586 -148.582 -334.309 1.49214e-013 -218.437 -403.056 -1.56319e-013 -204.023 -307.697 -1.77636e-013</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"25\" source=\"#ID27\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID28\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID26\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID28\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID30\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID31\">\n\t\t\t\t\t<float_array id=\"ID32\" count=\"93\" digits=\"2490374\">-312.849 -11.9601 566.58 -355.837 -111.057 -114.217 212.937 171.579 -75.8547 -159.639 87.9618 20.6295 52.8845 270.063 0.869998 -91.9866 -6.37755 115.343 200.232 257.336 -4.6261 106.006 -237.166 115.957 -250.832 150.921 154.319 191.458 -101.433 252.305 -289.015 0.811072 231.044 181.905 47.6529 269.407 204.593 -132.96 307.769 -53.6158 -99.6055 197.3 -123.772 -204.184 207.652 490.096 185.941 93.2061 -2.0743 -196.366 461.218 -137.922 142.756 263.392 83.0977 -125.181 537.943 81.655 53.1975 311.7 -119.507 -261.726 246.128 -186.237 -138.225 431.082 72.1121 54.2131 363.428 -130.891 -104.038 557.801 4.31725 93.538 407.559 149.669 -118.533 557.357 -62.7499 246.749 320.076 76.1747 197.727 36.0199 114.979 170.129 -114.635 300.304 50.0481 -76.273 389.877 91.684 -37.9108</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"31\" source=\"#ID32\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID33\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID31\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID33\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID35\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID36\">\n\t\t\t\t\t<float_array id=\"ID37\" count=\"51\" digits=\"2490374\">-271.07 44.9179 -696.774 -138.208 -13.3342 -955.965 -26.023 45.7641 -876.793 38.4981 154.536 -867.685 -57.278 98.6826 -856.08 -185.616 42.1557 -842.177 -19.3156 0.180319 -839.85 -188.252 116.635 -808.011 -38.0923 -25.3365 -747.487 34.1535 88.5871 -765.991 7.88398 40.6706 -694.495 -108.755 12.6828 -776.432 -50.5101 54.3776 -686.72 -44.8249 -6.94177 -660.427 -2.5341 77.4594 -681.322 -11.6778 40.4622 -597.609 -164.132 24.1371 -672.731</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"17\" source=\"#ID37\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID38\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID36\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID38\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID40\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID41\">\n\t\t\t\t\t<float_array id=\"ID42\" count=\"51\" digits=\"2490374\">-271.07 44.9179 953.248 -138.208 -13.3342 694.057 -26.023 45.7641 773.229 -30.1484 -43.326 782.337 -57.278 98.6826 793.942 -185.616 42.1557 807.845 -123.871 0.180319 823.904 -29.9243 116.635 842.011 -38.0923 -25.3365 862.077 34.1535 88.5871 884.031 7.88398 40.6706 907.811 -108.755 12.6828 933.361 -50.5101 230.296 929.301 -44.8249 -6.94177 989.595 -94.0234 77.4594 1020.2 -11.6778 40.4622 1052.41 -92.9101 24.1371 1086.21</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"17\" source=\"#ID42\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID43\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID41\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID43\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID45\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID46\">\n\t\t\t\t\t<float_array id=\"ID47\" count=\"63\" digits=\"2490374\">236.999 102.394 552.574 152.594 42.8134 483.448 64.5428 63.5294 378.355 48.2708 75.5538 269.554 51.7132 159.684 62.6947 63.6253 141.805 -4.35172 74.6911 93.3824 -28.9354 0 129.885 -104.921 0 84.4429 -136.955 0 50.0866 -6.37196 0 73.9567 8.97313 16.446 96.9848 7.52101 22.0445 122.324 31.1077 12.4505 114.71 97.1546 -0.576216 92.9016 152.73 -14.7411 57.3329 179.048 -17.3844 47.1028 141.111 -14.8882 44.3322 49.254 -29.0955 21.1014 31.9908 -57.5524 0 -175.28 -127.233 0 -246.849</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"21\" source=\"#ID47\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID48\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID46\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID48\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID50\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID51\">\n\t\t\t\t\t<float_array id=\"ID52\" count=\"75\" digits=\"2490374\">-149.69 173.221 57.1351 -88.7764 178.076 35.8047 -98.52 113.057 75.425 -92.5468 28.4837 28.7692 -95.8716 -88.0583 57.4005 -87.4883 -167.53 30.9065 -37.9638 -209.546 30.8335 78.7875 -181.171 27.8666 95.613 -127.389 79.0306 91.8967 -71.1009 29.6569 96.7022 94.1392 41.2182 95.8039 173.52 60.7055 88.739 177.911 35.7971 72.8834 113.192 75.2023 66.9116 28.4837 28.758 70.2522 -88.3663 57.2925 54.1098 -167.227 30.8268 37.9659 -209.479 56.6921 -39.3888 -181.17 37.2051 -57.1822 -127.401 78.7406 -54.2533 -71.1005 29.6479 -44.9673 94.444 41.2101 -7.63988 187.634 -1.14892e-014 -96.3345 330.884 -2.02608e-014 -29.5447 456.881 -2.79759e-014</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"25\" source=\"#ID52\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID53\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID51\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID53\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID55\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID56\">\n\t\t\t\t\t<float_array id=\"ID57\" count=\"66\" digits=\"2490374\">190.599 -158.392 75.3723 93.3479 -75.4988 49.7439 93.6799 -87.4169 70.2795 89.5181 -172.599 55.7099 78.4985 -188.49 38.8958 57.7516 -202.859 50.4613 -39.4853 -186.302 61.0538 -110.808 -176.624 25.0337 -93.5559 -113.626 85.6104 -93.6173 -69.7412 41.471 -102.565 -35.9461 61.7294 -76.0237 -39.0572 106.014 -38.8869 -96.765 111.37 -77.8488 -66.1163 103.892 -33.4902 -56.6762 48.2585 -67.9536 -72.7257 40.3463 -41.3951 -143.467 83.7094 -69.0902 -199.942 73.8148 -69.793 -241.737 39.2468 -10.557 -215.461 61.3832 68.5103 -197.14 3.63298 85.3247 -180.465 2.60598</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"22\" source=\"#ID57\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID58\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID56\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID58\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID60\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID61\">\n\t\t\t\t\t<float_array id=\"ID62\" count=\"69\" digits=\"2490374\">-164.888 114.38 77.1557 -98.3427 169.657 77.9093 -95.9317 184.578 55.2669 -93.094 190.189 55.8634 -64.8295 207.245 71.1843 -27.6916 214.283 78.8974 35.6453 212.634 78.8659 67.1897 205.162 63.7823 88.4067 187.911 55.496 89.9151 184.062 56.7074 93.2096 153.792 86.8055 94.0637 111.435 84.0356 85.9325 124.911 99.8583 71.5659 125.825 117.485 61.6352 120.591 123.457 27.9833 173.623 119.475 -55.722 157.098 120.272 -68.2434 118.183 123.665 -81.8911 129.505 113.546 -98.2074 102.867 92.5782 -59.542 21.734 56.3311 82.6168 7.08074 36.2423 191.349 12.3467 7.97332e-005</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"23\" source=\"#ID62\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID63\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID61\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID63\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t\t<geometry id=\"ID65\">\n\t\t\t<mesh>\n\t\t\t\t<source id=\"ID66\">\n\t\t\t\t\t<float_array id=\"ID67\" count=\"87\" digits=\"2490374\">-51.7381 1075.14 120.188 -24.5241 1076.09 123.464 -11.3776 1077.35 125.423 -7.73982 1078.74 128.271 -8.38939 1077.99 129.499 -19.1736 1069.77 135.451 -36.971 1054.88 137.884 -77.0418 1017.32 134.822 -113.076 981.738 129.466 -119.572 976.401 123.109 -117.406 983.05 111.057 -112.204 998.735 101.252 -98.5823 1043.17 91.8119 -84.0417 1092.49 83.0133 -81.9018 1097.86 82.8085 -70.363 1104.73 87.4877 -62.3767 1107.36 92.1903 -65.6346 1094.32 99.6456 -66.8214 1089.14 102.365 -72.9583 1068.78 103.471 -88.2858 1022.89 106.739 -95.9889 1003.29 110.803 -97.485 996.677 117.007 -95.1888 997.465 122.649 -85.3461 1007.5 125.099 -55.573 1037.19 128.009 -35.5716 1063.7 129.176 -23.8884 1122.67 127.993 -23.6306 1181.83 127.325</float_array>\n\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t<accessor count=\"29\" source=\"#ID67\" stride=\"3\">\n\t\t\t\t\t\t\t<param name=\"X\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Y\" type=\"float\"/>\n\t\t\t\t\t\t\t<param name=\"Z\" type=\"float\"/>\n\t\t\t\t\t\t</accessor>\n\t\t\t\t\t</technique_common>\n\t\t\t\t</source>\n\t\t\t\t<vertices id=\"ID68\">\n\t\t\t\t\t<input semantic=\"POSITION\" source=\"#ID66\"/>\n\t\t\t\t</vertices>\n\t\t\t\t<linestrips count=\"1\" material=\"Material1\">\n\t\t\t\t\t<input offset=\"0\" semantic=\"VERTEX\" source=\"#ID68\" set=\"0\"/>\n\t\t\t\t\t<p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28</p>\n\t\t\t\t</linestrips>\n\t\t\t</mesh>\n\t\t</geometry>\n\t</library_geometries>\n\t<library_visual_scenes>\n\t\t<visual_scene id=\"ID3\">\n\t\t\t<node id=\"ID4\" name=\"default\">\n\t\t\t\t<translate sid=\"translate\">43.6629 5.68434e-014 -332.191</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 -90</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID5\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID9\" name=\"gearshift\">\n\t\t\t\t<translate sid=\"translate\">0 0 -259.51</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID10\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID14\" name=\"suspension\">\n\t\t\t\t<translate sid=\"translate\">0 0 -259.51</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID15\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID19\" name=\"wheel\">\n\t\t\t\t<translate sid=\"translate\">-303.046 2.80874 314.067</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 226.135</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 16.9475</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 -180</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID20\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID24\" name=\"logo\">\n\t\t\t\t<translate sid=\"translate\">-138.173 29.7848 54.4957</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 204.525</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 14.6304</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 -180</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID25\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID29\" name=\"door\">\n\t\t\t\t<translate sid=\"translate\">0 0 0</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID30\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID34\" name=\"roof\">\n\t\t\t\t<translate sid=\"translate\">0 0 0</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID35\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID39\" name=\"headlight-front\">\n\t\t\t\t<translate sid=\"translate\">0 0 97.6228</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID40\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID44\" name=\"mirror\">\n\t\t\t\t<translate sid=\"translate\">-820 0 0</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID45\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID49\" name=\"chassis\">\n\t\t\t\t<translate sid=\"translate\">518.45 0 0</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 -90</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID50\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID54\" name=\"front-bumper\">\n\t\t\t\t<translate sid=\"translate\">-513.05 15.9762 17.0138</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 -90</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID55\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID59\" name=\"rear-bumper\">\n\t\t\t\t<translate sid=\"translate\">43.6629 5.68434e-014 -332.191</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 -90</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID60\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t\t<node id=\"ID64\" name=\"headlight-rear\">\n\t\t\t\t<translate sid=\"translate\">0 7.10543e-015 -96.8348</translate>\n\t\t\t\t<rotate sid=\"rotateY\">0 1 0 0</rotate>\n\t\t\t\t<rotate sid=\"rotateX\">1 0 0 -90</rotate>\n\t\t\t\t<rotate sid=\"rotateZ\">0 0 1 0</rotate>\n\t\t\t\t<scale sid=\"scale\">1 1 1</scale>\n\t\t\t\t<instance_geometry url=\"#ID65\">\n\t\t\t\t\t<bind_material>\n\t\t\t\t\t\t<technique_common>\n\t\t\t\t\t\t\t<instance_material symbol=\"Material1\" target=\"#ID1\">\n\t\t\t\t\t\t\t\t<bind_vertex_input semantic=\"UVSET0\" input_semantic=\"TEXCOORD\" input_set=\"0\"/>\n\t\t\t\t\t\t\t</instance_material>\n\t\t\t\t\t\t</technique_common>\n\t\t\t\t\t</bind_material>\n\t\t\t\t</instance_geometry>\n\t\t\t</node>\n\t\t</visual_scene>\n\t</library_visual_scenes>\n\t<scene>\n\t\t<instance_visual_scene url=\"#ID3\"/>\n\t</scene>\n</COLLADA>\n";
 });
 
 _removeDefine();
 })();
-$__System.register("fa", ["d5", "d6", "de", "d2", "e0", "f9"], function (_export) {
+$__System.register("e8", ["d5", "d6", "de", "d2", "e0", "e7"], function (_export) {
   var _createClass, _classCallCheck, _getIterator, THREE, App, PATHS_COLLADA, SPEED, Path;
 
   return {
@@ -10749,8 +10393,8 @@ $__System.register("fa", ["d5", "d6", "de", "d2", "e0", "f9"], function (_export
       THREE = _d2["default"];
     }, function (_e0) {
       App = _e0["default"];
-    }, function (_f9) {
-      PATHS_COLLADA = _f9["default"];
+    }, function (_e7) {
+      PATHS_COLLADA = _e7["default"];
     }],
     execute: function () {
       "use strict";
@@ -10886,7 +10530,7 @@ $__System.register("fa", ["d5", "d6", "de", "d2", "e0", "f9"], function (_export
     }
   };
 });
-$__System.register("fb", ["d5", "d6", "d2", "e0", "f8"], function (_export) {
+$__System.register("e9", ["d5", "d6", "d2", "e0", "e6"], function (_export) {
   var _createClass, _classCallCheck, THREE, App, spring3, spring, CameraControls;
 
   return {
@@ -10898,9 +10542,9 @@ $__System.register("fb", ["d5", "d6", "d2", "e0", "f8"], function (_export) {
       THREE = _d2["default"];
     }, function (_e0) {
       App = _e0["default"];
-    }, function (_f8) {
-      spring3 = _f8.spring3;
-      spring = _f8.spring;
+    }, function (_e6) {
+      spring3 = _e6.spring3;
+      spring = _e6.spring;
     }],
     execute: function () {
 
@@ -10991,7 +10635,7 @@ $__System.register("fb", ["d5", "d6", "d2", "e0", "f8"], function (_export) {
     }
   };
 });
-$__System.register("f8", [], function (_export) {
+$__System.register("e6", [], function (_export) {
 	/*
  	Super simple generalised spring constraint with damping. Useful for animating objects smoothly
  
@@ -11064,7 +10708,7 @@ $__System.register("f8", [], function (_export) {
 		}
 	};
 });
-$__System.register("fc", ["da", "db", "d5", "d6", "d2", "d1", "df", "f6", "fa", "fb", "fd", "e0", "fe", "f8"], function (_export) {
+$__System.register("ea", ["da", "db", "d5", "d6", "d2", "d1", "df", "e4", "e8", "e9", "eb", "e0", "ec", "e6"], function (_export) {
   var _get, _inherits, _createClass, _classCallCheck, THREE, Lines, Background, Path, CameraControls, Pointer, App, SoundManager, spring, MainScene;
 
   return {
@@ -11080,20 +10724,20 @@ $__System.register("fc", ["da", "db", "d5", "d6", "d2", "d1", "df", "f6", "fa", 
       THREE = _d2["default"];
     }, function (_d1) {}, function (_df) {
       Lines = _df["default"];
-    }, function (_f6) {
-      Background = _f6["default"];
-    }, function (_fa) {
-      Path = _fa["default"];
-    }, function (_fb) {
-      CameraControls = _fb["default"];
-    }, function (_fd) {
-      Pointer = _fd["default"];
+    }, function (_e4) {
+      Background = _e4["default"];
+    }, function (_e8) {
+      Path = _e8["default"];
+    }, function (_e9) {
+      CameraControls = _e9["default"];
+    }, function (_eb) {
+      Pointer = _eb["default"];
     }, function (_e0) {
       App = _e0["default"];
-    }, function (_fe) {
-      SoundManager = _fe["default"];
-    }, function (_f8) {
-      spring = _f8.spring;
+    }, function (_ec) {
+      SoundManager = _ec["default"];
+    }, function (_e6) {
+      spring = _e6.spring;
     }],
     execute: function () {
       "use strict";
@@ -11110,7 +10754,7 @@ $__System.register("fc", ["da", "db", "d5", "d6", "d2", "d1", "df", "f6", "fa", 
 
           this.pointer = Pointer.get(canvas);
 
-          this.camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 10000);
+          this.camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 100000);
 
           App.onSceneChange.add(this.onSceneChange, this);
 
@@ -11185,7 +10829,6 @@ $__System.register("fc", ["da", "db", "d5", "d6", "d2", "d1", "df", "f6", "fa", 
             // Update camera controls
             this.controls.update(timeScale);
 
-            this.background.update(timeScale);
             this.lines.update(timeScale);
           }
         }]);
@@ -11197,7 +10840,7 @@ $__System.register("fc", ["da", "db", "d5", "d6", "d2", "d1", "df", "f6", "fa", 
     }
   };
 });
-$__System.registerDynamic("ff", [], true, function($__require, exports, module) {
+$__System.registerDynamic("ed", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -11281,25 +10924,21 @@ $__System.registerDynamic("ff", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("100", ["ff"], true, function($__require, exports, module) {
+$__System.registerDynamic("ee", ["ed"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = $__require('ff');
+  module.exports = $__require('ed');
   global.define = __define;
   return module.exports;
 });
 
-$__System.register("101", ["100", "102", "da", "db", "d5", "d6", "e1", "de", "d2", "f7", "e0", "fd"], function (_export) {
-  var Screenfull, _Object$keys, _get, _inherits, _createClass, _classCallCheck, _slicedToArrayLoose, _getIterator, THREE, DATA, App, Pointer, UIScene;
+$__System.register("ef", ["da", "db", "d5", "d6", "e1", "f0", "de", "d2", "e5", "e0", "eb", "ee"], function (_export) {
+  var _get, _inherits, _createClass, _classCallCheck, _slicedToArrayLoose, _Object$keys, _getIterator, THREE, DATA, App, Pointer, Screenfull, UIScene;
 
   return {
-    setters: [function (_2) {
-      Screenfull = _2["default"];
-    }, function (_) {
-      _Object$keys = _["default"];
-    }, function (_da) {
+    setters: [function (_da) {
       _get = _da["default"];
     }, function (_db) {
       _inherits = _db["default"];
@@ -11309,16 +10948,20 @@ $__System.register("101", ["100", "102", "da", "db", "d5", "d6", "e1", "de", "d2
       _classCallCheck = _d6["default"];
     }, function (_e1) {
       _slicedToArrayLoose = _e1["default"];
+    }, function (_f0) {
+      _Object$keys = _f0["default"];
     }, function (_de) {
       _getIterator = _de["default"];
     }, function (_d2) {
       THREE = _d2["default"];
-    }, function (_f7) {
-      DATA = _f7["default"];
+    }, function (_e5) {
+      DATA = _e5["default"];
     }, function (_e0) {
       App = _e0["default"];
-    }, function (_fd) {
-      Pointer = _fd["default"];
+    }, function (_eb) {
+      Pointer = _eb["default"];
+    }, function (_ee) {
+      Screenfull = _ee["default"];
     }],
     execute: function () {
       "use strict";
@@ -11477,7 +11120,7 @@ $__System.register("101", ["100", "102", "da", "db", "d5", "d6", "e1", "de", "d2
     }
   };
 });
-$__System.register("103", ["d5", "d6", "d2", "e0"], function (_export) {
+$__System.register("f1", ["d5", "d6", "d2", "e0"], function (_export) {
   var _createClass, _classCallCheck, THREE, App, View;
 
   return {
@@ -11529,11 +11172,11 @@ $__System.register("103", ["d5", "d6", "d2", "e0"], function (_export) {
 
             var clearColor = this.renderer.getClearColor();
             var nextClearColor = new THREE.Color(background.main);
-            TweenMax.to(clearColor, transitionDuration * .5, {
+            TweenMax.to(clearColor, transitionDuration * 3, {
               r: nextClearColor.r,
               g: nextClearColor.g,
               b: nextClearColor.b,
-              ease: Power2.easeInOut,
+              ease: Power3.easeOut,
               onUpdate: function onUpdate() {
                 _this.renderer.setClearColor(clearColor);
               }
@@ -11542,8 +11185,12 @@ $__System.register("103", ["d5", "d6", "d2", "e0"], function (_export) {
         }, {
           key: "resize",
           value: function resize(width, height) {
-            width *= window.devicePixelRatio;
-            height *= window.devicePixelRatio;
+            var lowQuality = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
+
+            if (!lowQuality) {
+              width *= window.devicePixelRatio;
+              height *= window.devicePixelRatio;
+            }
 
             this.renderer.setSize(width, height, false);
           }
@@ -11565,13 +11212,11 @@ $__System.register("103", ["d5", "d6", "d2", "e0"], function (_export) {
     }
   };
 });
-$__System.register("104", ["105", "d5", "d6", "e1", "de"], function (_export) {
-  var Signal, _createClass, _classCallCheck, _slicedToArrayLoose, _getIterator, callbacks, scopes, Ticker;
+$__System.register("f2", ["d5", "d6", "e1", "de", "f3"], function (_export) {
+  var _createClass, _classCallCheck, _slicedToArrayLoose, _getIterator, Signal, callbacks, scopes, Ticker;
 
   return {
-    setters: [function (_) {
-      Signal = _["default"];
-    }, function (_d5) {
+    setters: [function (_d5) {
       _createClass = _d5["default"];
     }, function (_d6) {
       _classCallCheck = _d6["default"];
@@ -11579,6 +11224,8 @@ $__System.register("104", ["105", "d5", "d6", "e1", "de"], function (_export) {
       _slicedToArrayLoose = _e1["default"];
     }, function (_de) {
       _getIterator = _de["default"];
+    }, function (_f3) {
+      Signal = _f3["default"];
     }],
     execute: function () {
       "use strict";
@@ -11652,13 +11299,13 @@ $__System.register("104", ["105", "d5", "d6", "e1", "de"], function (_export) {
     }
   };
 });
-$__System.registerDynamic("106", ["107", "108"], true, function($__require, exports, module) {
+$__System.registerDynamic("f4", ["f5", "f6"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var toIObject = $__require('107');
-  $__require('108')('getOwnPropertyDescriptor', function($getOwnPropertyDescriptor) {
+  var toIObject = $__require('f5');
+  $__require('f6')('getOwnPropertyDescriptor', function($getOwnPropertyDescriptor) {
     return function getOwnPropertyDescriptor(it, key) {
       return $getOwnPropertyDescriptor(toIObject(it), key);
     };
@@ -11667,13 +11314,13 @@ $__System.registerDynamic("106", ["107", "108"], true, function($__require, expo
   return module.exports;
 });
 
-$__System.registerDynamic("109", ["10a", "106"], true, function($__require, exports, module) {
+$__System.registerDynamic("f7", ["f8", "f4"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('10a');
-  $__require('106');
+  var $ = $__require('f8');
+  $__require('f4');
   module.exports = function getOwnPropertyDescriptor(it, key) {
     return $.getDesc(it, key);
   };
@@ -11681,26 +11328,26 @@ $__System.registerDynamic("109", ["10a", "106"], true, function($__require, expo
   return module.exports;
 });
 
-$__System.registerDynamic("10b", ["109"], true, function($__require, exports, module) {
+$__System.registerDynamic("f9", ["f7"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('109'),
+    "default": $__require('f7'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("da", ["10b"], true, function($__require, exports, module) {
+$__System.registerDynamic("da", ["f9"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var _Object$getOwnPropertyDescriptor = $__require('10b')["default"];
+  var _Object$getOwnPropertyDescriptor = $__require('f9')["default"];
   exports["default"] = function get(_x, _x2, _x3) {
     var _again = true;
     _function: while (_again) {
@@ -11739,12 +11386,12 @@ $__System.registerDynamic("da", ["10b"], true, function($__require, exports, mod
   return module.exports;
 });
 
-$__System.registerDynamic("10c", ["10a"], true, function($__require, exports, module) {
+$__System.registerDynamic("fa", ["f8"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('10a');
+  var $ = $__require('f8');
   module.exports = function create(P, D) {
     return $.create(P, D);
   };
@@ -11752,27 +11399,27 @@ $__System.registerDynamic("10c", ["10a"], true, function($__require, exports, mo
   return module.exports;
 });
 
-$__System.registerDynamic("f5", ["10c"], true, function($__require, exports, module) {
+$__System.registerDynamic("fb", ["fa"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('10c'),
+    "default": $__require('fa'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("10d", ["10a", "10e", "10f", "e8"], true, function($__require, exports, module) {
+$__System.registerDynamic("fc", ["f8", "fd", "fe", "ff"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var getDesc = $__require('10a').getDesc,
-      isObject = $__require('10e'),
-      anObject = $__require('10f');
+  var getDesc = $__require('f8').getDesc,
+      isObject = $__require('fd'),
+      anObject = $__require('fe');
   var check = function(O, proto) {
     anObject(O);
     if (!isObject(proto) && proto !== null)
@@ -11781,7 +11428,7 @@ $__System.registerDynamic("10d", ["10a", "10e", "10f", "e8"], true, function($__
   module.exports = {
     set: Object.setPrototypeOf || ('__proto__' in {} ? function(test, buggy, set) {
       try {
-        set = $__require('e8')(Function.call, getDesc(Object.prototype, '__proto__').set, 2);
+        set = $__require('ff')(Function.call, getDesc(Object.prototype, '__proto__').set, 2);
         set(test, []);
         buggy = !(test instanceof Array);
       } catch (e) {
@@ -11802,49 +11449,49 @@ $__System.registerDynamic("10d", ["10a", "10e", "10f", "e8"], true, function($__
   return module.exports;
 });
 
-$__System.registerDynamic("110", ["e9", "10d"], true, function($__require, exports, module) {
+$__System.registerDynamic("100", ["101", "fc"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $export = $__require('e9');
-  $export($export.S, 'Object', {setPrototypeOf: $__require('10d').set});
+  var $export = $__require('101');
+  $export($export.S, 'Object', {setPrototypeOf: $__require('fc').set});
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("111", ["110", "f1"], true, function($__require, exports, module) {
+$__System.registerDynamic("102", ["100", "103"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  $__require('110');
-  module.exports = $__require('f1').Object.setPrototypeOf;
+  $__require('100');
+  module.exports = $__require('103').Object.setPrototypeOf;
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("112", ["111"], true, function($__require, exports, module) {
+$__System.registerDynamic("104", ["102"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('111'),
+    "default": $__require('102'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("db", ["f5", "112"], true, function($__require, exports, module) {
+$__System.registerDynamic("db", ["fb", "104"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var _Object$create = $__require('f5')["default"];
-  var _Object$setPrototypeOf = $__require('112')["default"];
+  var _Object$create = $__require('fb')["default"];
+  var _Object$setPrototypeOf = $__require('104')["default"];
   exports["default"] = function(subClass, superClass) {
     if (typeof superClass !== "function" && superClass !== null) {
       throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
@@ -11863,7 +11510,7 @@ $__System.registerDynamic("db", ["f5", "112"], true, function($__require, export
   return module.exports;
 });
 
-$__System.registerDynamic("113", [], false, function(__require, __exports, __module) {
+$__System.registerDynamic("105", [], false, function(__require, __exports, __module) {
   var _retrieveGlobal = $__System.get("@@global-helpers").prepareGlobal(__module.id, null, null);
   (function() {
     var THREE = this["THREE"];
@@ -31434,23 +31081,21 @@ $__System.registerDynamic("113", [], false, function(__require, __exports, __mod
   return _retrieveGlobal();
 });
 
-$__System.registerDynamic("d2", ["113"], true, function($__require, exports, module) {
+$__System.registerDynamic("d2", ["105"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = $__require('113');
+  module.exports = $__require('105');
   global.define = __define;
   return module.exports;
 });
 
-$__System.register("fd", ["105", "114", "da", "db", "d5", "d6", "d2"], function (_export) {
-  var Signal, _Map, _get, _inherits, _createClass, _classCallCheck, THREE, pointers, Pointer;
+$__System.register("eb", ["106", "da", "db", "d5", "d6", "d2", "f3"], function (_export) {
+  var _Map, _get, _inherits, _createClass, _classCallCheck, THREE, Signal, pointers, Pointer;
 
   return {
-    setters: [function (_2) {
-      Signal = _2["default"];
-    }, function (_) {
+    setters: [function (_) {
       _Map = _["default"];
     }, function (_da) {
       _get = _da["default"];
@@ -31462,6 +31107,8 @@ $__System.register("fd", ["105", "114", "da", "db", "d5", "d6", "d2"], function 
       _classCallCheck = _d6["default"];
     }, function (_d2) {
       THREE = _d2["default"];
+    }, function (_f3) {
+      Signal = _f3["default"];
     }],
     execute: function () {
       "use strict";
@@ -31571,6 +31218,8 @@ $__System.register("fd", ["105", "114", "da", "db", "d5", "d6", "d2"], function 
               } else {
                 this._changeType(Pointer.MOUSE_TYPE);
               }
+            } else {
+              e.preventDefault();
             }
             this._onPointerEvent(e);
             this.onMove.dispatch();
@@ -31595,7 +31244,6 @@ $__System.register("fd", ["105", "114", "da", "db", "d5", "d6", "d2"], function 
         }, {
           key: "_onPointerEvent",
           value: function _onPointerEvent(e) {
-            e.preventDefault();
             if (!!window.TouchEvent && e instanceof window.TouchEvent) {
               if (e.type === "touchend") {
                 e = e.changedTouches[0];
@@ -31688,15 +31336,15 @@ $__System.register("fd", ["105", "114", "da", "db", "d5", "d6", "d2"], function 
     }
   };
 });
-$__System.registerDynamic("115", ["116", "e6", "117", "f1"], true, function($__require, exports, module) {
+$__System.registerDynamic("107", ["108", "109", "10a", "103"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var classof = $__require('116'),
-      ITERATOR = $__require('e6')('iterator'),
-      Iterators = $__require('117');
-  module.exports = $__require('f1').isIterable = function(it) {
+  var classof = $__require('108'),
+      ITERATOR = $__require('109')('iterator'),
+      Iterators = $__require('10a');
+  module.exports = $__require('103').isIterable = function(it) {
     var O = Object(it);
     return O[ITERATOR] !== undefined || '@@iterator' in O || Iterators.hasOwnProperty(classof(O));
   };
@@ -31704,38 +31352,38 @@ $__System.registerDynamic("115", ["116", "e6", "117", "f1"], true, function($__r
   return module.exports;
 });
 
-$__System.registerDynamic("118", ["119", "f0", "115"], true, function($__require, exports, module) {
+$__System.registerDynamic("10b", ["10c", "10d", "107"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  $__require('119');
-  $__require('f0');
-  module.exports = $__require('115');
+  $__require('10c');
+  $__require('10d');
+  module.exports = $__require('107');
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("11a", ["118"], true, function($__require, exports, module) {
+$__System.registerDynamic("10e", ["10b"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('118'),
+    "default": $__require('10b'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("e1", ["11a", "de"], true, function($__require, exports, module) {
+$__System.registerDynamic("e1", ["10e", "de"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var _isIterable = $__require('11a')["default"];
+  var _isIterable = $__require('10e')["default"];
   var _getIterator = $__require('de')["default"];
   exports["default"] = function(arr, i) {
     if (Array.isArray(arr)) {
@@ -31758,14 +31406,14 @@ $__System.registerDynamic("e1", ["11a", "de"], true, function($__require, export
   return module.exports;
 });
 
-$__System.registerDynamic("108", ["e9", "f1", "11b"], true, function($__require, exports, module) {
+$__System.registerDynamic("f6", ["101", "103", "10f"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $export = $__require('e9'),
-      core = $__require('f1'),
-      fails = $__require('11b');
+  var $export = $__require('101'),
+      core = $__require('103'),
+      fails = $__require('10f');
   module.exports = function(KEY, exec) {
     var fn = (core.Object || {})[KEY] || Object[KEY],
         exp = {};
@@ -31778,13 +31426,13 @@ $__System.registerDynamic("108", ["e9", "f1", "11b"], true, function($__require,
   return module.exports;
 });
 
-$__System.registerDynamic("11c", ["ea", "108"], true, function($__require, exports, module) {
+$__System.registerDynamic("110", ["111", "f6"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var toObject = $__require('ea');
-  $__require('108')('keys', function($keys) {
+  var toObject = $__require('111');
+  $__require('f6')('keys', function($keys) {
     return function keys(it) {
       return $keys(toObject(it));
     };
@@ -31793,38 +31441,38 @@ $__System.registerDynamic("11c", ["ea", "108"], true, function($__require, expor
   return module.exports;
 });
 
-$__System.registerDynamic("11d", ["11c", "f1"], true, function($__require, exports, module) {
+$__System.registerDynamic("112", ["110", "103"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  $__require('11c');
-  module.exports = $__require('f1').Object.keys;
+  $__require('110');
+  module.exports = $__require('103').Object.keys;
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("102", ["11d"], true, function($__require, exports, module) {
+$__System.registerDynamic("f0", ["112"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('11d'),
+    "default": $__require('112'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("11e", ["10f", "ee", "f1"], true, function($__require, exports, module) {
+$__System.registerDynamic("113", ["fe", "114", "103"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var anObject = $__require('10f'),
-      get = $__require('ee');
-  module.exports = $__require('f1').getIterator = function(it) {
+  var anObject = $__require('fe'),
+      get = $__require('114');
+  module.exports = $__require('103').getIterator = function(it) {
     var iterFn = get(it);
     if (typeof iterFn != 'function')
       throw TypeError(it + ' is not iterable!');
@@ -31834,37 +31482,37 @@ $__System.registerDynamic("11e", ["10f", "ee", "f1"], true, function($__require,
   return module.exports;
 });
 
-$__System.registerDynamic("11f", ["119", "f0", "11e"], true, function($__require, exports, module) {
+$__System.registerDynamic("115", ["10c", "10d", "113"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  $__require('119');
-  $__require('f0');
-  module.exports = $__require('11e');
+  $__require('10c');
+  $__require('10d');
+  module.exports = $__require('113');
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("de", ["11f"], true, function($__require, exports, module) {
+$__System.registerDynamic("de", ["115"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('11f'),
+    "default": $__require('115'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("ea", ["120"], true, function($__require, exports, module) {
+$__System.registerDynamic("111", ["116"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var defined = $__require('120');
+  var defined = $__require('116');
   module.exports = function(it) {
     return Object(defined(it));
   };
@@ -31872,15 +31520,15 @@ $__System.registerDynamic("ea", ["120"], true, function($__require, exports, mod
   return module.exports;
 });
 
-$__System.registerDynamic("121", ["10a", "ea", "122", "11b"], true, function($__require, exports, module) {
+$__System.registerDynamic("117", ["f8", "111", "118", "10f"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('10a'),
-      toObject = $__require('ea'),
-      IObject = $__require('122');
-  module.exports = $__require('11b')(function() {
+  var $ = $__require('f8'),
+      toObject = $__require('111'),
+      IObject = $__require('118');
+  module.exports = $__require('10f')(function() {
     var a = Object.assign,
         A = {},
         B = {},
@@ -31915,42 +31563,42 @@ $__System.registerDynamic("121", ["10a", "ea", "122", "11b"], true, function($__
   return module.exports;
 });
 
-$__System.registerDynamic("123", ["e9", "121"], true, function($__require, exports, module) {
+$__System.registerDynamic("119", ["101", "117"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $export = $__require('e9');
-  $export($export.S + $export.F, 'Object', {assign: $__require('121')});
+  var $export = $__require('101');
+  $export($export.S + $export.F, 'Object', {assign: $__require('117')});
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("124", ["123", "f1"], true, function($__require, exports, module) {
+$__System.registerDynamic("11a", ["119", "103"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  $__require('123');
-  module.exports = $__require('f1').Object.assign;
+  $__require('119');
+  module.exports = $__require('103').Object.assign;
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("dc", ["124"], true, function($__require, exports, module) {
+$__System.registerDynamic("dc", ["11a"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('124'),
+    "default": $__require('11a'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("125", [], true, function($__require, exports, module) {
+$__System.registerDynamic("11b", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -32070,12 +31718,12 @@ $__System.registerDynamic("125", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("105", ["125"], true, function($__require, exports, module) {
+$__System.registerDynamic("f3", ["11b"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = $__require('125');
+  module.exports = $__require('11b');
   global.define = __define;
   return module.exports;
 });
@@ -32438,7 +32086,7 @@ var _removeDefine = $__System.get("@@amd-helpers").createDefine();
   };
   Stats.methods.initialize.prototype = Stats.methods;
   if (typeof define !== "undefined" && define instanceof Function && define.amd !== undefined) {
-    define("126", [], function() {
+    define("11c", [], function() {
       return Stats;
     });
   } else if (typeof module !== "undefined" && module.exports) {
@@ -32453,38 +32101,38 @@ _removeDefine();
 })();
 (function() {
 var _removeDefine = $__System.get("@@amd-helpers").createDefine();
-define("127", ["126"], function(main) {
+define("11d", ["11c"], function(main) {
   return main;
 });
 
 _removeDefine();
 })();
-$__System.register("e0", ["102", "105", "114", "127", "d5", "d6", "e1", "de", "dc", "fe", "f7"], function (_export) {
-  var _Object$keys, Signal, _Map, Stats, _createClass, _classCallCheck, _slicedToArrayLoose, _getIterator, _Object$assign, SoundManager, DATA, KEY_MAP, sceneNames, QWERTY_KEYCODES, _iterator, _isArray, _i, _iterator, _ref, _ref2, i, keyCode, isSupported, App;
+$__System.register("e0", ["106", "d5", "d6", "e1", "f0", "de", "dc", "f3", "11d", "ec", "e5"], function (_export) {
+  var _Map, _createClass, _classCallCheck, _slicedToArrayLoose, _Object$keys, _getIterator, _Object$assign, Signal, Stats, SoundManager, DATA, KEY_MAP, sceneNames, QWERTY_KEYCODES, _iterator, _isArray, _i, _iterator, _ref, _ref2, i, keyCode, isSupported, App;
 
   return {
-    setters: [function (_2) {
-      _Object$keys = _2["default"];
-    }, function (_3) {
-      Signal = _3["default"];
-    }, function (_) {
+    setters: [function (_) {
       _Map = _["default"];
-    }, function (_4) {
-      Stats = _4["default"];
     }, function (_d5) {
       _createClass = _d5["default"];
     }, function (_d6) {
       _classCallCheck = _d6["default"];
     }, function (_e1) {
       _slicedToArrayLoose = _e1["default"];
+    }, function (_f0) {
+      _Object$keys = _f0["default"];
     }, function (_de) {
       _getIterator = _de["default"];
     }, function (_dc) {
       _Object$assign = _dc["default"];
-    }, function (_fe) {
-      SoundManager = _fe["default"];
-    }, function (_f7) {
-      DATA = _f7["default"];
+    }, function (_f3) {
+      Signal = _f3["default"];
+    }, function (_d) {
+      Stats = _d["default"];
+    }, function (_ec) {
+      SoundManager = _ec["default"];
+    }, function (_e5) {
+      DATA = _e5["default"];
     }],
     execute: function () {
       "use strict";
@@ -32584,7 +32232,9 @@ $__System.register("e0", ["102", "105", "114", "127", "d5", "d6", "e1", "de", "d
         }, {
           key: "resize",
           value: function resize(width, height) {
-            this.onResize.dispatch(width, height);
+            var lowQuality = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
+
+            this.onResize.dispatch(width, height, lowQuality);
           }
         }, {
           key: "changeSceneByName",
@@ -32631,7 +32281,7 @@ $__System.register("e0", ["102", "105", "114", "127", "d5", "d6", "e1", "de", "d
     }
   };
 });
-$__System.register("f7", [], function (_export) {
+$__System.register("e5", [], function (_export) {
   "use strict";
 
   return {
@@ -32647,9 +32297,10 @@ $__System.register("f7", [], function (_export) {
               main: 0x000000,
               assets: [0x202020],
               detail: {
-                color: 0x313131,
+                colors: [0x313131],
+                opacities: [1],
                 scale: [10, 10],
-                type: -1
+                numberRatio: .2
               }
             },
             lines: [{
@@ -32668,9 +32319,10 @@ $__System.register("f7", [], function (_export) {
               main: 0xc7c1c1,
               assets: [0x7b7d80, 0xbdb7b7],
               detail: {
-                color: 0xffa770,
-                scale: [3, 0.05],
-                type: 1
+                colors: [0xffa770],
+                opacities: [1],
+                scale: [10, .3],
+                numberRatio: 1
               }
             },
             lines: [{
@@ -32713,9 +32365,10 @@ $__System.register("f7", [], function (_export) {
               main: 0xf2f1ee,
               assets: [0xd3c5c1, 0x6e695f],
               detail: {
-                color: 0xfffada,
-                scale: [10, 15],
-                type: 1
+                colors: [0xfffada],
+                opacities: [1],
+                scale: [15, 15],
+                numberRatio: .1
               }
             },
             lines: [{
@@ -32758,9 +32411,10 @@ $__System.register("f7", [], function (_export) {
               main: 0x12103e,
               assets: [0x2c0024, 0x2b0128, 0x210044, 0x000000],
               detail: {
-                color: 0x070025,
-                scale: [50, 10],
-                type: 1
+                colors: [0xa898ef, 0xc598ef, 0xdc98ef, 0xef98e0, 0xef98c4],
+                opacities: [.6, .25, .33, .1],
+                scale: [2, 2],
+                numberRatio: 1
               }
             },
             lines: [{
@@ -32811,9 +32465,10 @@ $__System.register("f7", [], function (_export) {
               main: 0x7500ff,
               assets: [0xff4ea8, 0x7500ff],
               detail: {
-                color: 0xcb72df,
-                scale: [8, 10],
-                type: 1
+                colors: [0xcb72df],
+                opacities: [.6],
+                scale: [30, 20],
+                numberRatio: .4
               }
             },
             lines: [{
@@ -32856,9 +32511,10 @@ $__System.register("f7", [], function (_export) {
               main: 0x090018,
               assets: [0x410337, 0x000e79],
               detail: {
-                color: 0x1f0033,
-                scale: [10, 6],
-                type: 0
+                colors: [0x1f0033],
+                opacities: [1],
+                scale: [10, 10],
+                numberRatio: 0
               }
             },
             lines: [{
@@ -32925,9 +32581,10 @@ $__System.register("f7", [], function (_export) {
               main: 0xd6d6d6,
               assets: [0xfffbed, 0xf4f2ec],
               detail: {
-                color: 0xa39e9d,
-                scale: [15, 10],
-                type: 1
+                colors: [0xa39e9d],
+                opacities: [.2],
+                scale: [15, 15],
+                numberRatio: .3
               }
             },
             lines: [{
@@ -32970,9 +32627,10 @@ $__System.register("f7", [], function (_export) {
               main: 0xf6f6f6,
               assets: [0xf4f2ec, 0xededed],
               detail: {
-                color: 0xffffff,
-                scale: [6, 3],
-                type: 0
+                colors: [0xffffff],
+                opacities: [1],
+                scale: [10, 10],
+                numberRatio: 0
               }
             },
             lines: [{
@@ -33015,9 +32673,10 @@ $__System.register("f7", [], function (_export) {
               main: 0x000760,
               assets: [0x000000, 0x000000],
               detail: {
-                color: 0x000874,
-                scale: [10, 10],
-                type: 1
+                colors: [0x000874],
+                opacities: [1],
+                scale: [50, 50],
+                numberRatio: .5
               }
             },
             lines: [{
@@ -33068,9 +32727,10 @@ $__System.register("f7", [], function (_export) {
               main: 0xf4f0e7,
               assets: [0xddd5c9, 0xe3ddcc],
               detail: {
-                color: 0xede8e0,
+                colors: [0xede8e0],
+                opacities: [1],
                 scale: [20, 3],
-                type: 1
+                numberRatio: .3
               }
             },
             lines: [{
@@ -33129,9 +32789,10 @@ $__System.register("f7", [], function (_export) {
               main: 0x000000,
               assets: [0x00062e, 0x006254],
               detail: {
-                color: 0x004539,
+                colors: [0x004539],
+                opacities: [1, .5, .2],
                 scale: [20, 12],
-                type: 1
+                numberRatio: .4
               }
             },
             lines: [{
@@ -33190,9 +32851,10 @@ $__System.register("f7", [], function (_export) {
               main: 0xeae2ce,
               assets: [0x70c6a3, 0xf9b7b9],
               detail: {
-                color: 0xece4e2,
+                colors: [0xece4e2],
+                opacities: [1],
                 scale: [15, 8],
-                type: 1
+                numberRatio: .6
               }
             },
             lines: [{
@@ -33251,9 +32913,10 @@ $__System.register("f7", [], function (_export) {
               main: 0x00111a,
               assets: [0x000d5e, 0x006865],
               detail: {
-                color: 0x000d5e,
-                scale: [15, 7],
-                type: 1
+                colors: [0x000d5e],
+                opacities: [.8],
+                scale: [6, 3],
+                numberRatio: .7
               }
             },
             lines: [{
@@ -33311,12 +32974,12 @@ $__System.register("f7", [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("128", ["10a"], true, function($__require, exports, module) {
+$__System.registerDynamic("11e", ["f8"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('10a');
+  var $ = $__require('f8');
   module.exports = function defineProperty(it, key, desc) {
     return $.setDesc(it, key, desc);
   };
@@ -33324,26 +32987,26 @@ $__System.registerDynamic("128", ["10a"], true, function($__require, exports, mo
   return module.exports;
 });
 
-$__System.registerDynamic("129", ["128"], true, function($__require, exports, module) {
+$__System.registerDynamic("11f", ["11e"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('128'),
+    "default": $__require('11e'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("d5", ["129"], true, function($__require, exports, module) {
+$__System.registerDynamic("d5", ["11f"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var _Object$defineProperty = $__require('129')["default"];
+  var _Object$defineProperty = $__require('11f')["default"];
   exports["default"] = (function() {
     function defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
@@ -33384,7 +33047,7 @@ $__System.registerDynamic("d6", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("12a", [], true, function($__require, exports, module) {
+$__System.registerDynamic("120", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -33394,13 +33057,13 @@ $__System.registerDynamic("12a", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("12b", ["12c", "120"], true, function($__require, exports, module) {
+$__System.registerDynamic("121", ["122", "116"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var toInteger = $__require('12c'),
-      defined = $__require('120');
+  var toInteger = $__require('122'),
+      defined = $__require('116');
   module.exports = function(TO_STRING) {
     return function(that, pos) {
       var s = String(defined(that)),
@@ -33418,14 +33081,14 @@ $__System.registerDynamic("12b", ["12c", "120"], true, function($__require, expo
   return module.exports;
 });
 
-$__System.registerDynamic("f0", ["12b", "12d"], true, function($__require, exports, module) {
+$__System.registerDynamic("10d", ["121", "123"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $at = $__require('12b')(true);
-  $__require('12d')(String, 'String', function(iterated) {
+  var $at = $__require('121')(true);
+  $__require('123')(String, 'String', function(iterated) {
     this._t = String(iterated);
     this._i = 0;
   }, function() {
@@ -33448,7 +33111,7 @@ $__System.registerDynamic("f0", ["12b", "12d"], true, function($__require, expor
   return module.exports;
 });
 
-$__System.registerDynamic("12e", [], true, function($__require, exports, module) {
+$__System.registerDynamic("124", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -33458,12 +33121,12 @@ $__System.registerDynamic("12e", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("122", ["12f"], true, function($__require, exports, module) {
+$__System.registerDynamic("118", ["125"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var cof = $__require('12f');
+  var cof = $__require('125');
   module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it) {
     return cof(it) == 'String' ? it.split('') : Object(it);
   };
@@ -33471,13 +33134,13 @@ $__System.registerDynamic("122", ["12f"], true, function($__require, exports, mo
   return module.exports;
 });
 
-$__System.registerDynamic("107", ["122", "120"], true, function($__require, exports, module) {
+$__System.registerDynamic("f5", ["118", "116"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var IObject = $__require('122'),
-      defined = $__require('120');
+  var IObject = $__require('118'),
+      defined = $__require('116');
   module.exports = function(it) {
     return IObject(defined(it));
   };
@@ -33485,17 +33148,17 @@ $__System.registerDynamic("107", ["122", "120"], true, function($__require, expo
   return module.exports;
 });
 
-$__System.registerDynamic("130", ["12e", "131", "117", "107", "12d"], true, function($__require, exports, module) {
+$__System.registerDynamic("126", ["124", "127", "10a", "f5", "123"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var addToUnscopables = $__require('12e'),
-      step = $__require('131'),
-      Iterators = $__require('117'),
-      toIObject = $__require('107');
-  module.exports = $__require('12d')(Array, 'Array', function(iterated, kind) {
+  var addToUnscopables = $__require('124'),
+      step = $__require('127'),
+      Iterators = $__require('10a'),
+      toIObject = $__require('f5');
+  module.exports = $__require('123')(Array, 'Array', function(iterated, kind) {
     this._t = toIObject(iterated);
     this._i = 0;
     this._k = kind;
@@ -33521,19 +33184,19 @@ $__System.registerDynamic("130", ["12e", "131", "117", "107", "12d"], true, func
   return module.exports;
 });
 
-$__System.registerDynamic("119", ["130", "117"], true, function($__require, exports, module) {
+$__System.registerDynamic("10c", ["126", "10a"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  $__require('130');
-  var Iterators = $__require('117');
+  $__require('126');
+  var Iterators = $__require('10a');
   Iterators.NodeList = Iterators.HTMLCollection = Iterators.Array;
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("120", [], true, function($__require, exports, module) {
+$__System.registerDynamic("116", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -33547,7 +33210,7 @@ $__System.registerDynamic("120", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("132", [], true, function($__require, exports, module) {
+$__System.registerDynamic("128", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -33557,17 +33220,17 @@ $__System.registerDynamic("132", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("133", ["10a", "134", "135", "136", "e6"], true, function($__require, exports, module) {
+$__System.registerDynamic("129", ["f8", "12a", "12b", "12c", "109"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('10a'),
-      descriptor = $__require('134'),
-      setToStringTag = $__require('135'),
+  var $ = $__require('f8'),
+      descriptor = $__require('12a'),
+      setToStringTag = $__require('12b'),
       IteratorPrototype = {};
-  $__require('136')(IteratorPrototype, $__require('e6')('iterator'), function() {
+  $__require('12c')(IteratorPrototype, $__require('109')('iterator'), function() {
     return this;
   });
   module.exports = function(Constructor, NAME, next) {
@@ -33578,22 +33241,22 @@ $__System.registerDynamic("133", ["10a", "134", "135", "136", "e6"], true, funct
   return module.exports;
 });
 
-$__System.registerDynamic("12d", ["132", "e9", "137", "136", "138", "117", "133", "135", "10a", "e6"], true, function($__require, exports, module) {
+$__System.registerDynamic("123", ["128", "101", "12d", "12c", "12e", "10a", "129", "12b", "f8", "109"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var LIBRARY = $__require('132'),
-      $export = $__require('e9'),
-      redefine = $__require('137'),
-      hide = $__require('136'),
-      has = $__require('138'),
-      Iterators = $__require('117'),
-      $iterCreate = $__require('133'),
-      setToStringTag = $__require('135'),
-      getProto = $__require('10a').getProto,
-      ITERATOR = $__require('e6')('iterator'),
+  var LIBRARY = $__require('128'),
+      $export = $__require('101'),
+      redefine = $__require('12d'),
+      hide = $__require('12c'),
+      has = $__require('12e'),
+      Iterators = $__require('10a'),
+      $iterCreate = $__require('129'),
+      setToStringTag = $__require('12b'),
+      getProto = $__require('f8').getProto,
+      ITERATOR = $__require('109')('iterator'),
       BUGGY = !([].keys && 'next' in [].keys()),
       FF_ITERATOR = '@@iterator',
       KEYS = 'keys',
@@ -33665,7 +33328,7 @@ $__System.registerDynamic("12d", ["132", "e9", "137", "136", "138", "117", "133"
   return module.exports;
 });
 
-$__System.registerDynamic("131", [], true, function($__require, exports, module) {
+$__System.registerDynamic("127", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -33680,16 +33343,16 @@ $__System.registerDynamic("131", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("139", ["f1", "10a", "13a", "e6"], true, function($__require, exports, module) {
+$__System.registerDynamic("12f", ["103", "f8", "130", "109"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var core = $__require('f1'),
-      $ = $__require('10a'),
-      DESCRIPTORS = $__require('13a'),
-      SPECIES = $__require('e6')('species');
+  var core = $__require('103'),
+      $ = $__require('f8'),
+      DESCRIPTORS = $__require('130'),
+      SPECIES = $__require('109')('species');
   module.exports = function(KEY) {
     var C = core[KEY];
     if (DESCRIPTORS && C && !C[SPECIES])
@@ -33704,26 +33367,26 @@ $__System.registerDynamic("139", ["f1", "10a", "13a", "e6"], true, function($__r
   return module.exports;
 });
 
-$__System.registerDynamic("13b", ["10a", "136", "13c", "e8", "13d", "120", "13e", "12d", "131", "13f", "138", "10e", "139", "13a"], true, function($__require, exports, module) {
+$__System.registerDynamic("131", ["f8", "12c", "132", "ff", "133", "116", "134", "123", "127", "135", "12e", "fd", "12f", "130"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('10a'),
-      hide = $__require('136'),
-      redefineAll = $__require('13c'),
-      ctx = $__require('e8'),
-      strictNew = $__require('13d'),
-      defined = $__require('120'),
-      forOf = $__require('13e'),
-      $iterDefine = $__require('12d'),
-      step = $__require('131'),
-      ID = $__require('13f')('id'),
-      $has = $__require('138'),
-      isObject = $__require('10e'),
-      setSpecies = $__require('139'),
-      DESCRIPTORS = $__require('13a'),
+  var $ = $__require('f8'),
+      hide = $__require('12c'),
+      redefineAll = $__require('132'),
+      ctx = $__require('ff'),
+      strictNew = $__require('133'),
+      defined = $__require('116'),
+      forOf = $__require('134'),
+      $iterDefine = $__require('123'),
+      step = $__require('127'),
+      ID = $__require('135')('id'),
+      $has = $__require('12e'),
+      isObject = $__require('fd'),
+      setSpecies = $__require('12f'),
+      DESCRIPTORS = $__require('130'),
       isExtensible = Object.isExtensible || isObject,
       SIZE = DESCRIPTORS ? '_s' : 'size',
       id = 0;
@@ -33866,7 +33529,7 @@ $__System.registerDynamic("13b", ["10a", "136", "13c", "e8", "13d", "120", "13e"
   return module.exports;
 });
 
-$__System.registerDynamic("134", [], true, function($__require, exports, module) {
+$__System.registerDynamic("12a", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -33883,14 +33546,14 @@ $__System.registerDynamic("134", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("136", ["10a", "134", "13a"], true, function($__require, exports, module) {
+$__System.registerDynamic("12c", ["f8", "12a", "130"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('10a'),
-      createDesc = $__require('134');
-  module.exports = $__require('13a') ? function(object, key, value) {
+  var $ = $__require('f8'),
+      createDesc = $__require('12a');
+  module.exports = $__require('130') ? function(object, key, value) {
     return $.setDesc(object, key, createDesc(1, value));
   } : function(object, key, value) {
     object[key] = value;
@@ -33900,22 +33563,22 @@ $__System.registerDynamic("136", ["10a", "134", "13a"], true, function($__requir
   return module.exports;
 });
 
-$__System.registerDynamic("137", ["136"], true, function($__require, exports, module) {
+$__System.registerDynamic("12d", ["12c"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = $__require('136');
+  module.exports = $__require('12c');
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("13c", ["137"], true, function($__require, exports, module) {
+$__System.registerDynamic("132", ["12d"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var redefine = $__require('137');
+  var redefine = $__require('12d');
   module.exports = function(target, src) {
     for (var key in src)
       redefine(target, key, src[key]);
@@ -33925,7 +33588,7 @@ $__System.registerDynamic("13c", ["137"], true, function($__require, exports, mo
   return module.exports;
 });
 
-$__System.registerDynamic("13d", [], true, function($__require, exports, module) {
+$__System.registerDynamic("133", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -33939,7 +33602,7 @@ $__System.registerDynamic("13d", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("10a", [], true, function($__require, exports, module) {
+$__System.registerDynamic("f8", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -33961,7 +33624,7 @@ $__System.registerDynamic("10a", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("138", [], true, function($__require, exports, module) {
+$__System.registerDynamic("12e", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -33974,14 +33637,14 @@ $__System.registerDynamic("138", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("135", ["10a", "138", "e6"], true, function($__require, exports, module) {
+$__System.registerDynamic("12b", ["f8", "12e", "109"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var def = $__require('10a').setDesc,
-      has = $__require('138'),
-      TAG = $__require('e6')('toStringTag');
+  var def = $__require('f8').setDesc,
+      has = $__require('12e'),
+      TAG = $__require('109')('toStringTag');
   module.exports = function(it, tag, stat) {
     if (it && !has(it = stat ? it : it.prototype, TAG))
       def(it, TAG, {
@@ -33993,7 +33656,7 @@ $__System.registerDynamic("135", ["10a", "138", "e6"], true, function($__require
   return module.exports;
 });
 
-$__System.registerDynamic("11b", [], true, function($__require, exports, module) {
+$__System.registerDynamic("10f", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -34009,12 +33672,12 @@ $__System.registerDynamic("11b", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("13a", ["11b"], true, function($__require, exports, module) {
+$__System.registerDynamic("130", ["10f"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = !$__require('11b')(function() {
+  module.exports = !$__require('10f')(function() {
     return Object.defineProperty({}, 'a', {get: function() {
         return 7;
       }}).a != 7;
@@ -34023,23 +33686,23 @@ $__System.registerDynamic("13a", ["11b"], true, function($__require, exports, mo
   return module.exports;
 });
 
-$__System.registerDynamic("140", ["10a", "141", "e9", "11b", "136", "13c", "13e", "13d", "10e", "135", "13a"], true, function($__require, exports, module) {
+$__System.registerDynamic("136", ["f8", "137", "101", "10f", "12c", "132", "134", "133", "fd", "12b", "130"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('10a'),
-      global = $__require('141'),
-      $export = $__require('e9'),
-      fails = $__require('11b'),
-      hide = $__require('136'),
-      redefineAll = $__require('13c'),
-      forOf = $__require('13e'),
-      strictNew = $__require('13d'),
-      isObject = $__require('10e'),
-      setToStringTag = $__require('135'),
-      DESCRIPTORS = $__require('13a');
+  var $ = $__require('f8'),
+      global = $__require('137'),
+      $export = $__require('101'),
+      fails = $__require('10f'),
+      hide = $__require('12c'),
+      redefineAll = $__require('132'),
+      forOf = $__require('134'),
+      strictNew = $__require('133'),
+      isObject = $__require('fd'),
+      setToStringTag = $__require('12b'),
+      DESCRIPTORS = $__require('130');
   module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
     var Base = global[NAME],
         C = Base,
@@ -34084,14 +33747,14 @@ $__System.registerDynamic("140", ["10a", "141", "e9", "11b", "136", "13c", "13e"
   return module.exports;
 });
 
-$__System.registerDynamic("142", ["13b", "140"], true, function($__require, exports, module) {
+$__System.registerDynamic("138", ["131", "136"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var strong = $__require('13b');
-  $__require('140')('Map', function(get) {
+  var strong = $__require('131');
+  $__require('136')('Map', function(get) {
     return function Map() {
       return get(this, arguments.length > 0 ? arguments[0] : undefined);
     };
@@ -34108,14 +33771,14 @@ $__System.registerDynamic("142", ["13b", "140"], true, function($__require, expo
   return module.exports;
 });
 
-$__System.registerDynamic("e9", ["141", "f1", "e8"], true, function($__require, exports, module) {
+$__System.registerDynamic("101", ["137", "103", "ff"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var global = $__require('141'),
-      core = $__require('f1'),
-      ctx = $__require('e8'),
+  var global = $__require('137'),
+      core = $__require('103'),
+      ctx = $__require('ff'),
       PROTOTYPE = 'prototype';
   var $export = function(type, name, source) {
     var IS_FORCED = type & $export.F,
@@ -34158,7 +33821,7 @@ $__System.registerDynamic("e9", ["141", "f1", "e8"], true, function($__require, 
   return module.exports;
 });
 
-$__System.registerDynamic("143", [], true, function($__require, exports, module) {
+$__System.registerDynamic("139", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -34172,12 +33835,12 @@ $__System.registerDynamic("143", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("e8", ["143"], true, function($__require, exports, module) {
+$__System.registerDynamic("ff", ["139"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var aFunction = $__require('143');
+  var aFunction = $__require('139');
   module.exports = function(fn, that, length) {
     aFunction(fn);
     if (that === undefined)
@@ -34204,12 +33867,12 @@ $__System.registerDynamic("e8", ["143"], true, function($__require, exports, mod
   return module.exports;
 });
 
-$__System.registerDynamic("eb", ["10f"], true, function($__require, exports, module) {
+$__System.registerDynamic("13a", ["fe"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var anObject = $__require('10f');
+  var anObject = $__require('fe');
   module.exports = function(iterator, fn, value, entries) {
     try {
       return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -34224,13 +33887,13 @@ $__System.registerDynamic("eb", ["10f"], true, function($__require, exports, mod
   return module.exports;
 });
 
-$__System.registerDynamic("ec", ["117", "e6"], true, function($__require, exports, module) {
+$__System.registerDynamic("13b", ["10a", "109"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var Iterators = $__require('117'),
-      ITERATOR = $__require('e6')('iterator'),
+  var Iterators = $__require('10a'),
+      ITERATOR = $__require('109')('iterator'),
       ArrayProto = Array.prototype;
   module.exports = function(it) {
     return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
@@ -34239,7 +33902,7 @@ $__System.registerDynamic("ec", ["117", "e6"], true, function($__require, export
   return module.exports;
 });
 
-$__System.registerDynamic("10e", [], true, function($__require, exports, module) {
+$__System.registerDynamic("fd", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -34251,12 +33914,12 @@ $__System.registerDynamic("10e", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("10f", ["10e"], true, function($__require, exports, module) {
+$__System.registerDynamic("fe", ["fd"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var isObject = $__require('10e');
+  var isObject = $__require('fd');
   module.exports = function(it) {
     if (!isObject(it))
       throw TypeError(it + ' is not an object!');
@@ -34266,7 +33929,7 @@ $__System.registerDynamic("10f", ["10e"], true, function($__require, exports, mo
   return module.exports;
 });
 
-$__System.registerDynamic("12c", [], true, function($__require, exports, module) {
+$__System.registerDynamic("122", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -34280,12 +33943,12 @@ $__System.registerDynamic("12c", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("ed", ["12c"], true, function($__require, exports, module) {
+$__System.registerDynamic("13c", ["122"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var toInteger = $__require('12c'),
+  var toInteger = $__require('122'),
       min = Math.min;
   module.exports = function(it) {
     return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0;
@@ -34294,7 +33957,7 @@ $__System.registerDynamic("ed", ["12c"], true, function($__require, exports, mod
   return module.exports;
 });
 
-$__System.registerDynamic("117", [], true, function($__require, exports, module) {
+$__System.registerDynamic("10a", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -34304,15 +33967,15 @@ $__System.registerDynamic("117", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("ee", ["116", "e6", "117", "f1"], true, function($__require, exports, module) {
+$__System.registerDynamic("114", ["108", "109", "10a", "103"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var classof = $__require('116'),
-      ITERATOR = $__require('e6')('iterator'),
-      Iterators = $__require('117');
-  module.exports = $__require('f1').getIteratorMethod = function(it) {
+  var classof = $__require('108'),
+      ITERATOR = $__require('109')('iterator'),
+      Iterators = $__require('10a');
+  module.exports = $__require('103').getIteratorMethod = function(it) {
     if (it != undefined)
       return it[ITERATOR] || it['@@iterator'] || Iterators[classof(it)];
   };
@@ -34320,17 +33983,17 @@ $__System.registerDynamic("ee", ["116", "e6", "117", "f1"], true, function($__re
   return module.exports;
 });
 
-$__System.registerDynamic("13e", ["e8", "eb", "ec", "10f", "ed", "ee"], true, function($__require, exports, module) {
+$__System.registerDynamic("134", ["ff", "13a", "13b", "fe", "13c", "114"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var ctx = $__require('e8'),
-      call = $__require('eb'),
-      isArrayIter = $__require('ec'),
-      anObject = $__require('10f'),
-      toLength = $__require('ed'),
-      getIterFn = $__require('ee');
+  var ctx = $__require('ff'),
+      call = $__require('13a'),
+      isArrayIter = $__require('13b'),
+      anObject = $__require('fe'),
+      toLength = $__require('13c'),
+      getIterFn = $__require('114');
   module.exports = function(iterable, entries, fn, that) {
     var iterFn = getIterFn(iterable),
         f = ctx(fn, that, entries ? 2 : 1),
@@ -34353,7 +34016,7 @@ $__System.registerDynamic("13e", ["e8", "eb", "ec", "10f", "ed", "ee"], true, fu
   return module.exports;
 });
 
-$__System.registerDynamic("12f", [], true, function($__require, exports, module) {
+$__System.registerDynamic("125", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -34366,12 +34029,12 @@ $__System.registerDynamic("12f", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("144", ["141"], true, function($__require, exports, module) {
+$__System.registerDynamic("13d", ["137"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var global = $__require('141'),
+  var global = $__require('137'),
       SHARED = '__core-js_shared__',
       store = global[SHARED] || (global[SHARED] = {});
   module.exports = function(key) {
@@ -34381,7 +34044,7 @@ $__System.registerDynamic("144", ["141"], true, function($__require, exports, mo
   return module.exports;
 });
 
-$__System.registerDynamic("13f", [], true, function($__require, exports, module) {
+$__System.registerDynamic("135", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -34395,7 +34058,7 @@ $__System.registerDynamic("13f", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("141", [], true, function($__require, exports, module) {
+$__System.registerDynamic("137", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -34407,14 +34070,14 @@ $__System.registerDynamic("141", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("e6", ["144", "13f", "141"], true, function($__require, exports, module) {
+$__System.registerDynamic("109", ["13d", "135", "137"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var store = $__require('144')('wks'),
-      uid = $__require('13f'),
-      Symbol = $__require('141').Symbol;
+  var store = $__require('13d')('wks'),
+      uid = $__require('135'),
+      Symbol = $__require('137').Symbol;
   module.exports = function(name) {
     return store[name] || (store[name] = Symbol && Symbol[name] || (Symbol || uid)('Symbol.' + name));
   };
@@ -34422,13 +34085,13 @@ $__System.registerDynamic("e6", ["144", "13f", "141"], true, function($__require
   return module.exports;
 });
 
-$__System.registerDynamic("116", ["12f", "e6"], true, function($__require, exports, module) {
+$__System.registerDynamic("108", ["125", "109"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var cof = $__require('12f'),
-      TAG = $__require('e6')('toStringTag'),
+  var cof = $__require('125'),
+      TAG = $__require('109')('toStringTag'),
       ARG = cof(function() {
         return arguments;
       }()) == 'Arguments';
@@ -34442,13 +34105,13 @@ $__System.registerDynamic("116", ["12f", "e6"], true, function($__require, expor
   return module.exports;
 });
 
-$__System.registerDynamic("145", ["13e", "116"], true, function($__require, exports, module) {
+$__System.registerDynamic("13e", ["134", "108"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var forOf = $__require('13e'),
-      classof = $__require('116');
+  var forOf = $__require('134'),
+      classof = $__require('108');
   module.exports = function(NAME) {
     return function toJSON() {
       if (classof(this) != NAME)
@@ -34462,18 +34125,18 @@ $__System.registerDynamic("145", ["13e", "116"], true, function($__require, expo
   return module.exports;
 });
 
-$__System.registerDynamic("146", ["e9", "145"], true, function($__require, exports, module) {
+$__System.registerDynamic("13f", ["101", "13e"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $export = $__require('e9');
-  $export($export.P, 'Map', {toJSON: $__require('145')('Map')});
+  var $export = $__require('101');
+  $export($export.P, 'Map', {toJSON: $__require('13e')('Map')});
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("f1", [], true, function($__require, exports, module) {
+$__System.registerDynamic("103", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -34485,35 +34148,35 @@ $__System.registerDynamic("f1", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("147", ["12a", "f0", "119", "142", "146", "f1"], true, function($__require, exports, module) {
+$__System.registerDynamic("140", ["120", "10d", "10c", "138", "13f", "103"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  $__require('12a');
-  $__require('f0');
-  $__require('119');
-  $__require('142');
-  $__require('146');
-  module.exports = $__require('f1').Map;
+  $__require('120');
+  $__require('10d');
+  $__require('10c');
+  $__require('138');
+  $__require('13f');
+  module.exports = $__require('103').Map;
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("114", ["147"], true, function($__require, exports, module) {
+$__System.registerDynamic("106", ["140"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('147'),
+    "default": $__require('140'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.register("fe", ["114", "d5", "d6"], function (_export) {
+$__System.register("ec", ["106", "d5", "d6"], function (_export) {
   var _Map, _createClass, _classCallCheck, soundMap, muteLooped, enabled, muted, SoundManager;
 
   return {
@@ -34628,7 +34291,7 @@ $__System.register("fe", ["114", "d5", "d6"], function (_export) {
     }
   };
 });
-$__System.registerDynamic("148", [], true, function($__require, exports, module) {
+$__System.registerDynamic("141", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -35154,30 +34817,22 @@ $__System.registerDynamic("148", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("149", ["148"], true, function($__require, exports, module) {
+$__System.registerDynamic("142", ["141"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = $__require('148');
+  module.exports = $__require('141');
   global.define = __define;
   return module.exports;
 });
 
-$__System.register("1", ["101", "103", "104", "105", "149", "d5", "d6", "de", "d0", "d2", "fc", "fd", "e0", "f7", "fe"], function (_export) {
-  var UIScene, View, Ticker, Signal, MobileDetect, _createClass, _classCallCheck, _getIterator, THREE, MainScene, Pointer, App, DATA, SoundManager, isMobile, ToyotaCHRExperience;
+$__System.register("1", ["142", "d5", "d6", "de", "d0", "d2", "f3", "ea", "ef", "f1", "f2", "eb", "e0", "e5", "ec"], function (_export) {
+  var MobileDetect, _createClass, _classCallCheck, _getIterator, THREE, Signal, MainScene, UIScene, View, Ticker, Pointer, App, DATA, SoundManager, isMobile, lowQuality, ToyotaCHRExperience;
 
   return {
-    setters: [function (_2) {
-      UIScene = _2["default"];
-    }, function (_3) {
-      View = _3["default"];
-    }, function (_4) {
-      Ticker = _4["default"];
-    }, function (_) {
-      Signal = _["default"];
-    }, function (_5) {
-      MobileDetect = _5["default"];
+    setters: [function (_) {
+      MobileDetect = _["default"];
     }, function (_d5) {
       _createClass = _d5["default"];
     }, function (_d6) {
@@ -35186,21 +34841,30 @@ $__System.register("1", ["101", "103", "104", "105", "149", "d5", "d6", "de", "d
       _getIterator = _de["default"];
     }, function (_d0) {}, function (_d2) {
       THREE = _d2["default"];
-    }, function (_fc) {
-      MainScene = _fc["default"];
-    }, function (_fd) {
-      Pointer = _fd["default"];
+    }, function (_f3) {
+      Signal = _f3["default"];
+    }, function (_ea) {
+      MainScene = _ea["default"];
+    }, function (_ef) {
+      UIScene = _ef["default"];
+    }, function (_f1) {
+      View = _f1["default"];
+    }, function (_f2) {
+      Ticker = _f2["default"];
+    }, function (_eb) {
+      Pointer = _eb["default"];
     }, function (_e0) {
       App = _e0["default"];
-    }, function (_f7) {
-      DATA = _f7["default"];
-    }, function (_fe) {
-      SoundManager = _fe["default"];
+    }, function (_e5) {
+      DATA = _e5["default"];
+    }, function (_ec) {
+      SoundManager = _ec["default"];
     }],
     execute: function () {
       "use strict";
 
       isMobile = false;
+      lowQuality = false;
 
       ToyotaCHRExperience = (function () {
         _createClass(ToyotaCHRExperience, null, [{
@@ -35227,7 +34891,11 @@ $__System.register("1", ["101", "103", "104", "105", "149", "d5", "d6", "de", "d
           this.app = App;
           this.canvas = canvas;
 
+          this._width = this.canvas.offsetWidth;
+          this._height = this.canvas.offsetHeight;
+
           this._timeScale = 1;
+          this._gotoLowQualityCounter = 30;
 
           // Add sounds
           for (var _iterator = DATA.assets.sounds, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _getIterator(_iterator);;) {
@@ -35255,9 +34923,7 @@ $__System.register("1", ["101", "103", "104", "105", "149", "d5", "d6", "de", "d
           this.pointer = Pointer.get(this.canvas);
           this.pointer.disable();
 
-          var width = this.canvas.offsetWidth;
-          var height = this.canvas.offsetHeight;
-          this.resize(width, height);
+          this.resize(this._width, this._height);
 
           this.render = new Signal();
 
@@ -35296,8 +34962,17 @@ $__System.register("1", ["101", "103", "104", "105", "149", "d5", "d6", "de", "d
               App.stats.begin();
             }
 
-            this._timeScale += (Ticker.deltaTime / 16 - this._timeScale) * .1;
-            this._timeScale = Math.min(this._timeScale, 5);
+            var timeScale = Ticker.deltaTime / 16;
+            if (timeScale > 3 && !lowQuality) {
+              this._gotoLowQualityCounter--;
+              if (this._gotoLowQualityCounter <= 0) {
+                lowQuality = true;
+                this.resize();
+              }
+            }
+
+            this._timeScale += (timeScale - this._timeScale) * .1;
+            this._timeScale = Math.min(this._timeScale, 1.5);
 
             this.mainScene.update(this._timeScale);
             this.view.render(this.mainScene, this.uiScene);
@@ -35327,8 +35002,13 @@ $__System.register("1", ["101", "103", "104", "105", "149", "d5", "d6", "de", "d
           }
         }, {
           key: "resize",
-          value: function resize(width, height) {
-            App.resize(width, height);
+          value: function resize() {
+            var width = arguments.length <= 0 || arguments[0] === undefined ? this._width : arguments[0];
+            var height = arguments.length <= 1 || arguments[1] === undefined ? this._height : arguments[1];
+
+            this._width = width;
+            this._height = height;
+            App.resize(this._width, this._height, lowQuality);
           }
         }, {
           key: "clear",

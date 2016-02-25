@@ -16,6 +16,8 @@ import MobileDetect from "mobile-detect";
 
 let isMobile = false
 
+let lowQuality = false;
+
 export default class ToyotaCHRExperience {
 
   static get isSupported() {
@@ -34,7 +36,11 @@ export default class ToyotaCHRExperience {
     this.app = App
     this.canvas = canvas;
 
+    this._width = this.canvas.offsetWidth;
+    this._height = this.canvas.offsetHeight;
+
     this._timeScale = 1;
+    this._gotoLowQualityCounter = 30;
 
     // Add sounds
     for (let soundUrl of DATA.assets.sounds) {
@@ -49,9 +55,7 @@ export default class ToyotaCHRExperience {
     this.pointer = Pointer.get(this.canvas);
     this.pointer.disable();
 
-    var width = this.canvas.offsetWidth;
-    var height = this.canvas.offsetHeight;
-    this.resize(width, height);
+    this.resize(this._width, this._height);
 
     this.render = new Signal();
 
@@ -85,8 +89,17 @@ export default class ToyotaCHRExperience {
       App.stats.begin();
     }
 
-    this._timeScale += (Ticker.deltaTime / 16 - this._timeScale) * .1;
-    this._timeScale = Math.min(this._timeScale, 5);
+    let timeScale = Ticker.deltaTime / 16;
+    if(timeScale > 3 && !lowQuality) {
+      this._gotoLowQualityCounter--;
+      if(this._gotoLowQualityCounter <= 0) {
+        lowQuality = true;
+        this.resize();
+      }
+    }
+
+    this._timeScale += (timeScale - this._timeScale) * .1;
+    this._timeScale = Math.min(this._timeScale, 1.5);
 
     this.mainScene.update(this._timeScale);
     this.view.render(this.mainScene, this.uiScene);
@@ -111,8 +124,10 @@ export default class ToyotaCHRExperience {
     App.restart();
   }
 
-  resize(width, height) {
-    App.resize(width, height);
+  resize(width = this._width, height = this._height) {
+    this._width = width;
+    this._height = height;
+    App.resize(this._width, this._height, lowQuality);
   }
 
   clear() {

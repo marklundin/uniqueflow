@@ -28,20 +28,22 @@ export default class View {
   onSceneChange(name, {background, transitionDuration = .4}) {
     let clearColor = this.renderer.getClearColor();
     let nextClearColor = new THREE.Color(background.main);
-    TweenMax.to(clearColor, transitionDuration * .5, {
+    TweenMax.to(clearColor, transitionDuration * 3, {
       r: nextClearColor.r,
       g: nextClearColor.g,
       b: nextClearColor.b,
-      ease: Power2.easeInOut,
+      ease: Power3.easeOut,
       onUpdate: () => {
         this.renderer.setClearColor(clearColor);
       }
     });
   }
 
-  resize(width, height) {
-    width *= window.devicePixelRatio;
-    height *= window.devicePixelRatio;
+  resize(width, height, lowQuality = false) {
+    if(!lowQuality) {
+      width *= window.devicePixelRatio;
+      height *= window.devicePixelRatio;
+    }
 
     this.renderer.setSize(width, height, false);
   }

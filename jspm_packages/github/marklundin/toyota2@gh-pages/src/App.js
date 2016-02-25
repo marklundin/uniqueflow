@@ -78,8 +78,8 @@ class App {
     this.onRestart.dispatch();
   }
 
-  resize(width, height) {
-    this.onResize.dispatch(width, height);
+  resize(width, height, lowQuality = false) {
+    this.onResize.dispatch(width, height, lowQuality);
   }
 
   changeSceneByName(name, data = {}) {

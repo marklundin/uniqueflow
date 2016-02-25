@@ -22,9 +22,10 @@ export default {
         main: 0x000000,
         assets: [0x202020],
         detail: {
-          color: 0x313131,
+          colors: [0x313131],
+          opacities: [1],
           scale: [ 10, 10 ],
-          type: -1
+          numberRatio: .2
         }
       },
       lines: [
@@ -45,9 +46,10 @@ export default {
         main: 0xc7c1c1,
         assets: [0x7b7d80, 0xbdb7b7],
         detail: {
-          color: 0xffa770,
-          scale: [ 3, 0.05 ],
-          type: 1
+          colors: [0xffa770],
+          opacities: [1],
+          scale: [ 10, .3 ],
+          numberRatio: 1
         }
       },
       lines: [
@@ -95,9 +97,10 @@ export default {
         main: 0xf2f1ee,
         assets: [ 0xd3c5c1, 0x6e695f],
         detail: {
-          color: 0xfffada,
-          scale: [ 10, 15 ],
-          type: 1
+          colors: [0xfffada],
+          opacities: [1],
+          scale: [ 15, 15 ],
+          numberRatio: .1
         }
       },
       lines: [
@@ -143,11 +146,12 @@ export default {
       sound: "Night_01",
       background: {
         main: 0x12103e,
-        assets: [ 0x2c0024, 0x2b0128, 0x210044, 0x000000],
+        assets: [0x2c0024, 0x2b0128, 0x210044, 0x000000],
         detail: {
-          color: 0x070025,
-          scale: [ 50, 10 ],
-          type: 1
+          colors: [0xa898ef, 0xc598ef, 0xdc98ef,0xef98e0, 0xef98c4],
+          opacities: [.6, .25, .33, .1],
+          scale: [ 2, 2 ],
+          numberRatio: 1
         }
       },
       lines: [
@@ -204,9 +208,10 @@ export default {
         main: 0x7500ff,
         assets: [ 0xff4ea8, 0x7500ff],
         detail: {
-          color: 0xcb72df,
-          scale: [ 8, 10 ],
-          type: 1
+          colors: [0xcb72df],
+          opacities: [.6],
+          scale: [ 30, 20 ],
+          numberRatio: .4
         }
       },
       lines: [
@@ -254,9 +259,10 @@ export default {
         main: 0x090018,
         assets: [ 0x410337, 0x000e79],
         detail: {
-          color: 0x1f0033,
-          scale: [ 10, 6 ],
-          type: 0
+          colors: [0x1f0033],
+          opacities: [1],
+          scale: [ 10, 10 ],
+          numberRatio: 0
         }
       },
       lines: [
@@ -331,9 +337,10 @@ export default {
         main: 0xd6d6d6,
         assets: [ 0xfffbed, 0xf4f2ec],
         detail: {
-          color: 0xa39e9d,
-          scale: [ 15, 10 ],
-          type: 1
+          colors: [0xa39e9d],
+          opacities: [.2],
+          scale: [ 15, 15 ],
+          numberRatio: .3
         }
       },
       lines: [
@@ -381,9 +388,10 @@ export default {
         main: 0xf6f6f6,
         assets: [ 0xf4f2ec, 0xededed],
         detail: {
-          color: 0xffffff,
-          scale: [ 6, 3 ],
-          type: 0
+          colors: [0xffffff],
+          opacities: [1],
+          scale: [ 10, 10 ],
+          numberRatio: 0
         }
       },
       lines: [
@@ -431,9 +439,10 @@ export default {
         main: 0x000760,
         assets: [ 0x000000, 0x000000],
         detail: {
-          color: 0x000874,
-          scale: [ 10, 10 ],
-          type: 1
+          colors: [0x000874],
+          opacities: [1],
+          scale: [ 50, 50 ],
+          numberRatio: .5
         }
       },
       lines: [
@@ -490,9 +499,10 @@ export default {
         main: 0xf4f0e7,
         assets: [ 0xddd5c9, 0xe3ddcc],
         detail: {
-          color: 0xede8e0,
+          colors: [0xede8e0],
+          opacities: [1],
           scale: [ 20, 3 ],
-          type: 1
+          numberRatio: .3
         }
       },
       lines: [
@@ -558,9 +568,10 @@ export default {
         main: 0x000000,
         assets: [ 0x00062e, 0x006254],
         detail: {
-          color: 0x004539,
+          colors: [0x004539],
+          opacities: [1, .5, .2],
           scale: [ 20, 12 ],
-          type: 1
+          numberRatio: .4
         }
       },
       lines: [
@@ -626,9 +637,10 @@ export default {
         main: 0xeae2ce,
         assets: [ 0x70c6a3, 0xf9b7b9],
         detail: {
-          color: 0xece4e2,
+          colors: [0xece4e2],
+          opacities: [1],
           scale: [ 15, 8 ],
-          type: 1
+          numberRatio: .6
         }
       },
       lines: [
@@ -694,9 +706,10 @@ export default {
         main: 0x00111a,
         assets: [ 0x000d5e, 0x006865],
         detail: {
-          color: 0x000d5e,
-          scale: [ 15, 7 ],
-          type: 1
+          colors: [0x000d5e],
+          opacities: [.8],
+          scale: [ 6, 3 ],
+          numberRatio: .7
         }
       },
       lines: [

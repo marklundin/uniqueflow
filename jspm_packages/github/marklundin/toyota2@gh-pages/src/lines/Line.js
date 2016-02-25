@@ -205,7 +205,6 @@ export default class Line extends THREE.Object3D {
     });
 
     this.mesh = new THREE.Mesh(geometry, material);
-    this.mesh.frustumCulled = false;
     this.mesh.material.lights = true;
     this.mesh.material.transparent = true;
 

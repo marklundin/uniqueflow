@@ -81,6 +81,9 @@ void main() {
 
 	outgoingLight = mix(outgoingLight, vec3(1.), step(.9985, vLengthRatio));
 
-	gl_FragColor = vec4( outgoingLight, diffuseColor.a * vLengthRatio );
+	float depth = gl_FragCoord.z / gl_FragCoord.w;
+	float fade = smoothstep(0.1, 10.0, depth);
+
+	gl_FragColor = vec4( outgoingLight, diffuseColor.a * vLengthRatio * fade );
 
 }

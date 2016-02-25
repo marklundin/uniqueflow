@@ -17,7 +17,7 @@ export default class MainScene extends THREE.Scene {
 
     this.pointer = Pointer.get(canvas);
 
-    this.camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 10000);
+    this.camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 100000);
 
     App.onSceneChange.add(this.onSceneChange, this);
 
@@ -36,7 +36,7 @@ export default class MainScene extends THREE.Scene {
         and the camera follows
     */
     this.character = new THREE.Vector3();
-    
+
     this.background = new Background(this.character);
     if (!/\bnobackground\b/.test(window.location.search)) {
       this.add(this.background);
@@ -87,7 +87,6 @@ export default class MainScene extends THREE.Scene {
     // Update camera controls
     this.controls.update(timeScale);
 
-    this.background.update(timeScale);
     this.lines.update(timeScale);
   }
 }
