@@ -120,8 +120,8 @@ export default class ToyotaCHRExperience {
   }
 
   set interactive(value) {
-    App.interactive = value;
-    if (value && this.opts.forceMobile || isMobile) {
+    App.interactive = value && !isMobile;
+    if ( value && ( isMobile || this.opts.forceTouchEnabled )) {
       this.pointer.enable();
     } else {
       this.pointer.disable();

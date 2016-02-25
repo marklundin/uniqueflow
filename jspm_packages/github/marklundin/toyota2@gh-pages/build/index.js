@@ -35343,8 +35343,8 @@ $__System.register("1", ["101", "103", "104", "105", "149", "d5", "d6", "de", "d
         }, {
           key: "interactive",
           set: function set(value) {
-            App.interactive = value;
-            if (value && this.opts.forceMobile || isMobile) {
+            App.interactive = value && !isMobile;
+            if (value && (isMobile || this.opts.forceTouchEnabled)) {
               this.pointer.enable();
             } else {
               this.pointer.disable();
