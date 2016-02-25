@@ -7,8 +7,16 @@ import { APP_ID, NS } from './app-config'
 
 let InstallationArtwork = ( canvas, filePath ) => {
 
+
+	let renderer = new THREE.WebGLRenderer({
+      preserveDrawingBuffer: true,
+      canvas: canvas,
+      antialias: true
+    });
+
+
 	 // Style it
-	let artwork = new Artwork( canvas, filePath/*, { forceMobile:true, renderer:renderer }*/)
+	let artwork = new Artwork( canvas, filePath, {  renderer:renderer })
 
 	// Add a resize handler
 	window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
