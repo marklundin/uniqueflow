@@ -6,7 +6,7 @@
   "scripts": {
     "install": "jspm install",
     "start": "browser-sync start --startPath \"index.html\" --files \"src\" --server --no-notify",
-    "build": "jspm bundle-sfx main.js build/main.min.js && jspm bundle-sfx main-receiver.js build/main-receiver.min.js",
+    "build": "jspm bundle-sfx src/main.js build/main.min.js && jspm bundle-sfx src/main-receiver.js build/main-receiver.min.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

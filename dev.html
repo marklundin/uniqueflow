@@ -29,8 +29,8 @@
 		<!-- <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script> -->
 
 		
-		<script src='canvas-to-blob.min.js'></script>
-		<script src='FileSaver.min.js'></script>
+		<script src='src/canvas-to-blob.min.js'></script>
+		<script src='src/FileSaver.min.js'></script>
 		<script src='jspm_packages/system.js'></script>
 		<script src='config.js'></script>
 
@@ -56,7 +56,7 @@
 		// Start the app
 		var artwork
 
-		System.import( './main' ).then( function(){
+		System.import( './src/main' ).then( function(){
 			artwork = new InstallationArtwork( canvas, filePath )
 		})
 
