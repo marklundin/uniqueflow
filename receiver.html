@@ -4,13 +4,10 @@
 		<link href="assets/main.css" rel="stylesheet" type="text/css">
 		<script src='jspm_packages/system.js'></script>
 		<script src='config.js'></script>
-		<script src='./build/main-receiver.min.js'></script>		
-
 	</head>
 	<body>
 		<div id="main"></div>
 	  	<script type="text/javascript">
-
 
 
 			// Start the app
@@ -20,12 +17,9 @@
 			document.querySelector("#main").appendChild(canvas);
 
 
-			window.onload = function(){
-
+			System.import( './build/main-receiver.min.js' ).then( function(){
 				artwork = new InstallationArtwork( canvas, filePath )
-				
-			}
-
+			})
 
 		</script>
 	</body>
