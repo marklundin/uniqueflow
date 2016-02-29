@@ -40,11 +40,7 @@
       });
 
       // Create visualisation
-      artwork = new window.ToyotaCHRExperience( canvas, './', {
-        useTextureNoise:false, 
-        fov:25, 
-        viewOffset:[ -400, 0 ]
-      });
+      artwork = new window.ToyotaCHRExperience( canvas, './');
 
       // Add a resize handler
       window.addEventListener("resize", function(){

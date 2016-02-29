@@ -28,7 +28,7 @@ export default class ToyotaCHRExperience {
     return DATA.assets;
   }
 
-  constructor( canvas, baseURL = './', opts = {} ) {
+  constructor( canvas, baseURL = './', opts = { timeScale: 1 } ) {
 
     isMobile = !!new MobileDetect(window.navigator.userAgent).mobile();
 
@@ -100,6 +100,8 @@ export default class ToyotaCHRExperience {
 
     this._timeScale += (timeScale - this._timeScale) * .1;
     this._timeScale = Math.min(this._timeScale, 1.5);
+
+    this._timeScale *= this.opts.timeScale
 
     this.mainScene.update(this._timeScale);
     this.view.render(this.mainScene, this.uiScene);

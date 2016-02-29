@@ -38,6 +38,7 @@ castReceiverManager.onReady = function(event) {
 		var artOpts = {
 			useTextureNoise:false, 
 			fov:25, 
+			timeScale: 0.95,
 			viewOffset:[ -400, 0 ]
 		}
 

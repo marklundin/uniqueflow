@@ -34976,7 +34976,7 @@ $__System.register("1", ["100", "103", "105", "106", "e9", "ea", "ed", "d0", "e1
 
         function ToyotaCHRExperience(canvas) {
           var baseURL = arguments.length <= 1 || arguments[1] === undefined ? './' : arguments[1];
-          var opts = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+          var opts = arguments.length <= 2 || arguments[2] === undefined ? { timeScale: 1 } : arguments[2];
 
           _classCallCheck(this, ToyotaCHRExperience);
 
@@ -35068,6 +35068,8 @@ $__System.register("1", ["100", "103", "105", "106", "e9", "ea", "ed", "d0", "e1
 
             this._timeScale += (timeScale - this._timeScale) * .1;
             this._timeScale = Math.min(this._timeScale, 1.5);
+
+            this._timeScale *= this.opts.timeScale;
 
             this.mainScene.update(this._timeScale);
             this.view.render(this.mainScene, this.uiScene);
