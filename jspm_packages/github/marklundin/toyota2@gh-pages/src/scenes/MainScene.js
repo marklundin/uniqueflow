@@ -25,8 +25,6 @@ export default class MainScene extends THREE.Scene {
       window.innerHeight+ viewOffset[1], 
       ...viewOffset, window.innerWidth , window.innerHeight )
 
-    console.log( viewOffset )
-
     App.onSceneChange.add(this.onSceneChange, this);
 
     // Lighting
@@ -81,7 +79,6 @@ export default class MainScene extends THREE.Scene {
   resize(width, height) {
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
-    console.log( this.camera.aspect )
   }
 
   onSceneChange(name, data) {

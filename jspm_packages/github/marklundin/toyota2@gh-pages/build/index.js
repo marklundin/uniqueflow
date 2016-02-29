@@ -10900,8 +10900,6 @@ $__System.register("fe", ["100", "e7", "e8", "e9", "ea", "df", "e1", "e0", "ee",
 
           (_camera = this.camera).setViewOffset.apply(_camera, [window.innerWidth + viewOffset[0], window.innerHeight + viewOffset[1]].concat(_toConsumableArray(viewOffset), [window.innerWidth, window.innerHeight]));
 
-          console.log(viewOffset);
-
           App.onSceneChange.add(this.onSceneChange, this);
 
           // Lighting
@@ -10957,7 +10955,6 @@ $__System.register("fe", ["100", "e7", "e8", "e9", "ea", "df", "e1", "e0", "ee",
           value: function resize(width, height) {
             this.camera.aspect = width / height;
             this.camera.updateProjectionMatrix();
-            console.log(this.camera.aspect);
           }
         }, {
           key: "onSceneChange",
@@ -32291,6 +32288,7 @@ $__System.register("ef", ["100", "104", "128", "e9", "ea", "f0", "fc", "ed", "eb
         function App() {
           _classCallCheck(this, App);
 
+          this.data = DATA;
           this._timeoutID = -1;
           this._currentSceneName = "";
           this._preventSceneChange = false;

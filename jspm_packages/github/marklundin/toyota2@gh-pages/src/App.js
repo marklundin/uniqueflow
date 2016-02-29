@@ -30,6 +30,7 @@ let isSupported = (function() {
 
 class App {
   constructor() {
+    this.data = DATA;
     this._timeoutID = -1;
     this._currentSceneName = "";
     this._preventSceneChange = false;

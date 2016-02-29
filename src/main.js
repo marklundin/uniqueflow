@@ -18,9 +18,32 @@ let InstallationArtwork = ( canvas, filePath ) => {
 	window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
 
 
+
+
+	// Set default looping mechanic
+
+	let randomScene = _ => {
+		let scenes = Object.keys( artwork.app.data.scenes )
+		let key = Math.floor( Math.random() * scenes.length )
+		// console.log( 'change to ' + scenes[key] )
+		artwork.app.changeSceneByName( scenes[key] )
+	}
+
+	let timeOutID = setTimeout( randomScene, 5000 )
+	let onSceneChange = scene => {
+		// console.log( scene )
+		if( timeOutID ) clearTimeout( timeOutID )
+		if( scene === 'default' ) timeOutID = setTimeout( randomScene, 5000 )
+	}
+
+	
 	// Start
 	artwork.start()
 
+	artwork.app.onSceneChange.add( onSceneChange )
+
+
+	
 
 
 	cast.then( connect => {
@@ -36,6 +59,10 @@ let InstallationArtwork = ( canvas, filePath ) => {
 			// 	castButton.onclick = api.requestSession()
 
 			// }
+
+			
+
+			
 
 
 
