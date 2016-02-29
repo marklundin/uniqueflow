@@ -9,7 +9,7 @@ const VERTEX_SHADER = `
   }
 `;
 
-const FRAGMENT_SHADER = `
+const NOISE_FRAGMENT_SHADER = `
 	uniform vec3 color;
 	uniform float opacity;
 
@@ -20,17 +20,36 @@ const FRAGMENT_SHADER = `
 
     float x = (vUv.x + 4.0) * (vUv.y + 4.0) * 10.0;
 
-		vec4 grain = vec4(mod((mod(x, 13.0) + 1.0) * (mod(x, 123.0) + 1.0), 0.01) - 0.005) * strength;
+		//vec4 grain = vec4(mod((mod(x, 13.0) + 1.0) * (mod(x, 123.0) + 1.0), 0.01) - 0.005) * strength;
 
 		float depth = gl_FragCoord.z / gl_FragCoord.w;
 		float fade = smoothstep(0.1, 50.0, depth);
 
-		gl_FragColor = vec4(color + grain.xyz, vUv.x * fade * opacity);
+		gl_FragColor = vec4(color /*+ grain.xyz*/, vUv.x * fade * opacity);
 	}`;
 
 
+const FRAGMENT_SHADER = `
+  uniform vec3 color;
+  uniform float opacity;
+
+  varying vec2 vUv;
+
+  void main() {
+    float strength = 9.0;
+
+    float x = (vUv.x + 4.0) * (vUv.y + 4.0) * 10.0;
+
+    float depth = gl_FragCoord.z / gl_FragCoord.w;
+    float fade = smoothstep(0.1, 50.0, depth);
+
+    gl_FragColor = vec4(color, vUv.x * fade * opacity);
+  }`;
+
+
 export default class BackgroundPlane extends THREE.Object3D {
-  constructor() {
+  constructor( useNoise = true ) {
+
     super();
 
     this.mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.ShaderMaterial({
@@ -45,7 +64,7 @@ export default class BackgroundPlane extends THREE.Object3D {
         }
       },
       vertexShader: VERTEX_SHADER,
-      fragmentShader: FRAGMENT_SHADER,
+      fragmentShader: useNoise ? NOISE_FRAGMENT_SHADER : FRAGMENT_SHADER,
       depthTest: false,
       depthWrite: false,
       side: THREE.DoubleSide,

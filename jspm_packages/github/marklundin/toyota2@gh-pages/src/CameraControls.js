@@ -11,7 +11,7 @@ import { spring3, spring } from "./utils/spring";
 */
 
 export default class CameraControls {
-  constructor(camera, character) {
+  constructor(camera, character ) {
     this.camera = camera;
     this.character = character;
 

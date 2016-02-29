@@ -42,6 +42,7 @@ export default {
     },
     "front-bumper": {
       sound: "Day_02",
+
       background: {
         main: 0xc7c1c1,
         assets: [0x7b7d80, 0xbdb7b7],
@@ -93,6 +94,9 @@ export default {
     },
     "rear-bumper": {
       sound: "Day_01",
+      tunnel: {
+        color: 0xfffada
+      },
       background: {
         main: 0xf2f1ee,
         assets: [ 0xd3c5c1, 0x6e695f],
@@ -144,8 +148,11 @@ export default {
     },
     "headlight-front": {
       sound: "Night_01",
+      tunnel: {
+        color: 0xa898ef
+      },
       background: {
-        main: 0x12103e,
+        main: 0x210044,
         assets: [0x2c0024, 0x2b0128, 0x210044, 0x000000],
         detail: {
           colors: [0xa898ef, 0xc598ef, 0xdc98ef,0xef98e0, 0xef98c4],
@@ -204,6 +211,9 @@ export default {
     },
     "mirror": {
       sound: "Night_02",
+      tunnel: {
+        color: 0xffd2f1
+      },
       background: {
         main: 0x7500ff,
         assets: [ 0xff4ea8, 0x7500ff],
@@ -255,6 +265,9 @@ export default {
     },
     "chassis": {
       sound: "Night_03",
+        tunnel: {
+        color: 0x000e79
+      },
       background: {
         main: 0x090018,
         assets: [ 0x410337, 0x000e79],
@@ -333,6 +346,9 @@ export default {
     },
     "door": {
       sound: "Day_03",
+        tunnel: {
+        color: 0xa39e9d
+      },
       background: {
         main: 0xd6d6d6,
         assets: [ 0xfffbed, 0xf4f2ec],
@@ -382,10 +398,13 @@ export default {
         }
       ]
     },
-    "rooftop-streamline": {
+    "roof": {
       sound: "Day_04",
+        tunnel: {
+        color: 0x101010
+      },
       background: {
-        main: 0xf6f6f6,
+        main: 0xffffff,
         assets: [ 0xf4f2ec, 0xededed],
         detail: {
           colors: [0xffffff],
@@ -433,8 +452,12 @@ export default {
         }
       ]
     },
-    "headlight-back": {
+    "headlight-rear": {
       sound: "Night_04",
+        tunnel: {
+        color: 0xffffff
+      },
+
       background: {
         main: 0x000760,
         assets: [ 0x000000, 0x000000],
@@ -495,6 +518,9 @@ export default {
     },
     "gearshift": {
       sound: "Day_05",
+        tunnel: {
+        color: 0xede8e0
+      },
       background: {
         main: 0xf4f0e7,
         assets: [ 0xddd5c9, 0xe3ddcc],
@@ -564,6 +590,10 @@ export default {
     },
     "suspension": {
       sound: "Day_06",
+        tunnel: {
+        color: 0x004539
+      },
+
       background: {
         main: 0x000000,
         assets: [ 0x00062e, 0x006254],
@@ -633,6 +663,10 @@ export default {
     },
     "wheel": {
       sound: "Night_05",
+      tunnel: {
+        color: 0xece4e2
+      },
+
       background: {
         main: 0xeae2ce,
         assets: [ 0x70c6a3, 0xf9b7b9],
@@ -702,6 +736,10 @@ export default {
     },
     "logo": {
       sound: "Night_06",
+             tunnel: {
+        color: 0x006865
+      },
+
       background: {
         main: 0x00111a,
         assets: [ 0x000d5e, 0x006865],

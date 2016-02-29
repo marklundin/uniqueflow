@@ -6,11 +6,11 @@ import { spring3 } from "../utils/spring";
 import { random } from "../utils/math";
 
 const BIG_PLANES_NUMBER = 5;
-const NORMAL_PLANES_NUMBER = 30;
+const NORMAL_PLANES_NUMBER = 20;
 const SMALL_PLANES_NUMBER = 100;
 
 export default class Background extends THREE.Object3D {
-  constructor(character) {
+  constructor(character, useNoise = true ) {
     super();
 
     this.character = character;
@@ -20,7 +20,7 @@ export default class Background extends THREE.Object3D {
     this._lastSceneChangeTimeStamp = Date.now();
 
     for (let i = 0; i < BIG_PLANES_NUMBER + NORMAL_PLANES_NUMBER + SMALL_PLANES_NUMBER; i++) {
-      let backgroundPlane = new BackgroundPlane();
+      let backgroundPlane = new BackgroundPlane( useNoise );
       backgroundPlane._animationQuaternionStart = new THREE.Quaternion();
       backgroundPlane._animationQuaternionEnd = new THREE.Quaternion();
       backgroundPlane._animationProgress = 0;
@@ -78,8 +78,7 @@ export default class Background extends THREE.Object3D {
 
     if(!transitionDuration) {
       transitionDuration = (Date.now() - this._lastSceneChangeTimeStamp) / 1000;
-      transitionDuration = Math.max(Math.min(transitionDuration, 1.2), .5);
-      transitionDuration += (Math.random() * 2 - 1) * .2;
+      transitionDuration = Math.max(Math.min(transitionDuration, 1.3), .2);
     }
 
     this._lastSceneChangeTimeStamp = Date.now();
@@ -90,6 +89,8 @@ export default class Background extends THREE.Object3D {
 
       let distance;
       let opacity = 1;
+      let delay = Math.random() * transitionDuration;
+      let duration = transitionDuration * (1 + (Math.random() * 2 - 1) * .2);
 
       switch (backgroundPlane._type) {
         case "big":
@@ -128,9 +129,6 @@ export default class Background extends THREE.Object3D {
       position.multiplyScalar(distance);
       position.add(this.character);
 
-      let delay = Math.random() * .4;
-      let duration = transitionDuration * (1 + (Math.random() * 2 - 1) * .5);
-
       TweenMax.killTweensOf(backgroundPlane.position);
       TweenMax.to(backgroundPlane.position, duration, {
         x: position.x,
@@ -154,7 +152,7 @@ export default class Background extends THREE.Object3D {
         g: color.g,
         b: color.b,
         delay: delay,
-        ease: Power3.easeOut
+        ease: easing
       });
 
       TweenMax.killTweensOf(backgroundPlane.mesh.material.uniforms.opacity);

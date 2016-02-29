@@ -49,7 +49,7 @@ export default class ToyotaCHRExperience {
 
     this.view = new View(this.canvas, opts);
 
-    this.mainScene = new MainScene(this.canvas);
+    this.mainScene = new MainScene(this.canvas, opts.useTextureNoise, opts.fov, opts.viewOffset );
     this.uiScene = new UIScene(this.canvas);
 
     this.pointer = Pointer.get(this.canvas);

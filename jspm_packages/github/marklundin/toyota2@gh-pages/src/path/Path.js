@@ -1,4 +1,6 @@
 import THREE from "THREE";
+import Signal from "min-signal";
+
 import App from "../App.js";
 
 import PATHS_COLLADA from "./models/Toyota_C-HR_2016_Splines_9.dae!text";
@@ -9,8 +11,10 @@ export default class Path {
   constructor() {
     let collada = new THREE.ColladaLoader().parse(PATHS_COLLADA);
 
+
     let rawPaths = [];
     this.paths = [];
+    this.curves = [];
 
     this.distance = 0;
 
@@ -48,13 +52,14 @@ export default class Path {
       matrix.getInverse(matrix);
       rawPath.geometry.applyMatrix(matrix);
       let curve = new THREE.CatmullRomCurve3(rawPath.geometry.vertices);
+      curve.name = rawPath.name;
+      this.curves.push(curve);
       let geometry = new THREE.Geometry();
       geometry.vertices = curve.getPoints(200);
       let path = new THREE.Line(geometry, material);
       path.name = rawPath.name;
       this.paths.push(path);
       path.position.x = i;
-      // this.add(path);
     }
 
     this.currentPath = this.paths[0];
@@ -69,6 +74,7 @@ export default class Path {
       if(path.name === name) {
         this.currentPath = path;
         this._sceneChanged = true;
+        this.update(0);
         break;
       }
     }

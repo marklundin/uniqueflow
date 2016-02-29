@@ -1,7 +1,6 @@
 {
   "name": "toyota-artwork",
-  "version": "0.0.8",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "generative animation",
   "main": "./src/index.js",
   "registry": "jspm",
@@ -45,5 +44,8 @@
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
     }
+  },
+  "dependencies": {
+    "jspm": "^0.16.30"
   }
 }
