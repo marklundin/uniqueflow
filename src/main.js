@@ -8,11 +8,7 @@ import { APP_ID, NS } from './app-config'
 let InstallationArtwork = ( canvas, filePath ) => {
 
 	 // Style it
-	let artwork = new Artwork( canvas, filePath, {
-		useTextureNoise:false, 
-        fov:25, 
-        viewOffset:[ -400, 0 ]
-    })
+	let artwork = new Artwork( canvas, filePath )
 
 	// Add a resize handler
 	window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
