@@ -10,15 +10,16 @@
 	  	<script type="text/javascript">
 
 
+			var insertScript = function(src, fallback) {
+				var script = document.createElement("script")
+				script.src = src
+				script.async = false
+				script.onload = fallback
+				var firstScript = document.getElementsByTagName("script")[0]
+				firstScript.parentNode.insertBefore(script, firstScript)
+			}
 			// Start the app
-
-			var filePath = './jspm_packages/github/marklundin/toyota2@gh-pages/'
-			var canvas = document.createElement("canvas");
-			document.querySelector("#main").appendChild(canvas);
-
-
-			System.import( './build/main-receiver.min.js' )
-			
+			insertScript( './build/main-receiver.min.js' )
 
 		</script>
 	</body>
