@@ -1,29 +1,32 @@
 <html>
 	<head>
 		<title>Unique Flow - Receiver</title>
-
 		<link href="assets/main.css" rel="stylesheet" type="text/css">
 		<script src='jspm_packages/system.js'></script>
 		<script src='config.js'></script>
 		<script src='./build/main-receiver.min.js'></script>		
 
 	</head>
-<body>
-	<div id="main"></div>
-  	<script type="text/javascript">
+	<body>
+		<div id="main"></div>
+	  	<script type="text/javascript">
 
 
 
-		// Start the app
+			// Start the app
 
-		var filePath = './jspm_packages/github/marklundin/toyota2@gh-pages/'
-		var canvas = document.createElement("canvas");
-		document.querySelector("#main").appendChild(canvas);
-
-		artwork = new InstallationArtwork( canvas, filePath )
+			var filePath = './jspm_packages/github/marklundin/toyota2@gh-pages/'
+			var canvas = document.createElement("canvas");
+			document.querySelector("#main").appendChild(canvas);
 
 
+			window.onload = function(){
 
-	</script>
+				artwork = new InstallationArtwork( canvas, filePath )
+				
+			}
+
+
+		</script>
 	</body>
 </html>
