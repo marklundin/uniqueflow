@@ -99,7 +99,7 @@ messageBus.onMessage = function(event) {
 // DEBUG MESSAGIN
 let messageDebugBus = castReceiverManager.getCastMessageBus( DEBUG_NS )
 
-messageDebugBus.onMessage(function( event ){
+messageDebugBus.onMessage = function( event ){
 
 	switch( event.data.command ){
 
@@ -114,7 +114,7 @@ messageDebugBus.onMessage(function( event ){
 			break
 		default: break;
 	}
-})
+}
 
 function resizeCanvasCss( dimension ){
 	Object.assign( canvas.style, dimension )
