@@ -48,9 +48,8 @@ castReceiverManager.onReady = function(event) {
 		}
 
 		artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/', artOpts )
-		window.addEventListener("resize", _ => artwork.resize( window.innerWidth*2 , window.innerHeight*2 ))
+		window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth , canvas.offsetWidth ))
 		artwork.start()
-		artwork.resize( window.innerWidth*2 , window.innerHeight*2 )
 
 	}
 
