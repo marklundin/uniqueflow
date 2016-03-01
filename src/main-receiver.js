@@ -35,14 +35,14 @@ let hardwareSupportsApplication = Artwork.isSupported
 	var artOpts = {
 		renderer,
 		useTextureNoise:false, 
-		fov: 60,
+		fov: 70,
 		timeScale: 0.9,
 		viewOffset:[ -600, 0 ]
 	}
 	artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/', artOpts )
 	window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
 	artwork.start()
-	artwork.resize( window.innerWidth , window.innerHeight * 0.31 )
+	artwork.resize( window.innerWidth , window.innerHeight * 0.32 )
 
 console.log('Starting Receiver Manager');
 
