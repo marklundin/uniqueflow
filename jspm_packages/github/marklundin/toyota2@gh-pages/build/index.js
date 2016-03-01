@@ -35027,7 +35027,7 @@ $__System.register("1", ["100", "103", "105", "106", "e9", "ea", "ed", "d0", "e1
 
           this.view = new View(this.canvas, opts);
 
-          this.mainScene = new MainScene(this.canvas, opts.useTextureNoise, opts.fov, opts.viewOffset);
+          this.mainScene = new MainScene(this.canvas, this.opts.useTextureNoise, opts.fov, opts.viewOffset);
           this.uiScene = new UIScene(this.canvas);
 
           this.pointer = Pointer.get(this.canvas);
