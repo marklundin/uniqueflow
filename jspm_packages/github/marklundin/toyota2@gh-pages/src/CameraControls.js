@@ -2,6 +2,8 @@ import THREE from "THREE";
 import App from "./App.js";
 import { spring3, spring } from "./utils/spring";
 
+let up = new THREE.Vector3( 0, 1, 0 )
+
 /*
 	This utility moves a THREE.Object3D towards a 3D position in space whilst optionally maintaining
 	a minimum distance from it. The easing is a damped spring equation which can be continually
@@ -14,6 +16,9 @@ export default class CameraControls {
   constructor(camera, character ) {
     this.camera = camera;
     this.character = character;
+
+    this.currentRotation = new THREE.Matrix4()
+    this.currentRotationQuat = new THREE.Quaternion()
 
     this.targetPositionDistance = 0.1;
 
@@ -71,6 +76,14 @@ export default class CameraControls {
 
     // UPDATE CAMERA
     this.camera.position.add(this.positionTransition(this.camera.position, this._vector3Cached, delta));
-    this.camera.lookAt(this.eye);
+
+    
+    // this.camera.updateMatrixWorld()
+    // up.transformDirection( this.camera.matrixWorld )
+    this.currentRotation.lookAt( this.camera.position, this.eye, up );
+    this.currentRotationQuat.setFromRotationMatrix( this.currentRotation );
+
+    this.camera.quaternion.slerp( this.currentRotationQuat, 0.1 ) 
+    // this.camera.lookAt( this.eye, up );
   }
 }

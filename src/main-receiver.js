@@ -35,6 +35,11 @@ castReceiverManager.onReady = function(event) {
 
 	if( Artwork.isSupported ){
 
+		Object.assign( canvas.style, {
+			width: "80%",
+			height: "60%"
+		});
+
 		var artOpts = {
 			useTextureNoise:false, 
 			fov:25, 
@@ -43,8 +48,9 @@ castReceiverManager.onReady = function(event) {
 		}
 
 		artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/', artOpts )
-		window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
+		window.addEventListener("resize", _ => artwork.resize( window.innerWidth*2 , window.innerHeight*2 ))
 		artwork.start()
+		artwork.resize( window.innerWidth*2 , window.innerHeight*2 )
 
 	}
 

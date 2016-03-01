@@ -33,6 +33,10 @@ export default class ToyotaCHRExperience {
     isMobile = !!new MobileDetect(window.navigator.userAgent).mobile();
 
     this.opts = opts
+    this.opts.timeScale = this.opts.timeScale === undefined ? 1 : this.opts.timeScale
+    this.opts.viewOffset = this.opts.viewOffset === undefined ? [0,0] : this.opts.viewOffset
+    this.opts.useTextureNoise = this.opts.useTextureNoise === undefined ? true : this.opts.useTextureNoise
+
     this.app = App
     this.canvas = canvas;
 

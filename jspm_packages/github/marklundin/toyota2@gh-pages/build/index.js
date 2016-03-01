@@ -10664,7 +10664,7 @@ $__System.register("fb", ["e7", "e8", "e9", "ea", "fc", "ed", "eb", "e1", "ef", 
   };
 });
 $__System.register("fd", ["e9", "ea", "e1", "ef", "f5"], function (_export) {
-  var _createClass, _classCallCheck, THREE, App, spring3, spring, CameraControls;
+  var _createClass, _classCallCheck, THREE, App, spring3, spring, up, CameraControls;
 
   return {
     setters: [function (_e9) {
@@ -10680,6 +10680,9 @@ $__System.register("fd", ["e9", "ea", "e1", "ef", "f5"], function (_export) {
       spring = _f5.spring;
     }],
     execute: function () {
+      "use strict";
+
+      up = new THREE.Vector3(0, 1, 0);
 
       /*
       	This utility moves a THREE.Object3D towards a 3D position in space whilst optionally maintaining
@@ -10689,14 +10692,15 @@ $__System.register("fd", ["e9", "ea", "e1", "ef", "f5"], function (_export) {
       	It also aims the camera towards the object too.
       */
 
-      "use strict";
-
       CameraControls = (function () {
         function CameraControls(camera, character) {
           _classCallCheck(this, CameraControls);
 
           this.camera = camera;
           this.character = character;
+
+          this.currentRotation = new THREE.Matrix4();
+          this.currentRotationQuat = new THREE.Quaternion();
 
           this.targetPositionDistance = 0.1;
 
@@ -10757,7 +10761,14 @@ $__System.register("fd", ["e9", "ea", "e1", "ef", "f5"], function (_export) {
 
             // UPDATE CAMERA
             this.camera.position.add(this.positionTransition(this.camera.position, this._vector3Cached, delta));
-            this.camera.lookAt(this.eye);
+
+            // this.camera.updateMatrixWorld()
+            // up.transformDirection( this.camera.matrixWorld )
+            this.currentRotation.lookAt(this.camera.position, this.eye, up);
+            this.currentRotationQuat.setFromRotationMatrix(this.currentRotation);
+
+            this.camera.quaternion.slerp(this.currentRotationQuat, 0.1);
+            // this.camera.lookAt( this.eye, up );
           }
         }]);
 
