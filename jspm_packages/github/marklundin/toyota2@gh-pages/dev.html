@@ -39,8 +39,15 @@
         height: "100%"
       });
 
+      var renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true
+      })
+      //renderer.setPixelRatio( 1 )
+
       // Create visualisation
-      artwork = new window.ToyotaCHRExperience( canvas, './');
+      artwork = new window.ToyotaCHRExperience( canvas, './', 
+        {renderer:renderer, useTextureNoise:true});
 
       // Add a resize handler
       window.addEventListener("resize", function(){

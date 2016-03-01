@@ -53,6 +53,6 @@ export default class View {
 
     this.renderer.render(mainScene, mainScene.camera);
 
-    this.renderer.render(uiScene, uiScene.camera);
+    // this.renderer.render(uiScene, uiScene.camera);
   }
 }

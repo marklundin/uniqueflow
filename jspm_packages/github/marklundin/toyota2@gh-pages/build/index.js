@@ -10937,8 +10937,8 @@ $__System.register("fe", ["100", "e7", "e8", "e9", "ea", "df", "e1", "e0", "ee",
           this.path = new Path();
           this.path.update();
 
-          this.tunnel = new Tunnel(this.path);
-          this.add(this.tunnel);
+          // this.tunnel = new Tunnel(this.path);
+          // this.add(this.tunnel);
 
           this.lines = new Lines(this.character);
           this.add(this.lines);
@@ -11356,7 +11356,7 @@ $__System.register("105", ["e9", "ea", "e1", "ef"], function (_export) {
 
             this.renderer.render(mainScene, mainScene.camera);
 
-            this.renderer.render(uiScene, uiScene.camera);
+            // this.renderer.render(uiScene, uiScene.camera);
           }
         }]);
 
@@ -34994,6 +34994,10 @@ $__System.register("1", ["100", "103", "105", "106", "e9", "ea", "ed", "d0", "e1
           isMobile = !!new MobileDetect(window.navigator.userAgent).mobile();
 
           this.opts = opts;
+          this.opts.timeScale = this.opts.timeScale === undefined ? 1 : this.opts.timeScale;
+          this.opts.viewOffset = this.opts.viewOffset === undefined ? [0, 0] : this.opts.viewOffset;
+          this.opts.useTextureNoise = this.opts.useTextureNoise === undefined ? true : this.opts.useTextureNoise;
+
           this.app = App;
           this.canvas = canvas;
 

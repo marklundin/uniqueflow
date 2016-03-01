@@ -51,8 +51,8 @@ export default class MainScene extends THREE.Scene {
     this.path = new Path();
     this.path.update();
 
-    this.tunnel = new Tunnel(this.path);
-    this.add(this.tunnel);
+    // this.tunnel = new Tunnel(this.path);
+    // this.add(this.tunnel);
 
     this.lines = new Lines(this.character);
     this.add(this.lines);
