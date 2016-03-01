@@ -26,14 +26,14 @@ let artwork
 
 let hardwareSupportsApplication = Artwork.isSupported
 
-	var renderer = new THREE.WebGLRenderer({
-      canvas: canvas,
-      antialias: true
-    });
-    renderer.setPixelRatio( 2.5 )
+	// var renderer = new THREE.WebGLRenderer({
+ //      canvas: canvas,
+ //      antialias: true
+ //    });
+    // renderer.setPixelRatio( 2.5 )
 
 	var artOpts = {
-		renderer,
+		// renderer,
 		useTextureNoise:false, 
 		fov: 70,
 		timeScale: 0.9,
