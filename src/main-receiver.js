@@ -3,7 +3,7 @@ import howl from "howler";
 import { TweenMax } from "gsap";
 import Artwork from 'toyota'
 import castReceiverManager from './cast/receiver'
-import { NS, APP_READY, APP_UNSUPPORTED } from './app-config'
+import { NS, APP_READY, APP_UNSUPPORTED, DEBUG_NS } from './app-config'
 
 
 
@@ -36,8 +36,8 @@ castReceiverManager.onReady = function(event) {
 	if( Artwork.isSupported ){
 
 		Object.assign( canvas.style, {
-			width: "80%",
-			height: "60%"
+			width: "100%",
+			height: "100%"
 		});
 
 		var artOpts = {
@@ -79,6 +79,7 @@ castReceiverManager.onSystemVolumeChanged = function(event) {
 // create a CastMessageBus to handle messages for a custom namespace
 let messageBus = castReceiverManager.getCastMessageBus( NS )
 
+
 // handler for the CastMessageBus message event
 messageBus.onMessage = function(event) {
 
@@ -93,6 +94,33 @@ messageBus.onMessage = function(event) {
 	// sender message listener will be invoked
 	messageBus.send( event.senderId, logMessage );
 }
+
+
+
+// DEBUG MESSAGIN
+let messageDebugBus = castReceiverManager.getCastMessageBus( DEBUG_NS )
+
+messageDebugBus.onMessage(function( event ){
+
+	switch( event.data.command ){
+
+		case 'resize-canvas-css' :
+			resizeCanvasCss( event.data.value )
+			break
+		case: 'terminate' :
+			castReceiverManager.stop()
+			break
+		case: 'reload' :
+			location.reload( event.data.value )
+			break
+		default: break;
+	}
+})
+
+function resizeCanvasCss( dimension ){
+	Object.assign( canvas.style, dimension )
+}
+
 
 // initialize the CastReceiverManager with an application status message
 castReceiverManager.start({statusText: "Application is starting"});

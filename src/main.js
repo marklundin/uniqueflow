@@ -2,7 +2,7 @@ import howl from "howler";
 import { TweenMax } from "gsap";
 import Artwork from 'toyota'
 import cast from './cast/sender'
-import { APP_ID, NS } from './app-config'
+import { APP_ID, NS, DEBUG_NS } from './app-config'
 
 
 let InstallationArtwork = ( canvas, filePath ) => {
@@ -17,7 +17,7 @@ let InstallationArtwork = ( canvas, filePath ) => {
 
 
 
-	// Set default looping mechanic
+	// We want the machine to 
 
 	let randomScene = _ => {
 		let scenes = Object.keys( artwork.app.data.scenes )
@@ -59,7 +59,20 @@ let InstallationArtwork = ( canvas, filePath ) => {
 
 			
 
-			
+			connect( APP_ID, DEBUG_NS ).then( debug => {
+
+				window.cssSize = ( w, h ) => debug.send({
+					command: 'resize-canvas-css',
+					value:{
+						"width": String( w ) + '%',
+						"height": String( h ) + '%'
+					}
+				})
+
+				window.terminate = _ => debug.send({ command: 'terminate'})
+				window.reload = clearCache => debug.send({ command: 'reload', value: clearCache })
+
+			})
 
 
 
