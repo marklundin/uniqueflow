@@ -11299,6 +11299,7 @@ $__System.register("105", ["e9", "ea", "e1", "ef"], function (_export) {
             canvas: canvas,
             antialias: true
           });
+          this.renderer.setPixelRatio(devicePixelRatio);
           this.renderer.setClearColor(0x000000);
           this.renderer.autoClear = false;
           this.renderer.sortObjects = false;
@@ -11342,12 +11343,12 @@ $__System.register("105", ["e9", "ea", "e1", "ef"], function (_export) {
           value: function resize(width, height) {
             var lowQuality = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
 
-            if (!lowQuality) {
-              width *= window.devicePixelRatio;
-              height *= window.devicePixelRatio;
-            }
+            // if(!lowQuality) {
+            //   width *= window.devicePixelRatio;
+            //   height *= window.devicePixelRatio;
+            // }
 
-            this.renderer.setSize(width, height, false);
+            this.renderer.setSize(width, height, true);
           }
         }, {
           key: "render",

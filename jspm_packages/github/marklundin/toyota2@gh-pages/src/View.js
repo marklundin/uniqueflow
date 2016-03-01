@@ -8,6 +8,7 @@ export default class View {
       canvas: canvas,
       antialias: true
     });
+    this.renderer.setPixelRatio( devicePixelRatio )
     this.renderer.setClearColor(0x000000);
     this.renderer.autoClear = false;
     this.renderer.sortObjects = false;
@@ -40,12 +41,12 @@ export default class View {
   }
 
   resize(width, height, lowQuality = false) {
-    if(!lowQuality) {
-      width *= window.devicePixelRatio;
-      height *= window.devicePixelRatio;
-    }
+    // if(!lowQuality) {
+    //   width *= window.devicePixelRatio;
+    //   height *= window.devicePixelRatio;
+    // }
 
-    this.renderer.setSize(width, height, false);
+    this.renderer.setSize(width, height, true);
   }
 
   render(mainScene, uiScene) {

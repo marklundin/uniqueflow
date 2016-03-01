@@ -12,7 +12,7 @@ let InstallationArtwork = ( canvas, filePath ) => {
 	let artwork = new Artwork( canvas, filePath, {timeScale: 0.7 })
 
 	// Add a resize handler
-	window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
+	window.addEventListener("resize", _ => artwork.resize( window.innerWidth, window.innerHeight ))
 
 
 
@@ -22,19 +22,18 @@ let InstallationArtwork = ( canvas, filePath ) => {
 	let randomScene = _ => {
 		let scenes = Object.keys( artwork.app.data.scenes )
 		let key = Math.floor( Math.random() * scenes.length )
-		// console.log( 'change to ' + scenes[key] )
 		artwork.app.changeSceneByName( scenes[key] )
 	}
 
 	let timeOutID = setTimeout( randomScene, 5000 )
 	let onSceneChange = scene => {
-		// console.log( scene )
 		if( timeOutID ) clearTimeout( timeOutID )
 		if( scene === 'default' ) timeOutID = setTimeout( randomScene, 5000 )
 	}
 
 	
 	// Start
+	artwork.resize( window.innerWidth, window.innerHeight )
 	artwork.start()
 
 	artwork.app.onSceneChange.add( onSceneChange )

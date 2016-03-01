@@ -8,6 +8,7 @@ import { NS, APP_READY, APP_UNSUPPORTED, DEBUG_NS } from './app-config'
 
 
 var canvas = document.createElement("canvas");
+canvas.className = 'receiver-canvas'
 document.querySelector("#main").appendChild(canvas);
 
 
@@ -25,9 +26,19 @@ let artwork
 
 let hardwareSupportsApplication = Artwork.isSupported
 
-
+	var artOpts = {
+			useTextureNoise:false, 
+			fov: 60,
+			timeScale: 0.9,
+			viewOffset:[ -600, 0 ]
+		}
+		artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/', artOpts )
+		window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
+		artwork.start()
+		artwork.resize( window.innerWidth , window.innerHeight * 0.3 )
 
 console.log('Starting Receiver Manager');
+
 
 // handler for the 'ready' event
 castReceiverManager.onReady = function(event) {
@@ -35,24 +46,10 @@ castReceiverManager.onReady = function(event) {
 
 	if( Artwork.isSupported ){
 
-		Object.assign( canvas.style, {
-			width: '100%',
-		    height: '32%',
-		    position: 'absolute',
-		    top: '34%'
-		});
 
-		var artOpts = {
-			useTextureNoise:false, 
-			fov: 20,
-			timeScale: 0.9,
-			viewOffset:[ -400, 0 ]
-		}
+		
 
-		artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/', artOpts )
-		window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
-		artwork.start()
-		artwork.resize( window.innerWidth , window.innerWidth )
+		
 
 
 	}
