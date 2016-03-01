@@ -36,8 +36,10 @@ castReceiverManager.onReady = function(event) {
 	if( Artwork.isSupported ){
 
 		Object.assign( canvas.style, {
-			width: "100%",
-			height: "100%"
+			width: '100%',
+		    height: '32%',
+		    position: 'absolute',
+		    top: '34%'
 		});
 
 		var artOpts = {
