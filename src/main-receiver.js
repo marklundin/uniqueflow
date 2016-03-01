@@ -107,10 +107,10 @@ messageDebugBus.onMessage(function( event ){
 		case 'resize-canvas-css' :
 			resizeCanvasCss( event.data.value )
 			break
-		case: 'terminate' :
+		case 'terminate' :
 			castReceiverManager.stop()
 			break
-		case: 'reload' :
+		case 'reload' :
 			location.reload( event.data.value )
 			break
 		default: break;
