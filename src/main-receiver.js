@@ -26,16 +26,23 @@ let artwork
 
 let hardwareSupportsApplication = Artwork.isSupported
 
+	var renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      antialias: true
+    });
+    renderer.setPixelRatio( 2.5 )
+
 	var artOpts = {
-			useTextureNoise:false, 
-			fov: 60,
-			timeScale: 0.9,
-			viewOffset:[ -600, 0 ]
-		}
-		artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/', artOpts )
-		window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
-		artwork.start()
-		artwork.resize( window.innerWidth , window.innerHeight * 0.3 )
+		renderer,
+		useTextureNoise:false, 
+		fov: 60,
+		timeScale: 0.9,
+		viewOffset:[ -600, 0 ]
+	}
+	artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/', artOpts )
+	window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
+	artwork.start()
+	artwork.resize( window.innerWidth , window.innerHeight * 0.31 )
 
 console.log('Starting Receiver Manager');
 
