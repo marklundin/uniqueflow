@@ -11,7 +11,7 @@ let InstallationArtwork = ( canvas, filePath, dpi ) => {
 
 	 // Style it
 	let artwork = new Artwork( canvas, filePath, {
-		timeScale: 0.83, 
+		timeScale: 0.9, 
 		useTextureNoise:false, 
 		pixelRatio })
 
