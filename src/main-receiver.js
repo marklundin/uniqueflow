@@ -44,13 +44,13 @@ castReceiverManager.onReady = function(event) {
 
 		var artOpts = {
 			useTextureNoise:false, 
-			fov:25, 
+			fov: 20,
 			timeScale: 0.9,
 			viewOffset:[ -400, 0 ]
 		}
 
 		artwork = new Artwork( canvas, './jspm_packages/github/marklundin/toyota2@gh-pages/', artOpts )
-		window.addEventListener("resize", _ => artwork.resize( window.innerWidth , window.innerWidth ))
+		window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
 		artwork.start()
 		artwork.resize( window.innerWidth , window.innerWidth )
 
