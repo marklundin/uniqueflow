@@ -16,6 +16,16 @@ html, body {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.cta{
+	position: absolute;
+	right: 1.0%;
+	top:35%;
+	color: white;
+	font-size: 0.6rem;
+	font-family: 'Titillium Web', sans-serif;
+    text-transform: uppercase;
+}
+
 .receiver-canvas{
 	width: 100%;
 	height: 32%;
