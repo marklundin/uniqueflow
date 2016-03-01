@@ -15,7 +15,7 @@ let InstallationArtwork = ( canvas, filePath ) => {
 	renderer.setPixelRatio( 1 )
 
 	 // Style it
-	let artwork = new Artwork( canvas, filePath, {useTextureNoise:true, renderer } )
+	let artwork = new Artwork( canvas, filePath, {useTextureNoise:false, renderer } )
 
 	// Add a resize handler
 	window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
