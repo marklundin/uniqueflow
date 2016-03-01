@@ -5,11 +5,15 @@ import cast from './cast/sender'
 import { APP_ID, NS, DEBUG_NS } from './app-config'
 
 
-let InstallationArtwork = ( canvas, filePath ) => {
+let InstallationArtwork = ( canvas, filePath, dpi ) => {
 
+    let pixelRatio = dpi === undefined ? 1.0 : dpi
 
 	 // Style it
-	let artwork = new Artwork( canvas, filePath, {timeScale: 0.7 })
+	let artwork = new Artwork( canvas, filePath, {
+		timeScale: 0.83, 
+		useTextureNoise:false, 
+		pixelRatio })
 
 	// Add a resize handler
 	window.addEventListener("resize", _ => artwork.resize( window.innerWidth, window.innerHeight ))

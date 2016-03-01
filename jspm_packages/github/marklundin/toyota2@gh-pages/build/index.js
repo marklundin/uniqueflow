@@ -11299,7 +11299,7 @@ $__System.register("105", ["e9", "ea", "e1", "ef"], function (_export) {
             canvas: canvas,
             antialias: true
           });
-          this.renderer.setPixelRatio(devicePixelRatio);
+          this.renderer.setPixelRatio(opts.pixelRatio);
           this.renderer.setClearColor(0x000000);
           this.renderer.autoClear = false;
           this.renderer.sortObjects = false;
@@ -34996,6 +34996,7 @@ $__System.register("1", ["100", "103", "105", "106", "e9", "ea", "ed", "d0", "e1
 
           this.opts = opts;
           this.opts.timeScale = this.opts.timeScale === undefined ? 1 : this.opts.timeScale;
+          this.opts.pixelRatio = this.opts.pixelRatio === undefined ? devicePixelRatio : this.opts.pixelRatio;
           this.opts.viewOffset = this.opts.viewOffset === undefined ? [0, 0] : this.opts.viewOffset;
           this.opts.useTextureNoise = this.opts.useTextureNoise === undefined ? true : this.opts.useTextureNoise;
 

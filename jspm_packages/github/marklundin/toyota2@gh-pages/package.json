@@ -1,6 +1,6 @@
 {
   "name": "toyota-artwork",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "generative animation",
   "main": "./src/index.js",
   "registry": "jspm",

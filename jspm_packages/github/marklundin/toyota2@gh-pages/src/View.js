@@ -8,7 +8,7 @@ export default class View {
       canvas: canvas,
       antialias: true
     });
-    this.renderer.setPixelRatio( devicePixelRatio )
+    this.renderer.setPixelRatio( opts.pixelRatio )
     this.renderer.setClearColor(0x000000);
     this.renderer.autoClear = false;
     this.renderer.sortObjects = false;
