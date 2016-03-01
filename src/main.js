@@ -9,7 +9,7 @@ let InstallationArtwork = ( canvas, filePath ) => {
 
 
 	 // Style it
-	let artwork = new Artwork( canvas, filePath )
+	let artwork = new Artwork( canvas, filePath, {timeScale: 0.7 })
 
 	// Add a resize handler
 	window.addEventListener("resize", _ => artwork.resize( canvas.offsetWidth, canvas.offsetHeight ))
