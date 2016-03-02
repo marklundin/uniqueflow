@@ -20,7 +20,6 @@ let InstallationArtwork = ( canvas, filePath, dpi ) => {
 
 
 
-
 	// We want the machine to 
 
 	let randomScene = _ => {

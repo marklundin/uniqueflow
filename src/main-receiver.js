@@ -44,7 +44,13 @@ let hardwareSupportsApplication = Artwork.isSupported
 	artwork.start()
 	artwork.resize( window.innerWidth , window.innerHeight * 0.32 )
 
-console.log('Starting Receiver Manager');
+
+	// Fade In/Out CTA
+	let cta = document.querySelector('#cta')
+	setInterval( _ => cta.style.opacity = ( cta.style.opacity === '0' ? '1' : '0 '), 60000 )
+
+
+	console.log('Starting Receiver Manager');
 
 
 // handler for the 'ready' event

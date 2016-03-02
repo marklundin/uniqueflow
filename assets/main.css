@@ -29,6 +29,7 @@ html, body {
 }
 
 .cta{
+	transition: opacity 1s;
 	position: absolute;
     right: 1.0%;
     top: 37%;
