@@ -18,12 +18,12 @@ html, body {
 
 .cta{
 	position: absolute;
-	right: 1.0%;
-	top:35%;
-	color: white;
-	font-size: 0.6rem;
-	font-family: 'Titillium Web', sans-serif;
-    text-transform: uppercase;
+    right: 1.0%;
+    top: 37%;
+    color: white;
+    font-size: 0.5rem;
+    font-family: 'Titillium Web', sans-serif;
+    -webkit-font-smoothing: antialiased!important;
 }
 
 .receiver-canvas{
