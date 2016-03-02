@@ -16,13 +16,25 @@ html, body {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
+@font-face {
+    font-family: 'Toyota Text';
+    src: url('./fonts/toyotadisplay_rg/toyotadisplay_rg-webfont.eot');
+    src: url('./fonts/toyotadisplay_rg/toyotadisplay_rg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/toyotadisplay_rg/toyotadisplay_rg-webfont.woff') format('woff'),
+         url('./fonts/toyotadisplay_rg/toyotadisplay_rg-webfont.ttf') format('truetype'),
+         url('./fonts/toyotadisplay_rg/toyotadisplay_rg-webfont.svg#fontname') format('svg');
+    font-weight;
+    font-style: normal;
+}
+
 .cta{
 	position: absolute;
     right: 1.0%;
     top: 37%;
     color: white;
     font-size: 0.5rem;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Toyota Text';
     -webkit-font-smoothing: antialiased!important;
 }
 
