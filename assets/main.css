@@ -29,14 +29,15 @@ html, body {
 }
 
 .cta{
-	transition: opacity 1s;
 	position: absolute;
     right: 1.0%;
     top: 37%;
     color: white;
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     font-family: 'Toyota Text';
     -webkit-font-smoothing: antialiased!important;
+    width: 170;
+    text-align: right;
 }
 
 .receiver-canvas{
