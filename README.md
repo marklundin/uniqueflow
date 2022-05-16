@@ -1,7 +1,7 @@
+![Unique Flow](./assets/twitter-share.jpg)
+
 # Unique Flow
 A WebGL Generative Artwork
-
-![Unique Flow](./assets/twitter-share.jpg)
 
 This animation is used as an installation runnig on 2x4K UHD displays at the 2016 Geneva Car Show using a [NVIDIA Shield](https://shield.nvidia.co.uk/android-tv)
 
